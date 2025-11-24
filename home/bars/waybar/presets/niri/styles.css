@@ -1,0 +1,33 @@
+@import "../../mocha.css";
+@import "../../default.css";
+
+#waybar.workspaces {
+  background: transparent;
+}
+
+#custom-window-count {
+  padding-bottom: 6px;
+}
+
+.popup {
+  background: alpha(@base, 0.9);
+}
+
+/* window#waybar { */
+/*   background: alpha(@base, 0.9); */
+/* } */
+/**/
+/* #tray { */
+/*   background-color: alpha(@text, 0.2); */
+/* } */
+
+#waybar.workspaces {
+  background-color: transparent;
+}
+
+#waybar.workspaces .modules-center {
+  color: @text;
+  background-color: alpha(@base, 0.9);
+  padding: 10px;
+  border-radius: 12px;
+}

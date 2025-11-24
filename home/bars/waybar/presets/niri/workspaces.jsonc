@@ -1,0 +1,19 @@
+{
+  "name": "workspaces",
+  "position": "left",
+  "layer": "top",
+  "width": 30,
+  "margin": "0 0 0 10px",
+  "reload_style_on_change": true,
+  "modules-center": ["custom/window-count", "niri/workspaces"],
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "focused": "",
+      "active": "",
+      "default": ""
+    },
+    "all-outputs": false
+  }
+}

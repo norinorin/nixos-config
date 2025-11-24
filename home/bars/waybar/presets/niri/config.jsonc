@@ -1,0 +1,30 @@
+// -*- mode: jsonc -*-
+[
+  {
+    "include": "~/.config/waybar/presets/niri/status.jsonc"
+  },
+  {
+    // extremely low height so that the bar doesn't block you
+    // from clicking a visible window aligned with this bar
+    "height": 10,
+    "include": "~/.config/waybar/presets/niri/workspaces.jsonc",
+    "output": "HDMI-A-1",
+    "custom/window-count": {
+      "exec": "cat /tmp/sb-niri-window-count-HDMI-A-1 2>/dev/null",
+      "format": "{}",
+      "interval": "once",
+      "signal": 13
+    }
+  },
+  {
+    "height": 10,
+    "include": "~/.config/waybar/presets/niri/workspaces.jsonc",
+    "output": "eDP-1",
+    "custom/window-count": {
+      "exec": "cat /tmp/sb-niri-window-count-eDP-1 2>/dev/null",
+      "format": "{}",
+      "interval": "once",
+      "signal": 13
+    }
+  }
+]

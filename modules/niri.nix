@@ -4,6 +4,7 @@
             enable = true;
             package = pkgs.niri;
         };
-        waybar.enable = true;
     };
+
+    environment.systemPackages = with pkgs; [ waybar ];
 }

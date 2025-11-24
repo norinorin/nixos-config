@@ -45,6 +45,11 @@
     inxi
     brightnessctl
     libnotify
+    killall
+    htop
+    btop
+    jq
+    playerctl
   ];
 
   programs.mtr.enable = true;

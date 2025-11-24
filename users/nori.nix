@@ -2,6 +2,7 @@
     imports = [
         ./shared.nix
         ../home/apps.nix
+        ../home/bars
         ../home/browsers
         ../home/dev
         ../home/net
@@ -31,4 +32,6 @@
             rbd = "sudo nixos-rebuild switch --flake ~/dotfiles#toaster";
         };
     };
+
+    services.playerctld.enable = true;
 }

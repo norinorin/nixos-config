@@ -1,0 +1,17 @@
+#!/bin/bash
+
+API_KEY=$(cat ~/.secrets/openweatherapikey)
+LAT=$(cat ~/.secrets/openweatherlat)
+LON=$(cat ~/.secrets/openweatherlon)
+
+RESPONSE=$(curl -s "https://api.openweathermap.org/data/2.5/weather?lat=$LAT&lon=$LON&appid=$API_KEY&units=metric")
+
+TEMP_C=$(echo $RESPONSE | jq '.main.temp')
+TEMP_C=$(printf "%.0f" "$TEMP_C")
+DESCRIPTION=$(echo $RESPONSE | jq -r '.weather[0].description' | sed -E 's/^(.)/\U\1/')
+ICON_CODE=$(echo $RESPONSE | jq -r '.weather[0].icon')
+
+curl -s -o /tmp/sb-openweather-icon "https://openweathermap.org/img/wn/${ICON_CODE}.png"
+echo "$DESCRIPTION $TEMP_C°C" > /tmp/sb-openweather-text
+
+pkill -RTMIN+12 waybar
