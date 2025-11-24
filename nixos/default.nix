@@ -10,6 +10,7 @@
       ./wayland.nix
       ./theme.nix
       ./x11.nix
+      ./undervolt.nix
       ../modules
     ];
 
@@ -55,6 +56,7 @@
     linux-wifi-hotspot
     haveged
     lm_sensors
+    undervolt
   ];
 
   programs.mtr.enable = true;

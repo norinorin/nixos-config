@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
     boot.kernelModules = [ "uinput" ];
     hardware.uinput.enable = true;
     services.udev.extraRules = ''
@@ -12,7 +12,7 @@
         ];
     };
     services.kanata = {
-        enable = true;
+        enable = lib.mkDefault true;
         keyboards = {
             externalKeyboard = {
                 devices = [
@@ -98,5 +98,10 @@
                 '';
             };
         };
+    };
+
+    specialisation.on-the-go.configuration = {
+        system.nixos.tags = [ "on-the-go" ];
+        services.kanata.enable = lib.mkForce false;
     };
 }
