@@ -50,6 +50,7 @@
     btop
     jq
     playerctl
+    feh
   ];
 
   programs.mtr.enable = true;
