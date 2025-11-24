@@ -44,6 +44,7 @@
     lshw
     inxi
     brightnessctl
+    libnotify
   ];
 
   programs.mtr.enable = true;

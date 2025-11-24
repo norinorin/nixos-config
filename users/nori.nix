@@ -6,6 +6,7 @@
         ../home/dev
         ../home/net
         ../home/wms
+        ../home/notis
     ];
 
     programs.git = {
