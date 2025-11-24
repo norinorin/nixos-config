@@ -400,4 +400,4 @@ spawn-at-startup "bash" "-c" "sleep 5 && waybar --config ~/.config/waybar/preset
 spawn-at-startup "bash" "-c" "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
 spawn-at-startup "bash" "-c" "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-1"
 spawn-at-startup "bash" "-c" "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher eDP-1"
-spawn-at-startup "bash" "-c" "sleep 10 && systemd-run --user --service simple --unit=kanata-watcher ~/.config/waybar/watchers/kanata-watcher"
+spawn-at-startup "bash" "-c" "sleep 10 && ~/.config/waybar/watchers/kanata-watcher"
