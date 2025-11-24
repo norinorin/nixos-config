@@ -9,6 +9,7 @@
       ./nvidia.nix
       ./wayland.nix
       ./x11.nix
+      ../modules
     ];
 
   boot.loader.systemd-boot.enable = true;

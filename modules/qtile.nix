@@ -1,4 +1,3 @@
-# fallback if wayland broke
 {
-    windowManager.qtile.enable = true;
+    services.xserver.windowManager.qtile.enable = true;
 }
