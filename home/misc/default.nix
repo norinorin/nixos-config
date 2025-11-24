@@ -1,5 +1,7 @@
 {
     imports = [
         ./dunst
+        ./swayidle
+        ./swaylock
     ];
 }

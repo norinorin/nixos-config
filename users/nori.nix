@@ -7,7 +7,7 @@
         ../home/dev
         ../home/net
         ../home/wms
-        ../home/notis
+        ../home/misc
     ];
 
     programs.git = {
