@@ -370,11 +370,6 @@ environment {
     SDL_VIDEODRIVER "wayland"
 }
 
-cursor {
-    xcursor-theme "Banana"
-    xcursor-size 32
-}
-
 gestures {
     dnd-edge-view-scroll {
         trigger-width 30
