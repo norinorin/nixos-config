@@ -6,5 +6,6 @@
         ./python.nix
         ./qtile.nix
         ./spotify.nix
+        ./thunar.nix
     ];
 }
