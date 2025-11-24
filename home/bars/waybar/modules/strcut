@@ -1,0 +1,26 @@
+#!/bin/bash
+charmax=$1
+text="${@:2}"
+
+# in bytes
+text_len=$(echo -n "$text" | wc -c)
+
+if [ "$text_len" -le "$charmax" ]; then
+    echo "$text"
+else
+    while true; do
+        text="${text%?}"
+        last_char_byte_length=$(echo -n "${text: -1}" | wc -c)
+        if [ "$last_char_byte_length" -gt 1 ]; then
+            text="${text%?}"
+        fi
+        current_len=$(echo -n "$text" | wc -c)
+        if [ "$current_len" -le "$charmax" ]; then
+            break
+        fi
+    done
+
+    # Trim trailing spaces before appending "..."
+    text=$(echo -n "$text" | sed 's/[[:space:]]*$//')
+    echo "$text..."
+fi
