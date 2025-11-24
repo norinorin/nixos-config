@@ -51,6 +51,8 @@
     playerctl
     feh
     swaybg
+    linux-wifi-hotspot
+    haveged
   ];
 
   programs.mtr.enable = true;
