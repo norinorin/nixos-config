@@ -218,11 +218,13 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
 
-    // Requires playerctl(d)
-    XF86AudioPlay        allow-when-locked=true { spawn "playerctl" "-p" "playerctld" "play-pause"; }
-    XF86AudioPause       allow-when-locked=true { spawn "playerctl" "-p" "playerctld" "play-pause"; }
+    XF86AudioPlay        allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
+    XF86AudioPause       allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
     XF86AudioNext        allow-when-locked=true { spawn "playerctl" "-p" "playerctld" "next"; }
     XF86AudioPrev        allow-when-locked=true { spawn "playerctl" "-p" "playerctld" "previous"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "+5"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "-5"; }
 
     Mod+Q { close-window; }
 

@@ -3,5 +3,6 @@
         ./dunst
         ./swayidle
         ./swaylock
+        ./swayosd
     ];
 }
