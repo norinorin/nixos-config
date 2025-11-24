@@ -31,6 +31,7 @@
         enable = true;
         shellAliases = {
             rbd = "sudo nixos-rebuild switch --flake ~/dotfiles#toaster";
+            killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
         };
     };
 
