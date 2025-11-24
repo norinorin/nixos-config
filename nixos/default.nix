@@ -31,13 +31,16 @@
   };
 
   services.libinput.enable = true;
-
+  
+  programs.zsh.enable = true;
+  
   users.users.nori = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       tree
     ];
+    shell = pkgs.zsh;
   };
 
   environment.systemPackages = with pkgs; [

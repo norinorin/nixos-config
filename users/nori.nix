@@ -27,11 +27,41 @@
         };
     };
 
+    programs.thefuck.enable = true;
+
     programs.bash = {
         enable = true;
         shellAliases = {
             rbd = "sudo nixos-rebuild switch --flake ~/dotfiles#toaster";
             killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
+        };
+    };
+
+    programs.zsh = {
+        enable = true;
+        enableCompletion = true;
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+
+        shellAliases = {
+            rbd = "sudo nixos-rebuild switch --flake ~/dotfiles#toaster";
+            killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
+            la = "ls -lah";
+        };
+
+        history.size = 10000;
+        history.ignoreAllDups = true;
+        history.path = "$HOME/.zsh_history";
+        history.ignorePatterns = ["rm *" "pkill *" "cp *"];
+
+        oh-my-zsh = {
+            enable = true;
+            plugins = [
+                "git"
+                "thefuck"
+                "python"
+            ];
+            theme = "wedisagree";
         };
     };
 
