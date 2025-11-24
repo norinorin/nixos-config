@@ -10,6 +10,9 @@
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+    };
   };
   outputs = inputs @ { self, nixpkgs, home-manager, stylix, ... }: {
     nixosConfigurations = {
@@ -30,6 +33,9 @@
                 users.${username} = import ./users/${username}.nix;
                 backupFileExtension = "backup";
                 extraSpecialArgs = inputs // specialArgs;
+                sharedModules = [
+                  inputs.nixcord.homeModules.nixcord
+                ];
               };
             }
           ];

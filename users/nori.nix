@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, inputs, ... }: {
     imports = [
         ./shared.nix
         ../home/apps.nix
