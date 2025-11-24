@@ -4,10 +4,14 @@
     nixpkgs.url = "nixpkgs/nixos-25.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = inputs @ { self, nixpkgs, home-manager, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, stylix, ... }: {
     nixosConfigurations = {
       toaster = let 
         username = "nori";
@@ -17,8 +21,8 @@
           inherit specialArgs;
 
           modules = [
+            stylix.nixosModules.stylix
             ./nixos
-
             home-manager.nixosModules.home-manager
             { home-manager = {
                 useGlobalPkgs = true;

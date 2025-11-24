@@ -8,6 +8,7 @@
       ./fonts.nix
       ./nvidia.nix
       ./wayland.nix
+      ./theme.nix
       ./x11.nix
       ../modules
     ];
@@ -53,6 +54,7 @@
     swaybg
     linux-wifi-hotspot
     haveged
+    lm_sensors
   ];
 
   programs.mtr.enable = true;
