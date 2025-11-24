@@ -1,5 +1,5 @@
 {
-    home.file.".config/waybar.modules" = {
+    home.file.".config/waybar/modules" = {
         source = ./modules;
         recursive = true;
         executable = true;
