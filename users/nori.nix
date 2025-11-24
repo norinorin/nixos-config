@@ -8,6 +8,7 @@
         ../home/net
         ../home/wms
         ../home/misc
+        ../home/wallpapers
     ];
 
     programs.git = {

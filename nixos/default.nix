@@ -45,12 +45,12 @@
     inxi
     brightnessctl
     libnotify
-    killall
     htop
     btop
     jq
     playerctl
     feh
+    swaybg
   ];
 
   programs.mtr.enable = true;
