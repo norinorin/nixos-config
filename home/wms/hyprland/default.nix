@@ -146,7 +146,7 @@
                 "$mod SHIFT, return, exec, $terminal"
                 "$mod      , Q, killactive"
                 "$mod SHIFT, E, exit"
-                "$mod      , E, exec, $filemanager"
+                "$mod      , E, exec, $fileManager"
                 "$mod      , V, togglefloating"
                 "$mod      , D, exec, $menu"
                 "$mod      , P, togglesplit"
