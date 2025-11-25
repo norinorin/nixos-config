@@ -42,7 +42,7 @@
   
   users.users.nori = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "gamemode" ];
     packages = with pkgs; [
       tree
     ];
@@ -79,6 +79,21 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  programs.gamemode = {
+    enable = true;
+    enableRenice = true;
+    settings = {
+      general = {
+        softrealtime = "auto";
+        renice = 10;
+      };
+      custom = {
+        start = "/run/current-system/sw/bin/notify-send -a 'Gamemode' 'Optimisations activated'";
+        end = "/run/current-system/sw/bin/notify-send -a 'Gamemode' 'Optimisations deactivated'";
+      };
+    };
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
