@@ -82,5 +82,9 @@ in
     gtk = {
         enable = true;
         cursorTheme = cursor;
+        iconTheme = {
+            name = "candy-icons";
+            package = pkgs.candy-icons;
+        };
     };
 }
