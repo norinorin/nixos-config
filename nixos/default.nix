@@ -64,6 +64,7 @@
     scrcpy
     ffmpeg-full
     ouch
+    fastfetch
   ];
 
   # use scrcpy to turn mobile phones into webcams
