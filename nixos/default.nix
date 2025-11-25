@@ -11,6 +11,7 @@
       ./theme.nix
       ./x11.nix
       ./undervolt.nix
+      ./tablet.nix
       ../modules
     ];
 
