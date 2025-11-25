@@ -87,4 +87,10 @@ in
             package = pkgs.candy-icons;
         };
     };
+
+    xfconf.settings = {
+        xfce4-session = {
+            "general/TerminalEmulator" = "alacritty";
+        };
+    };
 }
