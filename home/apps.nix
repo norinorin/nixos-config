@@ -34,6 +34,10 @@
                 messageLogger.enable = true;
                 relationshipNotifier.enable = true;
                 silentTyping.enable = true;
+                platformIndicators = {
+                    enable = true;
+                    showBots = true;
+                };
             };
         };
     };
