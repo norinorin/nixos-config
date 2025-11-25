@@ -60,7 +60,11 @@
     haveged
     lm_sensors
     undervolt
+    scrcpy
   ];
+
+  # use scrcpy to turn mobile phones into webcams
+  programs.obs-studio.enableVirtualCamera = true;
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {
