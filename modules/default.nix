@@ -7,5 +7,6 @@
         ./qtile.nix
         ./spotify.nix
         ./thunar.nix
+        ./steam.nix
     ];
 }
