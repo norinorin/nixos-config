@@ -61,6 +61,7 @@
     lm_sensors
     undervolt
     scrcpy
+    ffmpeg-full
   ];
 
   # use scrcpy to turn mobile phones into webcams

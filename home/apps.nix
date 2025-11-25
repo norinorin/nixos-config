@@ -58,14 +58,16 @@
 
         package = (
             pkgs.mpv-unwrapped.wrapper {
-            scripts = with pkgs.mpvScripts; [
-                uosc
-                sponsorblock
-            ];
+                scripts = with pkgs.mpvScripts; [
+                    uosc
+                    sponsorblock
+                    thumbfast
+                ];
 
-            mpv = pkgs.mpv-unwrapped.override {
-                waylandSupport = true;
-            };
+                mpv = pkgs.mpv-unwrapped.override {
+                    waylandSupport = true;
+                    ffmpeg = pkgs.ffmpeg-full;
+                };
             }
         );
 
