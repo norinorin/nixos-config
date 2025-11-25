@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
     imports = [
+        ./denoiser.nix
         ./niri.nix
         ./kanata.nix
         ./python.nix
