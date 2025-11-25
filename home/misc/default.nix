@@ -3,6 +3,7 @@
         ./dunst
         ./swayidle
         ./swaylock
-        ./swayosd
     ];
+
+    services.swayosd.enable = true;
 }

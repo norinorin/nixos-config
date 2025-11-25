@@ -5,6 +5,4 @@
             package = pkgs.niri;
         };
     };
-
-    environment.systemPackages = with pkgs; [ waybar ];
 }

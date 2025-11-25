@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, pkgsUnstable, desktop, ... }:
 
 {
+  _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    inherit (config.nixpkgs) config;
+  };
+
   imports =
     [ 
       ./hardware-configuration.nix
@@ -12,7 +17,7 @@
       ./x11.nix
       ./undervolt.nix
       ./tablet.nix
-      ../modules
+      (import ../modules { inherit pkgs lib desktop; })
     ];
 
   boot.loader.systemd-boot.enable = true;

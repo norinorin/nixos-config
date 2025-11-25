@@ -1,0 +1,17 @@
+#waybar.workspaces {
+  background: transparent;
+}
+
+#custom-window-count {
+  padding-bottom: 6px;
+}
+
+#waybar.workspaces {
+  background-color: transparent;
+}
+
+#waybar.workspaces .modules-center {
+  color: @base07;
+  padding: 10px;
+  border-radius: 12px;
+}

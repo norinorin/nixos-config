@@ -1,4 +1,5 @@
-{ pkgs, ... }:
+# used by: niri
+{ pkgs, lib, ... }:
 {
     services.swayidle =
         let
@@ -6,7 +7,7 @@
             display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
         in
         {
-            enable = true;
+            enable = lib.mkDefault false;
             timeouts = [
                 {
                     timeout = 295; # in seconds

@@ -1,5 +1,21 @@
+{ desktop, lib, pkgs, ... }:
 {
-    imports = [
-        ./niri
+    imports = [ ]
+    ++ lib.optional (desktop == "niri") ./niri
+    ++ lib.optional (desktop == "hyprland") ./hyprland;
+
+    home.packages = with pkgs; [
+        wl-clipboard
+        wayland-utils
+        libsecret
+        cage
+        gamescope
+        fuzzel
+        grim
     ];
+
+    programs.waybar = {
+        enable = true;
+        systemd.enable = true;
+    };
 }

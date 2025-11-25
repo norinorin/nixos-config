@@ -1,10 +1,4 @@
-{ pkgs, config, inputs, ... }: 
-let cursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 16;
-};
-in
+{ pkgs, config, lib, ... }: 
 {
     imports = [
         ./shared.nix
@@ -35,6 +29,7 @@ in
     };
 
     programs.thefuck.enable = true;
+    programs.pay-respects.enable = true;
 
     programs.bash = {
         enable = true;
@@ -74,14 +69,17 @@ in
 
     services.playerctld.enable = true;
 
-    home.pointerCursor = cursor // {
+    home.pointerCursor = {
         # x11.enable = true;
         gtk.enable = true;
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Ice";
+        size = 16;
     };
 
     gtk = {
         enable = true;
-        cursorTheme = cursor;
+
         iconTheme = {
             name = "candy-icons";
             package = pkgs.candy-icons;

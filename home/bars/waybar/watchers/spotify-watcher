@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 playerctl --player=spotify metadata --format '{{status}}|{{artist}} - {{title}}' --follow |
   stdbuf -oL awk -F'|' '{ print ($1 == "Playing") ? $2 : ""; fflush() }' |

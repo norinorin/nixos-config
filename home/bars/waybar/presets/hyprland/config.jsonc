@@ -1,0 +1,186 @@
+{
+  "name": "status",
+  "position": "top",
+  "layer": "top",
+  "height": 30,
+  "margin": "0 0 0 0",
+  "spacing": 2,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "custom/padding",
+    "custom/kanata",
+    "hyprland/workspaces",
+    "hyprland/submap",
+    "custom/separator",
+    "hyprland/window"
+  ],
+  "modules-center": ["custom/padding-xl", "clock", "custom/padding-xl"],
+  "modules-right": [
+    "custom/spotify-icon",
+    "custom/padding",
+    "custom/spotify",
+    "custom/padding",
+    "image#openweather-icon",
+    "custom/openweather-text",
+    "custom/openweather-poller",
+    "custom/separator",
+    "group/pa-output",
+    "custom/padding",
+    "group/cpu",
+    "custom/padding",
+    "group/memory",
+    "custom/padding",
+    "custom/network",
+    "custom/padding",
+    "group/hidden-tray",
+    "custom/padding"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format-icons": {
+      "urgent": "",
+      "active": "", // focused workspace on current monitor 
+      "visible": "", // focused workspace on other monitors
+      "default": "",
+      "empty": "" // persistent (created by this plugin)
+    },
+    "all-outputs": false // recommended
+  },
+  "hyprland/submap": {
+    "format": "{}"
+  },
+  "hyprland/window": {
+    "separate-outputs": true
+  },
+  "group/hidden-tray": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "tray-drawer",
+      "click-to-reveal": true
+    },
+    "modules": ["custom/tray-icon", "tray"]
+  },
+  "custom/tray-icon": {
+    "format": "󰀻",
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 12,
+    "spacing": 4
+  },
+  "clock": {
+    "format": "{:%a, %d %b %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "$TERMINAL -e calcurse"
+  },
+  "group/cpu": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "cpu-drawer",
+      "click-to-reveal": true
+    },
+    "modules": ["custom/cpu-icon", "cpu"]
+  },
+  "custom/cpu-icon": {
+    "format": "",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "{usage}%",
+    "tooltip": false
+  },
+  "group/memory": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "memory-drawer",
+      "click-to-reveal": true
+    },
+    "modules": ["custom/memory-icon", "memory"]
+  },
+  "custom/memory-icon": {
+    "format": "",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "{}%"
+  },
+  "custom/pa-output-icon": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "pavucontrol"
+  },
+  "pulseaudio#output": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{volume}%",
+    "on-click": "pavucontrol"
+  },
+  "pulseaudio/slider#output": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  "group/pa-output": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "pa-output-drawer"
+    },
+    "modules": [
+      "custom/pa-output-icon",
+      "pulseaudio#output",
+      "pulseaudio/slider#output"
+    ]
+  },
+  "custom/spotify-icon": {
+    "format": "{icon}",
+    "exec": "cat /tmp/sb-spotify 2>/dev/null",
+    "interval": "once",
+    "format-icons": "",
+    "signal": 18 // custom/spotify-poller sends signal 18 every time it updates /tmp/sb-spotify
+  },
+  "custom/spotify": {
+    "format": "{}",
+    "exec": "cat /tmp/sb-spotify 2>/dev/null",
+    "interval": "once",
+    "signal": 18 // custom/spotify-poller sends signal 18 every time it updates /tmp/sb-spotify
+  },
+  "custom/network": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/modules/network",
+    "interval": 60,
+    "tooltip": false,
+    "return-type": "json"
+  },
+  "custom/separator": {
+    "format": " │ "
+  },
+  "image#openweather-icon": {
+    "path": "/tmp/sb-openweather-icon",
+    "signal": 12
+  },
+  "custom/openweather-text": {
+    "exec": "cat /tmp/sb-openweather-text 2>/dev/null",
+    "signal": 12
+  },
+  "custom/openweather-poller": {
+    "exec": "$HOME/.config/waybar/modules/openweather",
+    "interval": 1800
+  },
+  "custom/kanata": {
+    "format": "{} <span foreground=\"#9399b2cc\">│</span>",
+    "exec": "cat /tmp/sb-kanata 2>/dev/null",
+    "interval": "once",
+    "signal": 17
+  },
+  "custom/padding": {
+    "format": " "
+  },
+  "custom/padding-xl": {
+    "format": " "
+  }
+}
