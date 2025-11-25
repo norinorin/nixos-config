@@ -42,7 +42,7 @@
   
   users.users.nori = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "gamemode" ];
+    extraGroups = [ "wheel" "gamemode" "adbusers" ];
     packages = with pkgs; [
       tree
     ];
@@ -72,9 +72,7 @@
     fastfetch
   ];
 
-  # use scrcpy to turn mobile phones into webcams
-  programs.obs-studio.enableVirtualCamera = true;
-
+  programs.adb.enable = true;
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
