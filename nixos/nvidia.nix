@@ -8,6 +8,7 @@
     nvidia = {
       modesetting.enable = true;
       open = true;
+      powerManagement.enable = true;
     };
     graphics.enable = true;
   };
