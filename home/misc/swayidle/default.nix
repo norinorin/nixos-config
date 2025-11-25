@@ -16,11 +16,6 @@
                     timeout = 300;
                     command = lock;
                 }
-                {
-                    timeout = 300;
-                    command = display "off";
-                    resumeCommand = display "on";
-                }
             ];
             events = [
                 {
