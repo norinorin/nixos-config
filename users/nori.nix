@@ -1,4 +1,11 @@
-{ pkgs, config, inputs, ... }: {
+{ pkgs, config, inputs, ... }: 
+let cursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 16;
+};
+in
+{
     imports = [
         ./shared.nix
         ../home/apps.nix
@@ -67,11 +74,13 @@
 
     services.playerctld.enable = true;
 
-    home.pointerCursor = {
-        x11.enable = true;
+    home.pointerCursor = cursor // {
+        # x11.enable = true;
         gtk.enable = true;
-        package = pkgs.bibata-cursors;
-        name = "Bibata Modern Ice";
-        size = 20;
+    };
+
+    gtk = {
+        enable = true;
+        cursorTheme = cursor;
     };
 }
