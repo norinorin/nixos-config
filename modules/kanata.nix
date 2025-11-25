@@ -12,7 +12,7 @@
         ];
     };
     services.kanata = {
-        enable = lib.mkDefault true;
+        enable = true;
         keyboards = {
             externalKeyboard = {
                 devices = [
