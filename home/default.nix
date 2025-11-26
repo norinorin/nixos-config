@@ -14,5 +14,6 @@
     ./services.nix
     ./swayidle.nix
     ./swaylock.nix
+    ./thunar.nix
   ];
 }
