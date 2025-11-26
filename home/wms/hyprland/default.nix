@@ -3,6 +3,7 @@
     imports = [ ./hypridle.nix ];
 
     home.sessionVariables.NIXOS_OZONE_WL = "1";
+    
     wayland.windowManager.hyprland = {
         enable = true;
         package = null;
@@ -304,4 +305,8 @@
         '';
         executable = true;
     };
+
+    home.packages = with pkgs; [
+        grimblast
+    ];
 }
