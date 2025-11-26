@@ -12,6 +12,7 @@
     ];
     fontDir.enable = true;
     fontconfig = {
+      enable = true;
       antialias = true;
       hinting.enable = true;
       subpixel.rgba = "rgb";
