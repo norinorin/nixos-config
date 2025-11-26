@@ -2,7 +2,10 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  rebuild = "sudo nixos-rebuild switch --flake ~/Dotfiles#toaster";
+  killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
+in {
   imports = [
     ./shared.nix
     ../home
@@ -30,8 +33,8 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      rbd = "sudo nixos-rebuild switch --flake ~/dotfiles#toaster";
-      killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
+      rbd = "${rebuild}";
+      killall = "${killall}";
     };
   };
 
@@ -42,8 +45,8 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      rbd = "sudo nixos-rebuild switch --flake ~/dotfiles#toaster";
-      killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
+      rbd = "${rebuild}";
+      killall = "${killall}";
       la = "ls -lah";
     };
 

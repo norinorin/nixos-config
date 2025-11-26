@@ -1,5 +1,5 @@
 {
-  home.file."wallpapers" = {
+  home.file."Wallpapers" = {
     source = ./.;
     recursive = true;
   };
