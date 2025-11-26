@@ -10,7 +10,6 @@
         libsecret
         cage
         gamescope
-        fuzzel
         grim
     ];
 

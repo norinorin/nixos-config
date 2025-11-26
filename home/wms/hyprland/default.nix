@@ -225,6 +225,7 @@
             layerrule = [
                 "animation slide, match:namespace notifications"
                 "blur on, match:namespace waybar"
+                "dim_around on, blur on, match:namespace launcher"
             ];
             windowrule = [
                 # gaming
