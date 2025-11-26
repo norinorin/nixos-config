@@ -396,7 +396,7 @@ gestures {
     }
 }
 
-spawn-at-startup "bash" "-c" ". ~/wallpapers/wally"
+spawn-at-startup "bash" "-c" ". ~/Wallpapers/wally"
 
 // waybar watchers
 spawn-at-startup "bash" "-c" "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"

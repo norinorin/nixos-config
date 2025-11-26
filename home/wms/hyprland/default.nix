@@ -264,7 +264,7 @@
         "opacity 1.0, match:class mpv"
       ];
       exec = [
-        "~/wallpapers/wally"
+        "~/Wallpapers/wally"
       ];
       exec-once = [
         # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988

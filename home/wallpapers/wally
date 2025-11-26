@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 ps aux | grep '[s]waybg' | awk '{print $2}' | xargs kill
-exec swaybg -o HDMI-A-1 -i ~/wallpapers/dark-mountain.jpg -o eDP-1 -i ~/wallpapers/tiger.jpg & disown
+exec swaybg -o HDMI-A-1 -i ~/Wallpapers/dark-mountain.jpg -o eDP-1 -i ~/Wallpapers/tiger.jpg & disown
