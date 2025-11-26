@@ -70,6 +70,9 @@
     ffmpeg-full
     ouch
     fastfetch
+    helvum
+    pavucontrol
+    bat
   ];
 
   programs.adb.enable = true;
