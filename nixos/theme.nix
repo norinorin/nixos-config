@@ -7,8 +7,8 @@
     opacity.desktop = 0.5;
     opacity.terminal = 0.6;
     fonts.monospace = {
-      name = "JetBrains Mono";
-      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "Azeret Mono";
+      package = pkgs.azeret-mono;
     };
   };
 
