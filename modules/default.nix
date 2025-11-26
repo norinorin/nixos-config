@@ -15,6 +15,7 @@
       ./steam.nix
       ./obs.nix
       ./vscode.nix
+      ./prism-launcher.nix
     ]
     ++ lib.optional (desktop == "niri") ./niri.nix
     ++ lib.optional (desktop == "hyprland") ./hyprland.nix;
