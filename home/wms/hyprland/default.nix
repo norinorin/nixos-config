@@ -259,7 +259,8 @@
             ];
             exec-once = [
                 # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988
-                "sleep 1 && systemctl --user start nixos-fake-graphical-session.target"
+                # since XDG_CURRENT_DESKTOP != hyprland the xdg desktop portal will not start automatically
+                "systemctl --user start xdg-desktop-portal-hyprland"
                 "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
                 "sleep 10 && ~/.config/waybar/watchers/kanata-watcher"
             ];
