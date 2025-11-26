@@ -258,6 +258,8 @@
                 "~/wallpapers/wally"
             ];
             exec-once = [
+                # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988
+                "sleep 1 && systemctl --user start nixos-fake-graphical-session.target"
                 "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
                 "sleep 10 && ~/.config/waybar/watchers/kanata-watcher"
             ];
