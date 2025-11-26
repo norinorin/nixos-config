@@ -123,7 +123,19 @@
       #custom-tray-icon {
           padding-right: 4px;
       }
+
+      #battery.icon {
+          padding-right: 5px;
+      }
       /* End nerd font hackery */
+
+      #battery.icon.critical, #battery.text.critical {
+          color: @base08;
+      }
+
+      #battery.icon.warning, #battery.text.warning {
+          color: @base09;
+      }
 
       @keyframes urgent-blink {
           to {
@@ -171,15 +183,20 @@
       /* Drawer padding */
       .pa-output-drawer > .module,
       .memory-drawer > .module {
-          padding-left: 7px;
+          padding-left: 4px;
       }
 
-      .cpu-drawer > .module,
+      .cpu-drawer > .module {
+          padding-left: 3px;
+      }
+
       .tray-drawer > .module {
-          /* nerd font */
           padding-left: 5px;
       }
 
+      .battery-drawer > .module {
+          padding-left: 4px;
+      }
     ''
     + builtins.readFile ./presets/${desktop}/style.css
   );
