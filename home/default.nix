@@ -4,6 +4,7 @@
     ./wallpapers
     ./waybar
     ./wms
+    ./alacritty.nix
     ./apps.nix
     ./dev.nix
     ./firefox.nix
