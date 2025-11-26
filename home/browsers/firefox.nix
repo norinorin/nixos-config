@@ -74,6 +74,8 @@ in
                 "browser.newtabpage.activity-stream.showSponsored" = lock-false;
                 "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
                 "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
+                "network.trr.mode" = 3;
+                "network.trr.url" = "https://mozilla.cloudflare-dns.com/dns-query";
                 "layout.css.devPixelsPerPx" = { Value = 0.75; Status = "locked"; };
             };
         };
