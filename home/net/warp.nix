@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-    home.packages = with pkgs; [
-        cloudflare-warp
-    ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    cloudflare-warp
+  ];
 }

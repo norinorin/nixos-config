@@ -19,13 +19,20 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
-  outputs = inputs @ { self, nixpkgs, home-manager, stylix, ... }: {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    stylix,
+    ...
+  }: {
     nixosConfigurations = {
-      toaster = let 
+      toaster = let
         username = "nori";
         desktop = "hyprland";
-        specialArgs = { inherit inputs username desktop; };
+        specialArgs = {inherit inputs username desktop;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -34,7 +41,8 @@
             stylix.nixosModules.stylix
             ./nixos
             home-manager.nixosModules.home-manager
-            { home-manager = {
+            {
+              home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.${username} = import ./users/${username}.nix;

@@ -1,24 +1,29 @@
-{ config, lib, pkgs, inputs, pkgsUnstable, desktop, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  pkgsUnstable,
+  desktop,
+  ...
+}: {
   _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
     inherit (pkgs.stdenv.hostPlatform) system;
     inherit (config.nixpkgs) config;
   };
 
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ./gc.nix
-      ./fonts.nix
-      ./nvidia.nix
-      ./wayland.nix
-      ./theme.nix
-      ./x11.nix
-      ./undervolt.nix
-      ./tablet.nix
-      (import ../modules { inherit pkgs lib desktop; })
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./gc.nix
+    ./fonts.nix
+    ./nvidia.nix
+    ./wayland.nix
+    ./theme.nix
+    ./x11.nix
+    ./undervolt.nix
+    ./tablet.nix
+    (import ../modules {inherit pkgs lib desktop;})
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -39,12 +44,12 @@
   };
 
   services.libinput.enable = true;
-  
+
   programs.zsh.enable = true;
-  
+
   users.users.nori = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "gamemode" "adbusers" ];
+    extraGroups = ["wheel" "gamemode" "adbusers"];
     packages = with pkgs; [
       tree
     ];
@@ -99,10 +104,9 @@
     };
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
 
   # DO NOT CHANGE
-  system.stateVersion = "25.05"; 
+  system.stateVersion = "25.05";
 }
-

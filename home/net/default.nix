@@ -1,5 +1,5 @@
 {
-    imports = [
-        ./warp.nix
-    ];
+  imports = [
+    ./warp.nix
+  ];
 }

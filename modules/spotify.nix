@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
-    nixpkgs.overlays = [ (import ../overlays/spotx.nix) ];
-    environment.systemPackages = [pkgs.spotify];
+{pkgs, ...}: {
+  nixpkgs.overlays = [(import ../overlays/spotx.nix)];
+  environment.systemPackages = [pkgs.spotify];
 }

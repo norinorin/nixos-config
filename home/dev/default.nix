@@ -1,7 +1,39 @@
-{ pkgs, ... }: {
-    home.packages = with pkgs; [
-        gcc
-        neovim
-        vscode
-    ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    gcc
+    neovim
+    alejandra
+    ruff
+    nil
+  ];
+
+  programs = {
+    vscode = {
+      enable = true;
+      profiles.default = {
+        userSettings = {
+          "editor.formatOnSave" = true;
+          "[python]" = {
+            "editor.defaultFormatter" = "charliermarsh.ruff";
+            "editor.formatOnSave" = true;
+            "editor.codeActionsOnSave"."source.organizeImports" = "explicit";
+          };
+          "nix.enableLanguageServer" = true;
+          "nix.serverPath" = "nil";
+          "nix.serverSettings" = {
+            nil = {
+              formatting.command = ["alejandra"];
+            };
+          };
+        };
+        extensions = with pkgs.vscode-marketplace; [
+          jnoortheen.nix-ide
+          sainnhe.everforest
+
+          ms-python.python
+          charliermarsh.ruff
+        ];
+      };
+    };
+  };
 }

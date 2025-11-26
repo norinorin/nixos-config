@@ -1,6 +1,6 @@
 {
-    services.dunst = {
-        enable = true;
-        configFile = ./dunstrc;
-    };
+  services.dunst = {
+    enable = true;
+    configFile = ./dunstrc;
+  };
 }

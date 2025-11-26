@@ -1,7 +1,7 @@
 {...}: {
   boot.kernelParams = [
-      "nvidia-modeset.hdmi_deepcolor=0"
-      "nvidia-drm.fbdev=1"
+    "nvidia-modeset.hdmi_deepcolor=0"
+    "nvidia-drm.fbdev=1"
   ];
 
   hardware = {
@@ -13,5 +13,5 @@
     graphics.enable = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 }

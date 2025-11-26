@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   xdg.portal.config = {
     common = {
       default = [
@@ -16,15 +21,15 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.swayosd ];
-  services.udev.packages = [ pkgs.swayosd ];
+  environment.systemPackages = [pkgs.swayosd];
+  services.udev.packages = [pkgs.swayosd];
 
   systemd.services.swayosd-libinput-backend = {
     description = "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc.";
-    documentation = [ "https://github.com/ErikReider/SwayOSD" ];
-    wantedBy = [ "graphical.target" ];
-    partOf = [ "graphical.target" ];
-    after = [ "graphical.target" ];
+    documentation = ["https://github.com/ErikReider/SwayOSD"];
+    wantedBy = ["graphical.target"];
+    partOf = ["graphical.target"];
+    after = ["graphical.target"];
 
     serviceConfig = {
       Type = "dbus";
