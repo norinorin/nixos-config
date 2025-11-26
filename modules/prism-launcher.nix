@@ -4,7 +4,7 @@
       # Add binary required by some mod
       # additionalPrograms = [ffmpeg];
 
-      jdks = [graalvm-ce];
+      jdks = [graalvm-ce graalvmPackages.graalvm-oracle_17];
     })
   ];
 }
