@@ -3,7 +3,6 @@
   lib,
   pkgs,
   inputs,
-  pkgsUnstable,
   desktop,
   ...
 }: {
@@ -19,7 +18,7 @@
     ./nvidia.nix
     ./wayland.nix
     ./theme.nix
-    ./x11.nix
+    # ./x11.nix
     ./undervolt.nix
     ./tablet.nix
     (import ../modules {inherit pkgs lib desktop;})

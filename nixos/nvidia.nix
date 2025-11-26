@@ -1,4 +1,4 @@
-{...}: {
+{
   boot.kernelParams = [
     "nvidia-modeset.hdmi_deepcolor=0"
     "nvidia-drm.fbdev=1"

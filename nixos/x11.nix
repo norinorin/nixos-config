@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   services.xserver = {
     enable = true;
     autoRepeatDelay = 200;

@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   desktop,
   ...
@@ -9,7 +8,6 @@
       ./denoiser.nix
       ./kanata.nix
       ./python.nix
-      ./qtile.nix
       ./spotify.nix
       ./thunar.nix
       ./steam.nix

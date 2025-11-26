@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   boot.kernelModules = ["uinput"];
   hardware.uinput.enable = true;
   services.udev.extraRules = ''

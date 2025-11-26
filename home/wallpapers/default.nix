@@ -1,10 +1,6 @@
-{pkgs, ...}: {
+{
   home.file."wallpapers" = {
-    source = ../wallpapers;
+    source = ./.;
     recursive = true;
-  };
-  home.file."wally" = {
-    source = ./wally;
-    executable = true;
   };
 }
