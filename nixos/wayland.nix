@@ -14,6 +14,12 @@
         "gnome-keyring"
       ];
     };
+    hyprland = {
+      default = [
+        "hyprland"
+        "gtk"
+      ];
+    };
   };
 
   environment.systemPackages = [ pkgs.swayosd ];
