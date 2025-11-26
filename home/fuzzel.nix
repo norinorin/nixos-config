@@ -3,14 +3,6 @@
   config,
   ...
 }: {
-  imports = [
-    ./dunst
-    ./swayidle
-    ./swaylock
-  ];
-
-  services.swayosd.enable = true;
-
   programs.fuzzel = {
     enable = true;
     settings = {

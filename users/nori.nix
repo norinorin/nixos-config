@@ -6,14 +6,7 @@
 }: {
   imports = [
     ./shared.nix
-    ../home/apps.nix
-    ../home/bars
-    ../home/browsers
-    ../home/dev
-    ../home/net
-    ../home/wms
-    ../home/misc
-    ../home/wallpapers
+    ../home
   ];
 
   programs.git = {

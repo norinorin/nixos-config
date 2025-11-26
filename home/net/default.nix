@@ -1,5 +1,0 @@
-{
-  imports = [
-    ./warp.nix
-  ];
-}
