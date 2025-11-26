@@ -48,6 +48,11 @@ in
                     install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
                     installation_mode = "force_installed";
                 };
+
+                "zotero@chnm.gmu.edu" = {
+                    install_url = "https://www.zotero.org/download/connector/dl?browser=firefox&version=5.0.189";
+                    installation_mode = "force_installed";
+                };
             };
     
             Preferences = { 
@@ -69,6 +74,7 @@ in
                 "browser.newtabpage.activity-stream.showSponsored" = lock-false;
                 "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
                 "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
+                "layout.css.devPixelsPerPx" = { Value = 0.75; Status = "locked"; };
             };
         };
     };
