@@ -21,6 +21,7 @@
     # ./x11.nix
     ./undervolt.nix
     ./tablet.nix
+    ./hibernation.nix
     (import ../modules {inherit pkgs lib desktop;})
   ];
 

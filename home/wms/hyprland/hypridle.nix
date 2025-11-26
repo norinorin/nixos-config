@@ -6,6 +6,7 @@
     enable = true;
     settings = {
       general = {
+        before_sleep_cmd = "${swaylock}";
         after_sleep_cmd = "${monitor} on";
         ignore_dbus_inhibit = false;
         lock_cmd = "${swaylock}";

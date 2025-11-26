@@ -197,6 +197,7 @@
           "CTRL      , backslash, pass, class:com.obsproject.Studio"
 
           "$mod ALT  , L, exec, swaylock"
+          "ALT       , F4, exec, wlogout"
         ]
         ++ (
           let

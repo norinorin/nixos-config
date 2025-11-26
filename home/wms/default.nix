@@ -16,6 +16,7 @@
     cage
     gamescope
     grim
+    wlogout
   ];
 
   programs.waybar = {
