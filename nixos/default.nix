@@ -79,6 +79,7 @@
     helvum
     pavucontrol
     bat
+    vulkan-tools
   ];
 
   programs.adb.enable = true;
