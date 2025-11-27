@@ -4,5 +4,9 @@
     audacity
     cloudflare-warp
     zotero
+    (osu-lazer-bin.override
+      {
+        nativeWayland = true;
+      })
   ];
 }
