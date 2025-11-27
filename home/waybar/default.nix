@@ -101,7 +101,7 @@
       }
 
       #custom-network.disconnected {
-          padding-right: 3px;
+          padding-right: 4px;
       }
 
       #custom-network {
