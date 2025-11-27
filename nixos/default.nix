@@ -44,6 +44,7 @@
   };
 
   services.libinput.enable = true;
+  services.zerotierone.enable = true;
 
   programs.zsh.enable = true;
 
