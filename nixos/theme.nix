@@ -10,6 +10,7 @@
       name = "Azeret Mono";
       package = pkgs.azeret-mono;
     };
+    polarity = "dark";
   };
 
   environment.systemPackages = [

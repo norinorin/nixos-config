@@ -11,13 +11,12 @@ in {
   programs.firefox = {
     enable = true;
     profiles = {
-      main = {
-        id = 0;
-        isDefault = true;
+      default = {
+        extensions.force = true; # stylix shenanigans
       };
-
       school = {
         id = 1;
+        extensions.force = true; # stylix shenanigans
       };
     };
     policies = {
@@ -92,5 +91,9 @@ in {
     };
   };
 
-  stylix.targets.firefox.profileNames = ["main"];
+  stylix.targets.firefox = {
+    enable = true;
+    colorTheme.enable = true;
+    profileNames = ["default" "school"];
+  };
 }
