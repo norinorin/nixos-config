@@ -11,15 +11,14 @@
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixcord = {
-      url = "github:kaylorben/nixcord";
-    };
+    nixcord.url = "github:kaylorben/nixcord";
     hyprland.url = "github:hyprwm/Hyprland";
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    anime_rpc.url = "github:norinorin/anime_rpc";
   };
   outputs = inputs @ {
     self,
@@ -40,6 +39,7 @@
           modules = [
             stylix.nixosModules.stylix
             ./nixos
+            {nixpkgs.overlays = [inputs.anime_rpc.overlays.default];}
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -48,9 +48,6 @@
                 users.${username} = import ./users/${username}.nix;
                 backupFileExtension = "backup";
                 extraSpecialArgs = inputs // specialArgs;
-                sharedModules = [
-                  inputs.nixcord.homeModules.nixcord
-                ];
               };
             }
           ];
