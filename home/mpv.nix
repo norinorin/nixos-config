@@ -41,8 +41,12 @@
     bindings = {
       "Alt+RIGHT" = "seek 80"; # skip anime op
       "Alt+LEFT" = "seek -80";
-      "Ctrl+PGDWN" = "playlist-next";
-      "Ctrl+PGUP" = "playlist-prev";
+
+      # idk why it's reversed but it works
+      "PGUP" = "add chapter -1"; # for some reason this goes to the next chapter
+      "PGDWN" = "add chapter 1"; # prev chapter
+      "Ctrl+PGDWN" = "playlist-next"; # prev file
+      "Ctrl+PGUP" = "playlist-prev"; # next file
     };
   };
 }
