@@ -5,14 +5,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 0,
-        "narHash": "sha256-LmMm/TcLjJBwjuSCDQCKedS4vQ71BbEvzCyCqOZPPYE=",
-        "path": "/home/nori/Gits/anime_rpc",
-        "type": "path"
+        "lastModified": 1764279397,
+        "narHash": "sha256-jZVw8e/Y8DXPw6nzCvfR3aaUkbn0my6QK6Xb/ec/8oE=",
+        "owner": "norinorin",
+        "repo": "anime_rpc",
+        "rev": "1db10eaff9d0fec41ca964cb940c5abcfd7c4e3e",
+        "type": "github"
       },
       "original": {
-        "path": "/home/nori/Gits/anime_rpc",
-        "type": "path"
+        "owner": "norinorin",
+        "repo": "anime_rpc",
+        "type": "github"
       }
     },
     "aquamarine": {
