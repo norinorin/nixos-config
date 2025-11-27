@@ -15,6 +15,7 @@
       ./vscode.nix
       ./prism-launcher.nix
       ./warp.nix
+      ./zotero-beta.nix
     ]
     ++ lib.optional (desktop == "niri") ./niri.nix
     ++ lib.optional (desktop == "hyprland") ./hyprland.nix;
