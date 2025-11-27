@@ -8,5 +8,6 @@
       {
         nativeWayland = true;
       })
+    gnome-clocks
   ];
 }
