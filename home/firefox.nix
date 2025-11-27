@@ -43,40 +43,46 @@ in {
     profiles = {
       default = {
         extensions.force = true; # stylix shenanigans
-        search.engines =
-          sharedSearchEngines
-          // {
-            youtube = {
-              name = "YouTube";
-              urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
-              definedAliases = ["@yt" "www.youtube.com" "youtube.com"];
+        search = {
+          force = true;
+          engines =
+            sharedSearchEngines
+            // {
+              youtube = {
+                name = "YouTube";
+                urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
+                definedAliases = ["@yt" "www.youtube.com" "youtube.com"];
+              };
+              anilist = {
+                name = "AniList";
+                urls = [{template = "https://anilist.co/search/anime?search={searchTerms}";}];
+                definedAliases = ["@al" "anilist.co"];
+              };
+              myanimelist = {
+                name = "MyAnimeList";
+                urls = [{template = "https://myanimelist.net/search/all?q={searchTerms}&cat=all";}];
+                definedAliases = ["@mal" "myanimelist.net"];
+              };
+              mydramalist = {
+                name = "MyDramaList";
+                urls = [{template = "https://mydramalist.com/search?q={searchTerms}";}];
+                definedAliases = ["@mdl" "mydramalist.com"];
+              };
+              jisho = {
+                name = "Jisho";
+                urls = [{template = "https://jisho.org/search/{searchTerms}";}];
+                definedAliases = ["@jd" "jisho.org"];
+              };
             };
-            anilist = {
-              name = "AniList";
-              urls = [{template = "https://anilist.co/search/anime?search={searchTerms}";}];
-              definedAliases = ["@al" "anilist.co"];
-            };
-            myanimelist = {
-              name = "MyAnimeList";
-              urls = [{template = "https://myanimelist.net/search/all?q={searchTerms}&cat=all";}];
-              definedAliases = ["@mal" "myanimelist.net"];
-            };
-            mydramalist = {
-              name = "MyDramaList";
-              urls = [{template = "https://mydramalist.com/search?q={searchTerms}";}];
-              definedAliases = ["@mdl" "mydramalist.com"];
-            };
-            jisho = {
-              name = "Jisho";
-              urls = [{template = "https://jisho.org/search/{searchTerms}";}];
-              definedAliases = ["@jd" "jisho.org"];
-            };
-          };
+        };
       };
       school = {
         id = 1;
         extensions.force = true; # stylix shenanigans
-        search.engines = sharedSearchEngines;
+        search = {
+          force = true;
+          engines = sharedSearchEngines;
+        };
       };
     };
     policies = {
