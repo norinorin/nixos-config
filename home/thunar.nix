@@ -35,7 +35,11 @@
         <range>*</range>
         <patterns>*</patterns>
         <text-files/>
+        <other-files/>
       </action>
     </actions>
+  '';
+  xdg.configFile."Thunar/accel.scm".text = ''
+    (gtk_accel_path "<Actions>/ThunarActions/uca-action-1743083263108051-1" "e")
   '';
 }
