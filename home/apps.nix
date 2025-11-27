@@ -3,5 +3,6 @@
     qbittorrent
     audacity
     cloudflare-warp
+    zotero
   ];
 }
