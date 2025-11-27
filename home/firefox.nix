@@ -1,4 +1,4 @@
-let
+{pkgs, ...}: let
   lock-false = {
     Value = false;
     Status = "locked";
@@ -7,16 +7,76 @@ let
     Value = true;
     Status = "locked";
   };
+  sharedSearchEngines = {
+    nix-packages = {
+      name = "Nix Packages";
+      urls = [
+        {
+          template = "https://search.nixos.org/packages";
+          params = [
+            {
+              name = "type";
+              value = "packages";
+            }
+            {
+              name = "query";
+              value = "{searchTerms}";
+            }
+          ];
+        }
+      ];
+
+      icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+      definedAliases = ["@np"];
+    };
+
+    nixos-wiki = {
+      name = "NixOS Wiki";
+      urls = [{template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";}];
+      iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+      definedAliases = ["@nw"];
+    };
+  };
 in {
   programs.firefox = {
     enable = true;
     profiles = {
       default = {
         extensions.force = true; # stylix shenanigans
+        search.engines =
+          sharedSearchEngines
+          // {
+            youtube = {
+              name = "YouTube";
+              urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
+              definedAliases = ["@yt" "www.youtube.com" "youtube.com"];
+            };
+            anilist = {
+              name = "AniList";
+              urls = [{template = "https://anilist.co/search/anime?search={searchTerms}";}];
+              definedAliases = ["@al" "anilist.co"];
+            };
+            myanimelist = {
+              name = "MyAnimeList";
+              urls = [{template = "https://myanimelist.net/search/all?q={searchTerms}&cat=all";}];
+              definedAliases = ["@mal" "myanimelist.net"];
+            };
+            mydramalist = {
+              name = "MyDramaList";
+              urls = [{template = "https://mydramalist.com/search?q={searchTerms}";}];
+              definedAliases = ["@mdl" "mydramalist.com"];
+            };
+            jisho = {
+              name = "Jisho";
+              urls = [{template = "https://jisho.org/search/{searchTerms}";}];
+              definedAliases = ["@jd" "jisho.org"];
+            };
+          };
       };
       school = {
         id = 1;
         extensions.force = true; # stylix shenanigans
+        search.engines = sharedSearchEngines;
       };
     };
     policies = {
