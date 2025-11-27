@@ -21,7 +21,6 @@
   ],
   "modules-right": [
     "custom/spotify-icon",
-    "custom/padding",
     "custom/spotify",
     "custom/padding",
     "image#openweather-icon",

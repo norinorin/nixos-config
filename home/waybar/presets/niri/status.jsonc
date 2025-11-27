@@ -6,11 +6,18 @@
   "margin": "0 0 0 0",
   "spacing": 2,
   "reload_style_on_change": true,
-  "modules-left": ["custom/padding", "custom/kanata", "niri/window"],
-  "modules-center": ["custom/padding-xl", "clock", "custom/padding-xl"],
+  "modules-left": [
+    "custom/padding",
+    "custom/kanata",
+    "niri/window"
+  ],
+  "modules-center": [
+    "custom/padding-xl",
+    "clock",
+    "custom/padding-xl"
+  ],
   "modules-right": [
     "custom/spotify-icon",
-    "custom/padding",
     "custom/spotify",
     "custom/padding",
     "image#openweather-icon",
@@ -40,7 +47,10 @@
       "children-class": "tray-drawer",
       "click-to-reveal": true
     },
-    "modules": ["custom/tray-icon", "tray"]
+    "modules": [
+      "custom/tray-icon",
+      "tray"
+    ]
   },
   "custom/tray-icon": {
     "format": "󰀻",
@@ -62,7 +72,10 @@
       "children-class": "cpu-drawer",
       "click-to-reveal": true
     },
-    "modules": ["custom/cpu-icon", "cpu"]
+    "modules": [
+      "custom/cpu-icon",
+      "cpu"
+    ]
   },
   "custom/cpu-icon": {
     "format": "",
@@ -79,7 +92,10 @@
       "children-class": "memory-drawer",
       "click-to-reveal": true
     },
-    "modules": ["custom/memory-icon", "memory"]
+    "modules": [
+      "custom/memory-icon",
+      "memory"
+    ]
   },
   "custom/memory-icon": {
     "format": "",

@@ -82,13 +82,6 @@
           animation-timing-function: steps(12);
       }
 
-      #custom-spotify-icon {
-          padding-left: 4px;
-          padding-right: 8px;
-          margin: 6px 2px;
-          margin-right: 0;
-      }
-
       #tray {
           padding: 0 4px;
           margin: 6px 2px;
@@ -96,6 +89,10 @@
       }
 
       /* Start nerd font hackery */
+      #custom-spotify-icon {
+          padding-right: 5px;
+      }
+
       #custom-network.connected {
           padding-right: 7px;
       }
