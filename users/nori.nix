@@ -14,8 +14,8 @@ in {
   programs.git = {
     enable = true;
 
-    userName = "Norizon";
-    userEmail = "norizontunes@gmail.com";
+    userName = "Nori";
+    userEmail = "norizon16@proton.me";
 
     signing = {
       key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
