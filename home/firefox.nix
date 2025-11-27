@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   lock-false = {
     Value = false;
     Status = "locked";
@@ -29,12 +33,22 @@
       icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
       definedAliases = ["@np"];
     };
-
     nixos-wiki = {
       name = "NixOS Wiki";
       urls = [{template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";}];
       iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
       definedAliases = ["@nw"];
+    };
+  };
+  firefoxProfileLauncher = name: {
+    name = "firefox-${name}.desktop";
+    value = {
+      type = "Application";
+      name = "Firefox (${name})";
+      exec = "firefox --name firefox-${name} -P ${name}";
+      terminal = false;
+      categories = ["Network" "WebBrowser"];
+      icon = "firefox";
     };
   };
 in {
@@ -168,4 +182,8 @@ in {
     colorTheme.enable = true;
     profileNames = ["default" "school"];
   };
+
+  xdg.desktopEntries = builtins.listToAttrs (
+    map firefoxProfileLauncher (builtins.attrNames config.programs.firefox.profiles)
+  );
 }
