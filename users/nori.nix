@@ -4,7 +4,9 @@
   config,
   ...
 }: let
-  rebuild = "sudo nixos-rebuild switch --flake ~/Dotfiles#toaster";
+  nhs = "nh os switch ~/Dotfiles";
+  nhus = "nh os switch -u ~/Dotfiles";
+  nhc = "nh clean all";
   killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
 in {
   imports = [
@@ -37,8 +39,7 @@ in {
   programs.bash = {
     enable = true;
     shellAliases = {
-      rbd = "${rebuild}";
-      killall = "${killall}";
+      inherit nhs nhus nhc killall;
     };
   };
 
@@ -49,8 +50,7 @@ in {
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      rbd = "${rebuild}";
-      killall = "${killall}";
+      inherit nhs nhus nhc killall;
       la = "ls -lah";
     };
 
