@@ -91,4 +91,6 @@ in {
       "general/TerminalEmulator" = "alacritty";
     };
   };
+
+  stylix.targets.qt.platform = "gnome";
 }
