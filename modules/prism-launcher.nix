@@ -3,7 +3,7 @@
     (prismlauncher.override {
       additionalLibs = [libvlc];
       additionalPrograms = [ffmpeg];
-      jdks = [graalvm-ce graalvmPackages.graalvm-oracle_17];
+      jdks = [graalvmPackages.graalvm-ce graalvmPackages.graalvm-oracle_17];
     })
   ];
 }

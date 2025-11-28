@@ -20,20 +20,20 @@ in {
   programs.git = {
     enable = true;
 
-    userName = "Nori";
-    userEmail = "norizon16@proton.me";
-
     signing = {
       key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
       signByDefault = true;
     };
 
-    extraConfig.gpg = {
-      format = "ssh";
+    settings = {
+      gpg.format = "ssh";
+      user = {
+        name = "Nori";
+        email = "norizon16@proton.me";
+      };
     };
   };
 
-  programs.thefuck.enable = true;
   programs.pay-respects.enable = true;
 
   programs.bash = {
@@ -63,7 +63,6 @@ in {
       enable = true;
       plugins = [
         "git"
-        "thefuck"
         "python"
       ];
       theme = "wedisagree";

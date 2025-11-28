@@ -11,6 +11,8 @@
   # FIXME: get the uuid from `lsblk -f`
   boot.resumeDevice = "/dev/disk/by-uuid/93d0ed76-31cb-4867-84bc-e06d273aa01c";
   powerManagement.enable = true;
-  services.logind.powerKey = "hibernate";
-  services.logind.powerKeyLongPress = "poweroff";
+  services.logind.settings.Login = {
+    HandlePowerKey = "hibernate";
+    HandlePowerKeyLongPress = "poweroff";
+  };
 }
