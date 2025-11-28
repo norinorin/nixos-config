@@ -1,18 +1,25 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: let
   pkgs-hypr = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
-  # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988
-  systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE";
+  services.displayManager.ly.enable = lib.mkForce false;
+
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
 
   programs.hyprland = {
     enable = true;
     package = pkgs-hypr.hyprland;
     portalPackage = pkgs-hypr.xdg-desktop-portal-hyprland;
+    withUWSM = true;
   };
 
   hardware.graphics = {

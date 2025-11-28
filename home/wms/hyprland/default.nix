@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }: {
   imports = [./hypridle.nix];
@@ -268,9 +269,6 @@
         "~/Wallpapers/wally"
       ];
       exec-once = [
-        # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988
-        # since XDG_CURRENT_DESKTOP != hyprland the xdg desktop portal will not start automatically
-        "systemctl --user start xdg-desktop-portal-hyprland"
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
         "sleep 10 && ~/.config/waybar/watchers/kanata-watcher"
       ];
@@ -322,4 +320,12 @@
   home.packages = with pkgs; [
     grimblast
   ];
+
+  xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+
+  programs.zsh.initContent = ''
+    if uwsm check may-start; then
+      exec uwsm start hyprland-uwsm.desktop
+    fi
+  '';
 }
