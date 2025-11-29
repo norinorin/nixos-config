@@ -70,13 +70,14 @@
 
     layout = let
       gap-px = 10;
+      ringWidth = 2;
     in {
       gaps = gap-px;
       struts = {
-        left = -gap-px;
-        right = -gap-px;
-        top = -gap-px;
-        bottom = -gap-px;
+        left = -gap-px + ringWidth;
+        right = -gap-px + ringWidth;
+        top = -gap-px + ringWidth;
+        bottom = -gap-px + ringWidth;
       };
 
       center-focused-column = "never";
@@ -88,7 +89,7 @@
       default-column-width = {proportion = 0.5;};
       focus-ring = {
         enable = true;
-        width = 2;
+        width = ringWidth;
         active = {
           gradient = {
             from = lib.mkDefault "#80c8ff";
