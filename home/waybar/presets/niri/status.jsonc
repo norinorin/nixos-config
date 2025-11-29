@@ -30,6 +30,8 @@
     "custom/padding",
     "group/memory",
     "custom/padding",
+    "group/battery",
+    "custom/padding",
     "custom/network",
     "custom/padding",
     "group/hidden-tray",
@@ -118,6 +120,47 @@
     "min": 0,
     "max": 100,
     "orientation": "horizontal"
+  },
+  "group/battery": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "battery-drawer",
+      "click-to-reveal": true
+    },
+    "modules": [
+      "battery#icon",
+      "battery#text"
+    ]
+  },
+  "battery#icon": {
+    "bat": "BAT1",
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "max-length": 25,
+    "tooltip-format": "{timeTo} ({capacity}%, {cycles} cycles)"
+  },
+  "battery#text": {
+    "bat": "BAT1",
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}%",
+    "max-length": 25,
+    "tooltip-format": "{timeTo} ({capacity}%, {cycles} cycles)"
   },
   "group/pa-output": {
     "orientation": "inherit",
