@@ -19,18 +19,20 @@
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     anime_rpc.url = "github:norinorin/anime_rpc";
+    niri.url = "github:sodiboo/niri-flake";
   };
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
+    niri,
     stylix,
     ...
   }: {
     nixosConfigurations = {
       toaster = let
         username = "nori";
-        desktop = "hyprland";
+        desktop = "niri";
         specialArgs = {inherit inputs username desktop;};
       in
         nixpkgs.lib.nixosSystem {
@@ -38,6 +40,7 @@
 
           modules = [
             stylix.nixosModules.stylix
+            niri.nixosModules.niri
             ./nixos
             {nixpkgs.overlays = [inputs.anime_rpc.overlays.default];}
             home-manager.nixosModules.home-manager

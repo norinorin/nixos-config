@@ -6,6 +6,7 @@
 }: let
   nhs = "nh os switch ~/Dotfiles";
   nhus = "nh os switch -u ~/Dotfiles";
+  nhb = "nh os boot ~/Dotfiles";
   nhc = "nh clean all";
   killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
 in {
@@ -39,7 +40,7 @@ in {
   programs.bash = {
     enable = true;
     shellAliases = {
-      inherit nhs nhus nhc killall;
+      inherit nhs nhus nhb nhc killall;
     };
   };
 
@@ -50,7 +51,7 @@ in {
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      inherit nhs nhus nhc killall;
+      inherit nhs nhus nhb nhc killall;
       la = "ls -lah";
     };
 
