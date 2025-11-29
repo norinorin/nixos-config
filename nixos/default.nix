@@ -22,6 +22,7 @@
     ./undervolt.nix
     ./tablet.nix
     ./hibernation.nix
+    ./legion.nix
     (import ../modules {inherit pkgs lib desktop;})
   ];
 
