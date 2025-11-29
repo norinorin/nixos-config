@@ -1,5 +1,6 @@
 {
   desktop,
+  config,
   lib,
   ...
 }: {
@@ -31,7 +32,7 @@
       window#waybar {
           transition-property: background-color;
           transition-duration: 0.5s;
-          background-color: alpha(@base00, 0.8);
+          background-color: alpha(@base00, ${toString config.stylix.opacity.desktop});
       }
 
       window#waybar.hidden {

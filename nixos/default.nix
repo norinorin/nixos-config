@@ -17,13 +17,13 @@
     ./fonts.nix
     ./nvidia.nix
     ./wayland.nix
-    ./theme.nix
+    (import ./theme.nix {inherit pkgs lib desktop;})
     # ./x11.nix
     ./undervolt.nix
     ./tablet.nix
     ./hibernation.nix
     ./legion.nix
-    (import ../modules {inherit pkgs lib desktop;})
+    (import ../modules {inherit pkgs config lib desktop;})
   ];
 
   boot.loader.systemd-boot.enable = true;
