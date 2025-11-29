@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 ping -c 2 8.8.8.8 >/dev/null 2>&1
 if [ $? -ne 0 ]; then
