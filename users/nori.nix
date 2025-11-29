@@ -92,5 +92,5 @@ in {
     };
   };
 
-  stylix.targets.qt.platform = "gnome";
+  stylix.targets.qt.enable = false;
 }
