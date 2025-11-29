@@ -9,5 +9,8 @@
       })
     gnome-clocks
     zotero-beta
+    xarchiver
+    zip
+    unzip
   ];
 }
