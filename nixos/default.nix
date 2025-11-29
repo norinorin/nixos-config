@@ -28,7 +28,14 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelParams = [
+    "zswap.enabled=1"
+    "zswap.compressor=lz4"
+    "zswap.max_pool_percent=20"
+    "zswap.shrinker_enabled=1"
+  ];
 
   networking.hostName = "toaster";
   networking.networkmanager.enable = true;
