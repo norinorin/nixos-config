@@ -92,6 +92,4 @@ in {
       "general/TerminalEmulator" = "alacritty";
     };
   };
-
-  stylix.targets.qt.enable = false;
 }
