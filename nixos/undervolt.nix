@@ -1,4 +1,34 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  pythonEnv = pkgs.python3.withPackages (ps: [ps.nvidia-ml-py]);
+  # https://www.reddit.com/r/linux_gaming/comments/1fm17ea/comment/lo7mo09
+  undervoltScript = pkgs.writeScript "undervolt-nvidia" ''
+    #!${pythonEnv}/bin/python
+    from pynvml import *
+    from ctypes import byref
+
+    nvmlInit()
+
+    device = nvmlDeviceGetHandleByIndex(0)
+    nvmlDeviceSetGpuLockedClocks(device, 405, 2100)
+
+    # not supported in my setup
+    # nvmlDeviceSetPowerManagementLimit(device, 95000)
+
+    info = c_nvmlClockOffset_t()
+    info.version = nvmlClockOffset_v1
+    info.type = NVML_CLOCK_GRAPHICS
+    info.pstate = NVML_PSTATE_0
+    info.clockOffsetMHz = 200
+
+    nvmlDeviceSetClockOffsets(device, byref(info))
+
+    nvmlShutdown()
+  '';
+in {
   boot.kernelModules = ["msr"];
   nixpkgs.overlays = [(import ../overlays/undervolt.nix)];
   services.undervolt = {
@@ -26,6 +56,24 @@
       gpuOffset = lib.mkForce (-50);
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    (python3.withPackages (python-pkgs:
+      with python-pkgs; [
+        pynvml
+      ]))
+  ];
+
+  systemd.services.undervolt-nvidia = {
+    enable = true;
+    description = "Undervolt the first available Nvidia GPU device";
+    wantedBy = ["graphical.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = [undervoltScript];
+    };
+  };
+
   specialisation.no-undervolt.configuration = {
     system.nixos.tags = ["no-undervolt"];
     services.undervolt = {
@@ -37,5 +85,6 @@
       p2.limit = lib.mkForce 45;
       gpuOffset = lib.mkForce 0;
     };
+    systemd.services.undervolt-nvidia.enable = lib.mkForce false;
   };
 }
