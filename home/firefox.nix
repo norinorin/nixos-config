@@ -136,6 +136,11 @@ in {
           install_url = "https://www.zotero.org/download/connector/dl?browser=firefox&version=5.0.189";
           installation_mode = "force_installed";
         };
+
+        "{c84d89d9-a826-4015-957b-affebd9eb603}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4617271/mal_sync-0.12.2.xpi";
+          installation_mode = "force_installed";
+        };
       };
 
       Preferences = {
