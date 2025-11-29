@@ -322,10 +322,4 @@
   ];
 
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
-
-  programs.zsh.initContent = ''
-    if uwsm check may-start; then
-      exec uwsm start hyprland-uwsm.desktop
-    fi
-  '';
 }
