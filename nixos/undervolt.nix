@@ -26,4 +26,16 @@
       gpuOffset = lib.mkForce (-50);
     };
   };
+  specialisation.no-undervolt.configuration = {
+    system.nixos.tags = ["no-undervolt"];
+    services.undervolt = {
+      coreOffset = lib.mkForce 0;
+      uncoreOffset = lib.mkForce 0;
+      turbo = lib.mkForce 1;
+      temp = lib.mkForce 97;
+      p1.limit = lib.mkForce 45;
+      p2.limit = lib.mkForce 45;
+      gpuOffset = lib.mkForce 0;
+    };
+  };
 }
