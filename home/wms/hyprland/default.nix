@@ -265,9 +265,6 @@
         # non-transparent windows
         "opacity 1.0, match:class mpv"
       ];
-      exec = [
-        "~/Wallpapers/wally"
-      ];
       exec-once = [
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
         "sleep 10 && ~/.config/waybar/watchers/kanata-watcher"
