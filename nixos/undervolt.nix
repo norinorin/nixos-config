@@ -57,13 +57,6 @@ in {
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    (python3.withPackages (python-pkgs:
-      with python-pkgs; [
-        pynvml
-      ]))
-  ];
-
   systemd.services.undervolt-nvidia = {
     enable = true;
     description = "Undervolt the first available Nvidia GPU device";
