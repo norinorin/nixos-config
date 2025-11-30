@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }: let
   pkgs-hypr = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};

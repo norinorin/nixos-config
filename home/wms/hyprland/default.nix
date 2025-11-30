@@ -4,7 +4,9 @@
   lib,
   config,
   ...
-}: {
+}: let
+  hyperPlugins = inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system};
+in {
   imports = [./hypridle.nix];
 
   systemd.user.services.hypridle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
@@ -14,35 +16,38 @@
     package = null;
     portalPackage = null;
     systemd.variables = ["--all"];
-    plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
-    # submaps = {
-    #     move = {
-    #         settings = {
-    #             binde = [
-    #                 ", L, moveactive,  10   0"
-    #                 ", H, moveactive, -10   0"
-    #                 ", K, moveactive,  0  -10"
-    #                 ", J, moveactive,  0   10"
-    #             ];
-    #             bind = [ ", Escape, submap, reset" ];
-    #         };
-    #     };
-    #     resize = {
-    #         settings = {
-    #             binde = [
-    #                 ", right, resizeactive,  10  0"
-    #                 ", left,  resizeactive, -10  0"
-    #                 ", up,    resizeactive,  0 -10"
-    #                 ", down,  resizeactive,  0  10"
-    #                 ", L,     resizeactive,  10  0"
-    #                 ", H,     resizeactive, -10  0"
-    #                 ", K,     resizeactive,  0 -10"
-    #                 ", J,     resizeactive,  0  10"
-    #             ];
-    #             bind = [ ", Escape, submap, reset" ];
-    #         };
-    #     };
-    # };
+    plugins = [
+      inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+      hyperPlugins.csgo-vulkan-fix
+    ];
+    submaps = {
+      move = {
+        settings = {
+          binde = [
+            ", L, moveactive,  10   0"
+            ", H, moveactive, -10   0"
+            ", K, moveactive,  0  -10"
+            ", J, moveactive,  0   10"
+          ];
+          bind = [", Escape, submap, reset"];
+        };
+      };
+      resize = {
+        settings = {
+          binde = [
+            ", right, resizeactive,  10  0"
+            ", left,  resizeactive, -10  0"
+            ", up,    resizeactive,  0 -10"
+            ", down,  resizeactive,  0  10"
+            ", L,     resizeactive,  10  0"
+            ", H,     resizeactive, -10  0"
+            ", K,     resizeactive,  0 -10"
+            ", J,     resizeactive,  0  10"
+          ];
+          bind = [", Escape, submap, reset"];
+        };
+      };
+    };
     settings = {
       "$mod" = "SUPER";
       "$terminal" = "alacritty";
@@ -228,6 +233,10 @@
           enable_notifications = 0;
           enable_persistent_workspaces = 1;
         };
+        csgo-vulkan-fix = {
+          fix_mouse = true;
+          vkfix-app = ["cs2,1440,1080"];
+        };
       };
       cursor = {
         no_hardware_cursors = 1;
@@ -242,6 +251,7 @@
         "match:initial_title ^(gamescope)$, immediate on"
         "match:initial_title ^(Minecraft\* [\d+\.]+)$, immediate on"
         "match:class ^osu!$, immediate on"
+        "match:class ^cs2$, immediate on"
 
         "match:class .*, idle_inhibit fullscreen"
 
@@ -270,28 +280,6 @@
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
       ];
     };
-    # use this until the next hm release cycle
-    extraConfig = ''
-      submap = move
-          binde = , L, moveactive,  10  0
-          binde = , H, moveactive, -10  0
-          binde = , K, moveactive,  0 -10
-          binde = , J, moveactive,  0  10
-          bind = , Escape, submap, reset
-      submap = reset
-
-      submap = resize
-          binde = , right, resizeactive,  10  0
-          binde = , left,  resizeactive, -10  0
-          binde = , up,    resizeactive,  0 -10
-          binde = , down,  resizeactive,  0  10
-          binde = , L,     resizeactive,  10  0
-          binde = , H,     resizeactive, -10  0
-          binde = , K,     resizeactive,  0 -10
-          binde = , J,     resizeactive,  0  10
-          bind = , Escape, submap, reset
-      submap = reset
-    '';
   };
 
   home.file.".config/hypr/gamemode.sh" = {

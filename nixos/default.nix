@@ -93,6 +93,8 @@
     pavucontrol
     bat
     vulkan-tools
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
   ];
 
   programs.adb.enable = true;
