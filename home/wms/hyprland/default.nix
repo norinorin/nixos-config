@@ -267,7 +267,6 @@
       ];
       exec-once = [
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
-        "sleep 10 && ~/.config/waybar/watchers/kanata-watcher"
       ];
     };
     # use this until the next hm release cycle

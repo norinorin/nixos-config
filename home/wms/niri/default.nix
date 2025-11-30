@@ -373,7 +373,6 @@
 
     spawn-at-startup = [
       {sh = "sleep 10 && ~/.config/waybar/watchers/spotify-watcher";}
-      {sh = "sleep 10 && ~/.config/waybar/watchers/kanata-watcher";}
       {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-1";}
       {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-5";}
       {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher eDP-1";}
