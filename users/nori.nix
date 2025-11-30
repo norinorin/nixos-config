@@ -42,6 +42,9 @@ in {
     shellAliases = {
       inherit nhs nhus nhb nhc killall;
     };
+    initExtra = ''
+      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+    '';
   };
 
   programs.zsh = {
@@ -68,6 +71,10 @@ in {
       ];
       theme = "wedisagree";
     };
+
+    initContent = ''
+      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+    '';
   };
 
   home.pointerCursor = {
