@@ -16,7 +16,7 @@
     gi.require_version("Gtk", "4.0")
     gi.require_version("Gtk4LayerShell", "1.0")
 
-    from gi.repository import GLib, Gtk, Gtk4LayerShell
+    from gi.repository import Gdk, GLib, Gtk, Gtk4LayerShell
 
     SOCKET_HOST = "localhost"
     SOCKET_PORT = 55461
@@ -45,9 +45,10 @@
 
 
     class OverlayWindow(Gtk.Window):
-        def __init__(self):
+        def __init__(self, monitor):
             super().__init__()
             Gtk4LayerShell.init_for_window(self)
+            Gtk4LayerShell.set_monitor(self, monitor)
             Gtk4LayerShell.set_layer(self, Gtk4LayerShell.Layer.OVERLAY)
             Gtk4LayerShell.set_anchor(self, Gtk4LayerShell.Edge.BOTTOM, True)
             Gtk4LayerShell.set_margin(self, Gtk4LayerShell.Edge.BOTTOM, MARGIN_BOTTOM)
@@ -100,7 +101,7 @@
         await process.wait()
 
 
-    async def handle_connection(reader, shutdown_event, window):
+    async def handle_connection(reader, shutdown_event, windows):
         print("Connection established. Listening for events...")
         while not shutdown_event.is_set():
             try:
@@ -121,17 +122,18 @@
                     with open(KANATA_FILE, "w") as f:
                         if layer != "base":
                             f.write(layer)
-                    window.update_layer(layer)
+                    for window in windows:
+                        window.update_layer(layer)
                     asyncio.create_task(kill_waybar())
                 except json.JSONDecodeError as e:
                     print(f"Error decoding JSON: {e}")
 
 
-    async def run_client(shutdown_event, window):
+    async def run_client(shutdown_event, windows):
         while not shutdown_event.is_set():
             try:
                 reader, writer = await asyncio.open_connection(SOCKET_HOST, SOCKET_PORT)
-                await handle_connection(reader, shutdown_event, window)
+                await handle_connection(reader, shutdown_event, windows)
                 writer.close()
                 await writer.wait_closed()
             except (ConnectionRefusedError, OSError):
@@ -155,11 +157,28 @@
 
         app = Gtk.Application(application_id="com.kanata.osd")
         app.register(None)
-        window = OverlayWindow()
+
+        display = Gdk.Display.get_default()
+        monitors = display.get_monitors()
+        windows = []  # mutable
+
+        def on_monitors_changed(monitors_list, position, removed, added):
+            for _ in range(removed):
+                if position < len(windows):
+                    win = windows.pop(position)
+                    win.destroy()
+
+            for i in range(added):
+                monitor = monitors_list.get_item(position + i)
+                win = OverlayWindow(monitor)
+                windows.insert(position + i, win)
+
+        monitors.connect("items-changed", on_monitors_changed)
+        on_monitors_changed(monitors, 0, 0, monitors.get_n_items())
 
         try:
             await asyncio.gather(
-                run_client(shutdown_event, window),
+                run_client(shutdown_event, windows),
                 run_gtk_loop(app, shutdown_event),
                 return_exceptions=True,
             )
