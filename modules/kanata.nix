@@ -24,7 +24,7 @@
     RECONNECT_DELAY_S = 10
     KANATA_FILE = "/tmp/sb-kanata"
     WAYBAR_SIGNAL = signal.SIGRTMIN + 17
-    MARGIN_BOTTOM = 150
+    MARGIN_BOTTOM = 175
 
     CSS = """
     window { background: transparent; }
