@@ -16,7 +16,7 @@
     };
   };
 
-  environment.systemPackages = [pkgs.swayosd pkgs.libsForQt5.qt5.qtwayland];
+  environment.systemPackages = [pkgs.swayosd pkgs.libsForQt5.qt5.qtwayland pkgs.rtkit];
   services.udev.packages = [pkgs.swayosd];
 
   systemd.services.swayosd-libinput-backend = {
