@@ -3,6 +3,8 @@
   pkgs,
   ...
 }: {
+  environment.systemPackages = [pkgs.nvtopPackages.nvidia];
+
   # https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Changing_suspend_method
   # set suspend method to s2idle for suspend to work
   boot.kernelParams = [
