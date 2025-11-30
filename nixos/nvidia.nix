@@ -43,9 +43,12 @@
     in {
       modesetting.enable = true;
       open = true;
-      powerManagement.enable = true;
-      powerManagement.finegrained = false;
+      powerManagement = {
+        enable = true;
+        finegrained = false;
+      };
       nvidiaSettings = true;
+      dynamicBoost.enable = true;
       package = nvidiaPackage;
     };
     graphics = {
