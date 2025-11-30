@@ -135,6 +135,20 @@
       {
         matches = [
           {
+            app-id = "steam";
+            title = "^notificationtoasts_\d+_desktop$";
+            is-floating = true;
+          }
+        ];
+        default-floating-position = {
+          x = 10;
+          y = 10;
+          relative-to = "bottom-right";
+        };
+      }
+      {
+        matches = [
+          {
             app-id = "Zotero";
             title = "Quick Format Citation";
           }
