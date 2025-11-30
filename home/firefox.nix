@@ -57,7 +57,7 @@ in {
     profiles = {
       default = {
         settings = {
-          "layout.css.prefers-color-scheme.content-override" = {Value = 2;};
+          "layout.css.prefers-color-scheme.content-override" = 2;
         };
         extensions.force = true; # stylix shenanigans
         search = {
@@ -96,7 +96,7 @@ in {
       school = {
         id = 1;
         settings = {
-          "layout.css.prefers-color-scheme.content-override" = {Value = 1;};
+          "layout.css.prefers-color-scheme.content-override" = 1;
         };
         extensions.force = true; # stylix shenanigans
         search = {
