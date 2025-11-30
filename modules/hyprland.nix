@@ -7,8 +7,6 @@
   pkgs-hypr = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
-  services.displayManager.ly.enable = lib.mkForce false;
-
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];
     trusted-substituters = ["https://hyprland.cachix.org"];

@@ -8,8 +8,10 @@
     xwayland-satellite-unstable
   ];
 
-  services.swayidle.enable = true;
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
+  services.swayidle = {
+    enable = true;
+    systemdTarget = "niri-session.target";
+  };
 
   programs.niri.settings = {
     input = {
@@ -362,6 +364,7 @@
       QT_QPA_PLATFORM = "wayland";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       SDL_VIDEODRIVER = "wayland";
+      NIXOS_OZONE_WL = "1";
     };
 
     gestures = {
@@ -386,6 +389,7 @@
     };
 
     spawn-at-startup = [
+      {sh = "sleep 10 && ${pkgs.waybar}/bin/waybar -c ${config.xdg.configHome}/waybar/presets/niri/config.jsonc -s ${config.xdg.configHome}/waybar/presets/niri/style.css";}
       {sh = "sleep 10 && ~/.config/waybar/watchers/spotify-watcher";}
       {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-1";}
       {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-5";}

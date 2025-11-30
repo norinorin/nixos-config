@@ -3,7 +3,6 @@
   lib,
   pkgs,
   inputs,
-  desktop,
   ...
 }: {
   _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
@@ -17,14 +16,14 @@
     ./fonts.nix
     ./nvidia.nix
     ./wayland.nix
-    (import ./theme.nix {inherit pkgs lib desktop;})
+    ./theme.nix
     # ./x11.nix
     ./undervolt.nix
     ./tablet.nix
     ./hibernation.nix
     ./legion.nix
     ./monitors.nix
-    (import ../modules {inherit pkgs config lib desktop;})
+    ../modules
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -43,7 +42,10 @@
 
   time.timeZone = "Asia/Jakarta";
 
-  services.displayManager.ly.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   services.pipewire = {
     enable = true;
@@ -59,7 +61,7 @@
 
   users.users.nori = {
     isNormalUser = true;
-    extraGroups = ["wheel" "gamemode" "adbusers"];
+    extraGroups = ["wheel" "gamemode" "adbusers" "i2c"];
     packages = with pkgs; [
       tree
     ];

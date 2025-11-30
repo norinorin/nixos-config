@@ -1,13 +1,8 @@
-{
-  desktop,
-  lib,
-  pkgs,
-  ...
-}: {
-  imports =
-    []
-    ++ lib.optional (desktop == "niri") ./niri
-    ++ lib.optional (desktop == "hyprland") ./hyprland;
+{pkgs, ...}: {
+  imports = [
+    ./niri
+    ./hyprland
+  ];
 
   home.packages = with pkgs; [
     wl-clipboard
@@ -21,6 +16,6 @@
 
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
   };
 }

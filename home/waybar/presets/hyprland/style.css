@@ -1,3 +1,11 @@
+@import "../../style.css";
+
+window#waybar {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background-color: alpha(@base00, 0.6);
+}
+
 /* Conditional modules */
 #submap {
   padding-left: 6px;

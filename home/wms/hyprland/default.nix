@@ -7,7 +7,7 @@
 }: {
   imports = [./hypridle.nix];
 
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
+  systemd.user.services.hypridle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -239,7 +239,7 @@
       ];
       windowrule = [
         # gaming
-        "match:class ^(gamescope)$, immediate on"
+        "match:initial_title ^(gamescope)$, immediate on"
         "match:initial_title ^(Minecraft\* [\d+\.]+)$, immediate on"
         "match:class ^osu!$, immediate on"
 
@@ -266,6 +266,7 @@
         "opacity 1.0, match:class mpv"
       ];
       exec-once = [
+        "sleep 10 && ${pkgs.waybar}/bin/waybar -c ${config.xdg.configHome}/waybar/presets/hyprland/config.jsonc -s ${config.xdg.configHome}/waybar/presets/hyprland/style.css"
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
       ];
     };
@@ -317,5 +318,16 @@
     grimblast
   ];
 
-  xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+  xdg.configFile."uwsm/env".text =
+    ''
+      export NIXOS_OZONE_WL=1
+      export QT_QPA_PLATFORM=wayland;xcb
+      export SDL_VIDEODRIVER=wayland
+      export GDK_BACKEND=wayland,x11,*
+
+      export XDG_CURRENT_DESKTOP=Hyprland
+      export XDG_SESSION_TYPE=wayland
+      export XDG_SESSION_DESKTOP=Hyprland
+    ''
+    + builtins.readFile "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 }

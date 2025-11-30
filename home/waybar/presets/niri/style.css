@@ -1,5 +1,11 @@
+@import "../../style.css";
+
 #waybar.workspaces {
   background: transparent;
+}
+
+window#waybar {
+  background-color: @base00;
 }
 
 #custom-window-count {
