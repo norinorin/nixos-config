@@ -23,6 +23,7 @@
     ./tablet.nix
     ./hibernation.nix
     ./legion.nix
+    ./monitors.nix
     (import ../modules {inherit pkgs config lib desktop;})
   ];
 
