@@ -22,7 +22,7 @@
     info.version = nvmlClockOffset_v1
     info.type = NVML_CLOCK_GRAPHICS
     info.pstate = NVML_PSTATE_0
-    info.clockOffsetMHz = 200
+    info.clockOffsetMHz = 75 # conservative, cba stress testing it
 
     nvmlDeviceSetClockOffsets(device, byref(info))
 
