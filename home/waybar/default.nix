@@ -9,16 +9,225 @@
     recursive = true;
     executable = true;
   };
+
   home.file.".config/waybar/presets" = {
     source = ./presets;
     recursive = true;
     executable = true;
   };
+
   home.file.".config/waybar/watchers" = {
     source = ./watchers;
     recursive = true;
     executable = true;
   };
+
+  home.file.".config/waybar/sharedModules.jsonc".text = let
+    I2C-bus = "5";
+    batteryDevice = "BAT1";
+  in ''
+    {
+        "modules-center": [
+            "custom/padding-xl",
+            "clock",
+            "custom/padding-xl"
+        ],
+        "modules-right": [
+            "custom/spotify-icon",
+            "custom/spotify",
+            "custom/padding",
+            "image#openweather-icon",
+            "custom/openweather-text",
+            "custom/openweather-poller",
+            "custom/separator",
+            "custom/pa-output-icon",
+            "group/pa-output",
+            "custom/padding",
+            "custom/brightness-icon",
+            "custom/brightness",
+            "custom/padding",
+            "custom/cpu-icon",
+            "cpu",
+            "custom/padding",
+            "custom/memory-icon",
+            "memory",
+            "custom/padding",
+            "battery#icon",
+            "battery#text",
+            "custom/padding",
+            "custom/network",
+            "custom/padding",
+            "group/hidden-tray",
+            "custom/padding"
+        ],
+        "custom/brightness-icon": {
+            "format": "",
+            "tooltip": false,
+            "on-scroll-up": "ddcutil -b ${I2C-bus} setvcp 10 + 10",
+            "on-scroll-down": "ddcutil -b ${I2C-bus} setvcp 10 - 10"
+        },
+        // https://github.com/Alexays/Waybar/issues/981#issuecomment-1824648293
+        "custom/brightness": {
+            "exec": "ddcutil -b ${I2C-bus} getvcp 10 -t | perl -nE 'if (/ C (\\d+) /) { say $1; }'",
+            "exec-if": "sleep 0.1",
+            "format": "{}%",
+            "format-icons": [
+                ""
+            ],
+            "interval": "once",
+            "on-scroll-up": "ddcutil -b ${I2C-bus} setvcp 10 + 10",
+            "on-scroll-down": "ddcutil -b ${I2C-bus} setvcp 10 - 10"
+        },
+        "group/hidden-tray": {
+            "orientation": "inherit",
+            "drawer": {
+                "transition-duration": 500,
+                "children-class": "tray-drawer",
+                "click-to-reveal": true
+            },
+            "modules": [
+                "custom/tray-icon",
+                "tray"
+            ]
+        },
+        "custom/tray-icon": {
+            "format": "󰀻",
+            "tooltip": false
+        },
+        "tray": {
+            "icon-size": 12,
+            "spacing": 4
+        },
+        "clock": {
+            "format": "{:%a, %d %b %H:%M}",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "on-click": "$TERMINAL -e calcurse"
+        },
+        "custom/cpu-icon": {
+            "format": "",
+            "tooltip": false
+        },
+        "cpu": {
+            "format": "{usage}%",
+            "tooltip": false
+        },
+        "custom/memory-icon": {
+            "format": "",
+            "tooltip": false
+        },
+        "memory": {
+            "format": "{}%"
+        },
+        "custom/pa-output-icon": {
+            "format": "",
+            "tooltip": false,
+            "on-scroll-up": "swayosd-client --output-volume +1",
+            "on-scroll-down": "swayosd-client --output-volume -1",
+            "on-click": "pavucontrol",
+        },
+        "pulseaudio#output": {
+            "format": "{volume}%",
+            "on-click": null,
+            "on-scroll-up": "swayosd-client --output-volume +1",
+            "on-scroll-down": "swayosd-client --output-volume -1",
+        },
+        "pulseaudio/slider#output": {
+            "min": 0,
+            "max": 100,
+            "orientation": "horizontal",
+            "on-scroll-up": "swayosd-client --output-volume +1", // doesn't actually work
+            "on-scroll-down": "swayosd-client --output-volume -1",
+        },
+        "battery#icon": {
+            "bat": "${batteryDevice}",
+            "interval": 60,
+            "states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{icon}",
+            "format-icons": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "max-length": 25,
+            "tooltip-format": "{timeTo} ({capacity}%, {cycles} cycles)"
+        },
+        "battery#text": {
+            "bat": "${batteryDevice}",
+            "interval": 60,
+            "states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{capacity}%",
+            "max-length": 25,
+            "tooltip-format": "{timeTo} ({capacity}%, {cycles} cycles)"
+        },
+        "group/pa-output": {
+            "orientation": "inherit",
+            "drawer": {
+                "transition-duration": 500,
+                "children-class": "pa-output-drawer",
+                "click-to-reveal": true
+            },
+            "modules": [
+                "pulseaudio#output",
+                "pulseaudio/slider#output"
+            ]
+        },
+        "custom/spotify-icon": {
+            "format": "{icon}",
+            "exec": "cat /tmp/sb-spotify 2>/dev/null",
+            "interval": "once",
+            "format-icons": "",
+            "signal": 18 // custom/spotify-poller sends signal 18 every time it updates /tmp/sb-spotify
+        },
+        "custom/spotify": {
+            "format": "{}",
+            "exec": "cat /tmp/sb-spotify 2>/dev/null",
+            "interval": "once",
+            "signal": 18 // custom/spotify-poller sends signal 18 every time it updates /tmp/sb-spotify
+        },
+        "custom/network": {
+            "format": "{}",
+            "exec": "$HOME/.config/waybar/modules/network",
+            "interval": 60,
+            "tooltip": false,
+            "return-type": "json"
+        },
+        "custom/separator": {
+            "format": " │ "
+        },
+        "image#openweather-icon": {
+            "path": "/tmp/sb-openweather-icon",
+            "signal": 12
+        },
+        "custom/openweather-text": {
+            "exec": "cat /tmp/sb-openweather-text 2>/dev/null",
+            "signal": 12
+        },
+        "custom/openweather-poller": {
+            "exec": "$HOME/.config/waybar/modules/openweather",
+            "interval": 1800
+        },
+        "custom/kanata": {
+            "format": "{} <span foreground=\"#9399b2cc\">│</span>",
+            "exec": "cat /tmp/sb-kanata 2>/dev/null",
+            "interval": "once",
+            "signal": 17
+        },
+        "custom/padding": {
+            "format": " "
+        },
+        "custom/padding-xl": {
+            "format": " "
+        }
+    }
+  '';
 
   home.file.".config/waybar/config.jsonc".source = ./presets/${desktop}/config.jsonc;
   stylix.targets.waybar.addCss = false;
@@ -91,7 +300,7 @@
 
       /* Start nerd font hackery */
       #custom-spotify-icon {
-          padding-right: 5px;
+          padding-right: 6px;
       }
 
       #custom-network.connected {
@@ -102,28 +311,28 @@
           padding-right: 4px;
       }
 
-      #custom-network {
-          padding-right: 7px;
-      }
-
       #custom-cpu-icon {
           padding-right: 4px;
       }
 
       #custom-memory-icon {
-          padding-right: 2px;
-      }
-
-      #custom-pa-output-icon {
           padding-right: 3px;
       }
 
-      #custom-tray-icon {
+      #custom-pa-output-icon {
           padding-right: 4px;
+      }
+
+      #custom-tray-icon {
+          padding-right: 2px;
       }
 
       #battery.icon {
           padding-right: 5px;
+      }
+
+      #custom-brightness-icon {
+          padding-right: 4px;
       }
       /* End nerd font hackery */
 
@@ -179,21 +388,16 @@
       }
 
       /* Drawer padding */
-      .pa-output-drawer > .module,
-      .memory-drawer > .module {
+      .pa-output-drawer>.module {
           padding-left: 4px;
       }
 
-      .cpu-drawer > .module {
-          padding-left: 3px;
-      }
-
-      .tray-drawer > .module {
-          padding-left: 5px;
-      }
-
-      .battery-drawer > .module {
-          padding-left: 4px;
+      #pulseaudio.output,
+      #custom-brightness,
+      #cpu,
+      #memory,
+      #battery.text {
+          padding-left: 2px;
       }
     ''
     + builtins.readFile ./presets/${desktop}/style.css
