@@ -92,4 +92,8 @@ in {
       "general/TerminalEmulator" = "alacritty";
     };
   };
+
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
 }
