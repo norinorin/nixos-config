@@ -203,9 +203,12 @@ in {
           "ALT       , F1, exec, ~/.config/hypr/gamemode.sh"
 
           # OBS
-          "CTRL ALT  , apostrophe, pass, class:com.obsproject.Studio"
-          "CTRL ALT  , semicolon, pass, class:com.obsproject.Studio"
-          "CTRL      , backslash, pass, class:com.obsproject.Studio"
+          "CTRL SHIFT, apostrophe, pass, class:com.obsproject.Studio"
+          "CTRL SHIFT, semicolon, pass, class:com.obsproject.Studio"
+          "CTRL SHIFT, backslash, pass, class:com.obsproject.Studio"
+          "CTRL SHIFT, bracketleft, pass, class:com.obsproject.Studio"
+          "CTRL SHIFT, bracketright, pass, class:com.obsproject.Studio"
+          "ALT       , backslash, pass, class:com.obsproject.Studio"
 
           "$mod ALT  , L, exec, swaylock"
           "ALT       , F4, exec, wlogout"
