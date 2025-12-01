@@ -8,9 +8,16 @@
     recursive = true;
   };
 
-  systemd.user.services.wally = {
-    Unit.Description = "Set wallpapers using swaybg";
-    Install.WantedBy = ["graphical-session.target" "niri.service" "hyprland-session.target"];
+  systemd.user.services.wally = let
+    units = ["niri.service" "hyprland-session.target"];
+  in {
+    Unit = {
+      Description = "Set wallpapers using swaybg";
+      After = units;
+      Wants = units;
+      PartOf = units;
+    };
+    Install.WantedBy = units;
     Service = {
       Type = "simple";
       ExecStart = ''
