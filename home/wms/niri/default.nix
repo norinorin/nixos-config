@@ -3,10 +3,17 @@
   lib,
   config,
   ...
-}: {
+}: let
+  mkWaybar = import ../lib.nix {inherit pkgs config lib;};
+in {
   home.packages = with pkgs; [
     xwayland-satellite-unstable
   ];
+
+  systemd.user.services.waybar-niri = mkWaybar {
+    variant = "niri";
+    conditionEnv = "NIRI_SOCKET";
+  };
 
   programs.niri.settings = {
     input = {
@@ -383,10 +390,7 @@
       path = lib.getExe pkgs.xwayland-satellite-unstable;
     };
 
-    spawn-at-startup = let
-      waybarConfig = "${config.xdg.configHome}/waybar/presets/niri";
-    in [
-      {sh = "sleep 10 && ${pkgs.waybar}/bin/waybar -c ${waybarConfig}/config.jsonc -s ${waybarConfig}/style.css";}
+    spawn-at-startup = [
       {sh = "sleep 10 && ~/.config/waybar/watchers/spotify-watcher";}
       {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-1";}
       {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-5";}

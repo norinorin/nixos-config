@@ -6,9 +6,14 @@
   ...
 }: let
   hyperPlugins = inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system};
+  mkWaybar = import ../lib.nix {inherit pkgs config lib;};
 in {
   imports = [./hypridle.nix];
 
+  systemd.user.services.waybar-hyprland = mkWaybar {
+    variant = "hyprland";
+    conditionEnv = "HYPRLAND_INSTANCE_SIGNATURE";
+  };
   systemd.user.services.hypridle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 
   wayland.windowManager.hyprland = {
@@ -275,10 +280,7 @@ in {
         # non-transparent windows
         "opacity 1.0, match:class mpv"
       ];
-      exec-once = let
-        waybarConfig = "${config.xdg.configHome}/waybar/presets/hyprland";
-      in [
-        "sleep 10 && ${pkgs.waybar}/bin/waybar -c ${waybarConfig}/config.jsonc -s ${waybarConfig}/style.css"
+      exec-once = [
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
       ];
 
