@@ -12,7 +12,9 @@ in {
 
   systemd.user.services.waybar-hyprland = mkWaybar {
     variant = "hyprland";
-    conditionEnv = "HYPRLAND_INSTANCE_SIGNATURE";
+    PartOf = ["hyprland-session.target"];
+    After = ["hyprland-session.target"];
+    WantedBy = ["hyprland-session.target"];
   };
   systemd.user.services.hypridle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 

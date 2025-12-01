@@ -5,15 +5,21 @@
 }: {
   variant,
   conditionEnv ? null,
+  PartOf ? ["graphical-session.target"],
+  After ? ["graphical-session.target"],
+  WantedBy ? ["graphical-session.target"],
 }: let
   waybarConfig = "${config.xdg.configHome}/waybar/presets/${variant}";
 in {
-  Unit = {
-    Description = "Waybar for ${variant}";
-    PartOf = ["graphical-session.target"];
-    After = ["graphical-session.target"];
-    ConditionEnvironment = conditionEnv;
-  };
+  Unit =
+    {
+      Description = "Waybar for ${variant}";
+      PartOf = PartOf;
+      After = After;
+    }
+    // lib.optionalAttrs (conditionEnv != null) {
+      ConditionEnvironment = conditionEnv;
+    };
 
   Service = {
     ExecStart = "${pkgs.waybar}/bin/waybar -c ${waybarConfig}/config.jsonc -s ${waybarConfig}/style.css";
@@ -21,5 +27,5 @@ in {
     RestartSec = "5s";
   };
 
-  Install.WantedBy = ["graphical-session.target"];
+  Install.WantedBy = WantedBy;
 }
