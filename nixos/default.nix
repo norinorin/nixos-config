@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   inputs,
   ...
@@ -41,11 +40,6 @@
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Jakarta";
-
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
 
   services.pipewire = {
     enable = true;

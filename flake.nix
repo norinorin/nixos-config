@@ -24,6 +24,10 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     anime_rpc.url = "github:norinorin/anime_rpc";
     niri.url = "github:sodiboo/niri-flake";
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,

@@ -14,5 +14,8 @@
     # wms
     ./niri.nix
     ./hyprland.nix
+
+    # display managers
+    ./sddm.nix
   ];
 }
