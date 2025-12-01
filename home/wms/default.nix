@@ -46,8 +46,7 @@
       }
       {
         label = "logout";
-        # use kill-session otherwise we'll never get back to sddm
-        action = "loginctl kill-session $XDG_SESSION_ID";
+        action = "loginctl terminate-user $USER";
         text = "Logout";
         keybind = "e";
       }
