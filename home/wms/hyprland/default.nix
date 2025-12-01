@@ -281,6 +281,19 @@ in {
         "sleep 10 && ${pkgs.waybar}/bin/waybar -c ${waybarConfig}/config.jsonc -s ${waybarConfig}/style.css"
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
       ];
+
+      env = [
+        # wayland stuff
+        "NIXOS_OZONE_WL,1"
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "SDL_VIDEODRIVER,wayland"
+        "GDK_BACKEND,wayland,x11,*"
+
+        # xdg specs
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+      ];
     };
   };
 
@@ -307,17 +320,4 @@ in {
   home.packages = with pkgs; [
     grimblast
   ];
-
-  xdg.configFile."uwsm/env".text =
-    ''
-      export NIXOS_OZONE_WL=1
-      export QT_QPA_PLATFORM=wayland;xcb
-      export SDL_VIDEODRIVER=wayland
-      export GDK_BACKEND=wayland,x11,*
-
-      export XDG_CURRENT_DESKTOP=Hyprland
-      export XDG_SESSION_TYPE=wayland
-      export XDG_SESSION_DESKTOP=Hyprland
-    ''
-    + builtins.readFile "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 }
