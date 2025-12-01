@@ -275,8 +275,10 @@ in {
         # non-transparent windows
         "opacity 1.0, match:class mpv"
       ];
-      exec-once = [
-        "sleep 10 && ${pkgs.waybar}/bin/waybar -c ${config.xdg.configHome}/waybar/presets/hyprland/config.jsonc -s ${config.xdg.configHome}/waybar/presets/hyprland/style.css"
+      exec-once = let
+        waybarConfig = "${config.xdg.configHome}/waybar/presets/hyprland";
+      in [
+        "sleep 10 && ${pkgs.waybar}/bin/waybar -c ${waybarConfig}/config.jsonc -s ${waybarConfig}/style.css"
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
       ];
     };
