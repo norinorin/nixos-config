@@ -17,7 +17,7 @@ in {
     portalPackage = null;
     systemd.variables = ["--all"];
     plugins = [
-      inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+      inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
       hyperPlugins.csgo-vulkan-fix
     ];
     submaps = {
