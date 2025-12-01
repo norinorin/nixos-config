@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: let
   sddm-theme = let
@@ -8,7 +9,7 @@
       cp ${../home/wallpapers/pitvice-lake.jpg} $out
     '';
   in
-    inputs.silentSDDM.packages.${pkgs.system}.default.override {
+    inputs.silentSDDM.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
       theme-overrides = {
         LockScreen = {
           background = "login-screen.jpg";
@@ -28,7 +29,7 @@ in {
   qt.enable = true;
   services.displayManager.sddm = {
     package = pkgs.kdePackages.sddm;
-    enable = true;
+    enable = lib.mkDefault false;
     wayland.enable = true;
     theme = sddm-theme.pname;
     extraPackages = sddm-theme.propagatedBuildInputs;

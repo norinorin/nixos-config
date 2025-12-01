@@ -1,4 +1,11 @@
 {
+  pkgs,
+  lib,
+  displayManager,
+  ...
+}: let
+  dmEnable = name: lib.mkIf (displayManager == name) {enable = true;};
+in {
   imports = [
     ./denoiser.nix
     ./kanata.nix
@@ -16,6 +23,18 @@
     ./hyprland.nix
 
     # display managers
+    # ./ly.nix # we haven't got a rice for ly
     ./sddm.nix
   ];
+
+  # install both so they survive nh clean
+  environment.systemPackages = with pkgs; [
+    ly
+    kdePackages.sddm
+  ];
+
+  services.displayManager = {
+    ly = dmEnable "ly";
+    sddm = dmEnable "sddm";
+  };
 }

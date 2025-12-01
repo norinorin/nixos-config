@@ -40,7 +40,8 @@
     nixosConfigurations = {
       toaster = let
         username = "nori";
-        specialArgs = {inherit inputs username;};
+        displayManager = "ly";
+        specialArgs = {inherit inputs username displayManager;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;

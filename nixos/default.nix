@@ -2,6 +2,8 @@
   config,
   pkgs,
   inputs,
+  lib,
+  displayManager,
   ...
 }: {
   _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
@@ -22,7 +24,7 @@
     ./hibernation.nix
     ./legion.nix
     ./monitors.nix
-    ../modules
+    (import ../modules {inherit config lib pkgs inputs displayManager;})
   ];
 
   boot.loader.systemd-boot.enable = true;
