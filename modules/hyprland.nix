@@ -16,7 +16,6 @@ in {
     enable = true;
     package = pkgs-hypr.hyprland;
     portalPackage = pkgs-hypr.xdg-desktop-portal-hyprland;
-    withUWSM = true;
   };
 
   hardware.graphics = {

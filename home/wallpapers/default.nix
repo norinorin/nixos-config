@@ -10,7 +10,7 @@
 
   systemd.user.services.wally = {
     Unit.Description = "Set wallpapers using swaybg";
-    Install.WantedBy = ["graphical-session.target"];
+    Install.WantedBy = ["graphical-session.target" "niri.service" "hyprland-session.target"];
     Service = {
       Type = "simple";
       ExecStart = ''
