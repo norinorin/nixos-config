@@ -14,7 +14,6 @@
     Unit = {
       Description = "Set wallpapers using swaybg";
       After = units;
-      Wants = units;
       PartOf = units;
     };
     Install.WantedBy = units;

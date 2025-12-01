@@ -11,11 +11,13 @@
     swayidle.enable = true;
   };
 
-  systemd.user.services.swayidle = {
+  systemd.user.services.swayidle = let
+    usingSwayIdle = ["niri.service"];
+  in {
     Unit = {
-      Wants = ["niri.service"];
-      After = ["niri.service"];
-      PartOf = ["niri.service"];
+      After = usingSwayIdle;
+      PartOf = usingSwayIdle;
     };
+    Install.WantedBy = usingSwayIdle;
   };
 }
