@@ -8,11 +8,6 @@
     xwayland-satellite-unstable
   ];
 
-  services.swayidle = {
-    enable = true;
-    systemdTarget = "niri-session.target";
-  };
-
   programs.niri.settings = {
     input = {
       keyboard = {
