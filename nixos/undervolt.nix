@@ -33,10 +33,10 @@ in {
   nixpkgs.overlays = [(import ../overlays/undervolt.nix)];
   services.undervolt = {
     enable = true;
-    coreOffset = -95;
+    coreOffset = -137;
     uncoreOffset = -95;
     turbo = 0;
-    temp = 97;
+    temp = 95;
     p1 = {
       limit = 95;
       window = 56;
@@ -56,7 +56,6 @@ in {
       gpuOffset = lib.mkForce (-50);
     };
   };
-
   systemd.services.undervolt-nvidia = {
     enable = true;
     description = "Undervolt the first available Nvidia GPU device";
@@ -66,14 +65,13 @@ in {
       ExecStart = [undervoltScript];
     };
   };
-
   specialisation.no-undervolt.configuration = {
     system.nixos.tags = ["no-undervolt"];
     services.undervolt = {
       coreOffset = lib.mkForce 0;
       uncoreOffset = lib.mkForce 0;
       turbo = lib.mkForce 1;
-      temp = lib.mkForce 97;
+      temp = lib.mkForce 95;
       p1.limit = lib.mkForce 45;
       p2.limit = lib.mkForce 45;
       gpuOffset = lib.mkForce 0;
