@@ -259,7 +259,7 @@ in {
       windowrule = [
         # gaming
         "match:initial_title ^(gamescope)$, immediate on"
-        "match:initial_title ^(Minecraft\* [\d+\.]+)$, immediate on"
+        "match:class ^Minecraft\\* [\\d+\\.]+$, immediate on"
         "match:class ^osu!$, immediate on"
         "match:class ^cs2$, immediate on"
 
