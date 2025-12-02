@@ -32,16 +32,17 @@ in {
   boot.kernelModules = ["msr"];
   nixpkgs.overlays = [(import ../overlays/undervolt.nix)];
   services.undervolt = {
-    enable = true;
-    coreOffset = -137;
-    uncoreOffset = -95;
-    turbo = 0;
-    temp = 95;
-    p1 = {
+    enable = lib.mkDefault true;
+    coreOffset = lib.mkDefault (-137);
+    uncoreOffset = lib.mkDefault (-95);
+    analogioOffset = lib.mkDefault (-45);
+    turbo = lib.mkDefault 0;
+    temp = lib.mkDefault 95;
+    p1 = lib.mkDefault {
       limit = 95;
       window = 56;
     };
-    p2 = {
+    p2 = lib.mkDefault {
       limit = 162;
       window = 28;
     };
@@ -49,11 +50,16 @@ in {
   specialisation.on-the-go.configuration = {
     system.nixos.tags = ["on-the-go"];
     services.undervolt = {
-      turbo = lib.mkForce 1;
-      temp = lib.mkForce 85;
-      p1.limit = lib.mkForce 45;
-      p2.limit = lib.mkForce 45;
-      gpuOffset = lib.mkForce (-50);
+      turbo = 1;
+      coreOffset = -95;
+      uncoreOffset = -55;
+      temp = 85;
+
+      # likely will still be 45
+      p1.limit = 20;
+      p2.limit = 20;
+
+      gpuOffset = -50;
     };
   };
   systemd.services.undervolt-nvidia = {
@@ -68,13 +74,14 @@ in {
   specialisation.no-undervolt.configuration = {
     system.nixos.tags = ["no-undervolt"];
     services.undervolt = {
-      coreOffset = lib.mkForce 0;
-      uncoreOffset = lib.mkForce 0;
-      turbo = lib.mkForce 1;
-      temp = lib.mkForce 95;
-      p1.limit = lib.mkForce 45;
-      p2.limit = lib.mkForce 45;
-      gpuOffset = lib.mkForce 0;
+      coreOffset = 0;
+      uncoreOffset = 0;
+      analogioOffset = 0;
+      turbo = 1;
+      temp = 95;
+      p1.limit = 45;
+      p2.limit = 45;
+      gpuOffset = 0;
     };
     systemd.services.undervolt-nvidia.enable = lib.mkForce false;
   };
