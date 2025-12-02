@@ -12,7 +12,7 @@ in {
 
   systemd.user.services.waybar-hyprland = mkWaybar {
     variant = "hyprland";
-    PartOf = ["hyprland-session.target"];
+    BindsTo = ["hyprland-session.target"];
     After = ["hyprland-session.target"];
     WantedBy = ["hyprland-session.target"];
   };

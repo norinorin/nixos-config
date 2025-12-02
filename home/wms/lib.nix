@@ -5,7 +5,7 @@
 }: {
   variant,
   conditionEnv ? null,
-  PartOf ? ["graphical-session.target"],
+  BindsTo ? ["graphical-session.target"],
   After ? ["graphical-session.target"],
   WantedBy ? ["graphical-session.target"],
 }: let
@@ -14,7 +14,7 @@ in {
   Unit =
     {
       Description = "Waybar for ${variant}";
-      PartOf = PartOf;
+      BindsTo = BindsTo;
       After = After;
     }
     // lib.optionalAttrs (conditionEnv != null) {

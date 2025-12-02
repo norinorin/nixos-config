@@ -12,7 +12,9 @@ in {
 
   systemd.user.services.waybar-niri = mkWaybar {
     variant = "niri";
-    conditionEnv = "NIRI_SOCKET";
+    BindsTo = ["niri.service"];
+    After = ["niri.service"];
+    WantedBy = ["niri.service"];
   };
 
   programs.niri.settings = {
