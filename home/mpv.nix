@@ -9,6 +9,7 @@
           sponsorblock
           thumbfast
           simple-mpv-webui
+          autoload
         ];
 
         mpv = pkgs.mpv-unwrapped.override {
