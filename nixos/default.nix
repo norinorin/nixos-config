@@ -37,6 +37,8 @@
     "zswap.max_pool_percent=20"
     "zswap.shrinker_enabled=1"
   ];
+  boot.initrd.kernelModules = ["lz4"];
+  boot.initrd.systemd.enable = true;
 
   networking.hostName = "toaster";
   networking.networkmanager.enable = true;
@@ -65,6 +67,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    lz4
     vim
     wget
     lshw
