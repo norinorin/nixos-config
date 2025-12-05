@@ -32,6 +32,9 @@
 
           ms-python.python
           charliermarsh.ruff
+
+          shd101wyy.markdown-preview-enhanced
+          prettier.prettier-vscode
         ];
       };
     };
