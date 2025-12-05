@@ -7,7 +7,7 @@
   nhs = "nh os switch ~/Dotfiles";
   nhus = "nh os switch -u ~/Dotfiles";
   nhb = "nh os boot ~/Dotfiles";
-  nhc = "nh clean all";
+  nhc = "nh clean all --optimise";
   killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
 in {
   imports = [
