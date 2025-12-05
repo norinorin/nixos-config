@@ -33,6 +33,7 @@
 
           ms-python.python
           charliermarsh.ruff
+          detachhead.basedpyright
 
           shd101wyy.markdown-preview-enhanced
           prettier.prettier-vscode
