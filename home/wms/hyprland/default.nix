@@ -5,7 +5,21 @@
   config,
   ...
 }: let
-  hyperPlugins = inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system};
+  inherit (pkgs.stdenv.hostPlatform) system;
+  pkgs-hypr = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
+  hyprlandPatched = pkgs-hypr.hyprland.overrideAttrs (old: {
+    postPatch =
+      (old.postPatch or "")
+      + ''
+        sed -i 's/xkbcommon >=/xkbcommon >= /g' hyprland.pc.in
+      '';
+  });
+  mkPlugin = plugin:
+    plugin.overrideAttrs (old: {
+      buildInputs = [hyprlandPatched] ++ old.buildInputs;
+    });
+  hyperPlugins = inputs.hyprland-plugins.packages.${system};
+
   mkWaybar = import ../lib.nix {inherit pkgs config lib;};
 in {
   imports = [./hypridle.nix];
@@ -24,8 +38,8 @@ in {
     portalPackage = null;
     systemd.variables = ["--all"];
     plugins = [
-      inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
-      hyperPlugins.csgo-vulkan-fix
+      (mkPlugin inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces)
+      (mkPlugin hyperPlugins.csgo-vulkan-fix)
     ];
     submaps = {
       move = {
