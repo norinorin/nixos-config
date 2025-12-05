@@ -28,6 +28,7 @@
         };
         extensions = with pkgs.vscode-marketplace; [
           jnoortheen.nix-ide
+          arrterian.nix-env-selector
           sainnhe.everforest
 
           ms-python.python
