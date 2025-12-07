@@ -1,8 +1,12 @@
 {
-  config,
   lib,
+  pkgs,
   ...
 }: {
+  home.packages = [
+    pkgs.calcurse
+  ];
+
   xdg.configFile."waybar/modules" = {
     source = ./modules;
     recursive = true;

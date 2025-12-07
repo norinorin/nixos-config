@@ -102,6 +102,7 @@ in {
 
   home.sessionVariables = {
     EDITOR = "vim";
+    TERMINAL = "alacritty";
   };
 
   stylix.targets.qt.enable = false;
