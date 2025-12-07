@@ -57,6 +57,9 @@
   services.libinput.enable = true;
   services.zerotierone.enable = true;
 
+  boot.supportedFilesystems = ["ntfs"];
+  services.udisks2.enable = true;
+
   programs.zsh.enable = true;
 
   users.users.nori = {
