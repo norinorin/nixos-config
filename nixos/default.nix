@@ -24,6 +24,8 @@
     ./hibernation.nix
     ./legion.nix
     ./monitors.nix
+    ./secureboot.nix
+
     (import ../modules {inherit config lib pkgs inputs displayManager;})
   ];
 
