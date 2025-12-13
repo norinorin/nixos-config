@@ -247,7 +247,7 @@ in {
         };
         csgo-vulkan-fix = {
           fix_mouse = true;
-          vkfix-app = ["cs2,1440,1080"];
+          vkfix-app = ["cs2,1280,960"];
         };
       };
       cursor = {
