@@ -25,6 +25,7 @@
     ./legion.nix
     ./monitors.nix
     ./secureboot.nix
+    ./audio.nix
 
     (import ../modules {inherit config lib pkgs inputs displayManager;})
   ];
@@ -48,13 +49,6 @@
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Jakarta";
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   services.libinput.enable = true;
   services.zerotierone.enable = true;
