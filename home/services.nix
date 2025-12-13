@@ -20,4 +20,15 @@
     };
     Install.WantedBy = usingSwayIdle;
   };
+
+  # had to do this cos graphical-session.target is wonky with ly
+  systemd.user.services.swayosd = let
+    usingSwayOSD = ["niri.service" "hyprland-session.target"];
+  in {
+    Unit = {
+      After = usingSwayOSD;
+      PartOf = usingSwayOSD;
+    };
+    Install.WantedBy = usingSwayOSD;
+  };
 }
