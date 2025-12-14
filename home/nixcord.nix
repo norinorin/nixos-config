@@ -5,7 +5,7 @@
       vencord.enable = true;
     };
     vesktop.enable = false;
-    equibop.enable = false;
+    equibop.enable = true;
     dorion.enable = false;
     config = {
       frameless = true;
@@ -32,6 +32,8 @@
           enable = true;
           showBots = true;
         };
+        biggerStreamPreview.enable = true;
+        homeTyping.enable = true;
       };
     };
   };
