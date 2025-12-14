@@ -12,5 +12,11 @@
     xarchiver
     zip
     unzip
+    (heroic.override {
+      extraPkgs = pkgs: [
+        pkgs.gamescope
+        pkgs.gamemode
+      ];
+    })
   ];
 }
