@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   config,
   ...
@@ -12,65 +13,62 @@ in {
   imports = [
     ./shared.nix
     ../home
+
+    inputs.nix-index-database.homeModules.default
   ];
 
-  programs.git = {
-    enable = true;
+  programs = {
+    nix-index-database.comma.enable = true;
 
-    signing = {
-      key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
-      signByDefault = true;
-    };
+    git = {
+      enable = true;
 
-    settings = {
-      gpg.format = "ssh";
-      user = {
-        name = "Nori";
-        email = "norizon16@proton.me";
+      signing = {
+        key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+        signByDefault = true;
+      };
+
+      settings = {
+        gpg.format = "ssh";
+        user = {
+          name = "Nori";
+          email = "norizon16@proton.me";
+        };
       };
     };
-  };
 
-  programs.pay-respects.enable = true;
-
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      inherit nhs nhus nhb nhc killall;
-    };
-    initExtra = ''
-      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
-    '';
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      inherit nhs nhus nhb nhc killall;
-      la = "ls -lah";
-    };
-
-    history.size = 10000;
-    history.ignoreAllDups = true;
-    history.path = "$HOME/.zsh_history";
-    history.ignorePatterns = ["rm *" "pkill *" "cp *"];
-
-    oh-my-zsh = {
+    bash = {
       enable = true;
-      plugins = [
-        "git"
-        "python"
-      ];
-      theme = "wedisagree";
+      shellAliases = {
+        inherit nhs nhus nhb nhc killall;
+      };
     };
 
-    initContent = ''
-      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
-    '';
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+
+      shellAliases = {
+        inherit nhs nhus nhb nhc killall;
+        la = "ls -lah";
+      };
+
+      history.size = 10000;
+      history.ignoreAllDups = true;
+      history.path = "$HOME/.zsh_history";
+      history.ignorePatterns = ["rm *" "pkill *" "cp *"];
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "git"
+          "python"
+        ];
+        theme = "wedisagree";
+      };
+    };
   };
 
   home.pointerCursor = {
