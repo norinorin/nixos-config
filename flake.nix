@@ -36,9 +36,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    home-manager,
-    niri,
-    stylix,
     ...
   }: {
     nixosConfigurations = {
@@ -51,11 +48,7 @@
           inherit specialArgs;
 
           modules = [
-            stylix.nixosModules.stylix
-            niri.nixosModules.niri
             ./nixos
-            {nixpkgs.overlays = [inputs.anime_rpc.overlays.default];}
-            home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;

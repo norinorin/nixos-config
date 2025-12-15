@@ -1,4 +1,6 @@
-{
+{inputs, ...}: {
+  imports = [inputs.anime_rpc.homeModules.anime_rpc];
+
   services = {
     swayosd.enable = true;
     playerctld.enable = true;

@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   displayManager,
@@ -7,6 +8,9 @@
   dmEnable = name: lib.mkIf (displayManager == name) {enable = true;};
 in {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
+
+    ./anime_rpc.nix
     ./denoiser.nix
     ./kanata.nix
     ./python.nix

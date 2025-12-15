@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   ...
@@ -13,9 +12,6 @@ in {
   imports = [
     ./shared.nix
     ../home
-
-    inputs.nixcord.homeModules.nixcord
-    inputs.anime_rpc.homeModules.anime_rpc
   ];
 
   programs.git = {
