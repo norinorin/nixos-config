@@ -66,4 +66,10 @@
       };
     };
   };
+
+  # give chromium-based browsers access to JA11
+  # https://www.reddit.com/r/FiiO/comments/1o8c4tg/fix_fiio_dac_not_controllable_via_chrome_on_linux/
+  services.udev.extraRules = ''
+    ATTRS{idVendor}=="2972", ATTRS{idProduct}=="0102", MODE="0660", GROUP="users"
+  '';
 }
