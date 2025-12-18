@@ -8,6 +8,9 @@
   nhus = "nh os switch -u ~/Dotfiles";
   nhb = "nh os boot ~/Dotfiles";
   nhc = "nh clean all --optimise";
+  wcs = "warp-cli status";
+  wcc = "warp-cli connect";
+  wcd = "warp-cli disconnect";
   killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
 in {
   imports = [
@@ -40,7 +43,7 @@ in {
     bash = {
       enable = true;
       shellAliases = {
-        inherit nhs nhus nhb nhc killall;
+        inherit nhs nhus nhb nhc killall wcc wcd wcs;
       };
     };
 
@@ -51,7 +54,7 @@ in {
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        inherit nhs nhus nhb nhc killall;
+        inherit nhs nhus nhb nhc killall wcc wcd wcs;
         la = "ls -lah";
       };
 
