@@ -39,6 +39,7 @@
           enable = true;
           remainInIdle = true;
         };
+        webScreenShareFixes.enable = true;
       };
     };
   };
