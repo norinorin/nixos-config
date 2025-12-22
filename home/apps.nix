@@ -12,6 +12,9 @@
     xarchiver
     zip
     unzip
+    rar
+    mission-center
+    yt-dlp
     (heroic.override {
       extraPkgs = pkgs: [
         pkgs.gamescope
