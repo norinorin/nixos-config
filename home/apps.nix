@@ -21,5 +21,6 @@
         pkgs.gamemode
       ];
     })
+    calibre
   ];
 }
