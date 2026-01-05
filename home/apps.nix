@@ -23,5 +23,6 @@
     })
     calibre
     obsidian
+    libreoffice
   ];
 }
