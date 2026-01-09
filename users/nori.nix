@@ -40,6 +40,26 @@ in {
       };
     };
 
+    ssh = {
+      enable = true;
+
+      matchBlocks = {
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "~/.ssh/id_ed25519";
+          identitiesOnly = true;
+        };
+
+        "github-school" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "~/.ssh/gh-school";
+          identitiesOnly = true;
+        };
+      };
+    };
+
     bash = {
       enable = true;
       shellAliases = {
