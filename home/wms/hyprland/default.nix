@@ -288,7 +288,7 @@ in {
         "opacity 1.0, match:class mpv"
 
         # fix wonky big floating windows
-        "max_size 1500 1000, match:float 1"
+        "max_size 1500 1000, center on, match:float 1"
       ];
       exec-once = [
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
