@@ -24,5 +24,6 @@
     calibre
     obsidian
     libreoffice
+    spotify
   ];
 }

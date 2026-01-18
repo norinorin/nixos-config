@@ -10,11 +10,9 @@ in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
 
-    ./anime_rpc.nix
     ./denoiser.nix
     ./kanata.nix
     ./python.nix
-    ./spotify.nix
     ./thunar.nix
     ./steam.nix
     ./obs.nix

@@ -30,7 +30,6 @@
   '';
 in {
   boot.kernelModules = ["msr"];
-  nixpkgs.overlays = [(import ../overlays/undervolt.nix)];
   services.undervolt = {
     enable = lib.mkDefault true;
     coreOffset = lib.mkDefault (-137);

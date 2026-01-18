@@ -27,6 +27,7 @@
     ./secureboot.nix
     ./audio.nix
     ./ime.nix
+    ./overlays.nix
 
     (import ../modules {inherit config lib pkgs inputs displayManager;})
   ];
