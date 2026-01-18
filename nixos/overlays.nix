@@ -6,5 +6,6 @@
     (import ../overlays/undervolt.nix)
     (import ../overlays/spotx.nix)
     (import ../overlays/obsidian.nix)
+    (import ../overlays/tricat.nix)
   ];
 }

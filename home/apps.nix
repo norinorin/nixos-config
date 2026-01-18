@@ -25,5 +25,6 @@
     obsidian
     libreoffice
     spotify
+    tricat
   ];
 }
