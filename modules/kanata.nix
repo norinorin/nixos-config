@@ -48,6 +48,7 @@
         def __init__(self, monitor):
             super().__init__()
             Gtk4LayerShell.init_for_window(self)
+            Gtk4LayerShell.set_namespace(self, "kanata-osd")
             Gtk4LayerShell.set_monitor(self, monitor)
             Gtk4LayerShell.set_layer(self, Gtk4LayerShell.Layer.OVERLAY)
             Gtk4LayerShell.set_anchor(self, Gtk4LayerShell.Edge.BOTTOM, True)

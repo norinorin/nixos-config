@@ -257,6 +257,8 @@ in {
         "animation slide, match:namespace notifications"
         "blur on, match:namespace waybar"
         "dim_around on, blur on, match:namespace launcher"
+        "animation fade, match:namespace kanata-osd"
+        "animation fade, match:namespace swayosd"
       ];
       windowrule = [
         # gaming
