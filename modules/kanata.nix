@@ -57,6 +57,7 @@
             self.label = Gtk.Label(label="Layer: base")
             self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
             self.box.set_name("overlay-box")
+            self.box.set_halign(Gtk.Align.CENTER)
             self.box.append(self.label)
             self.set_child(self.box)
 
