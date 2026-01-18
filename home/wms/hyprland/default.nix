@@ -274,7 +274,7 @@ in {
         "match:class ^(Zotero)$, match:title ^(Progress)$, max_size 400 50"
 
         # floating windows
-        "float on, match:class mpv"
+        "float on, size 1024 576, center yes, match:class mpv"
         "float on, match:class org.pulseaudio.pavucontrol"
         "float on, match:class steam, match:title negative:^(Steam)$"
         "float on, match:class org.qbittorrent.qBittorrent, match:title negative:^(qBittorrent)\s+v(\d+\.?)+$"
@@ -284,7 +284,6 @@ in {
         "size 800 600, match:class xdg-desktop-portal.*"
 
         "suppress_event maximize, match:class .*"
-        "size 1024 576, match:class mpv"
 
         # non-transparent windows
         "opacity 1.0, match:class mpv"
