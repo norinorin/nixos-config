@@ -62,7 +62,7 @@
 
   users.users.nori = {
     isNormalUser = true;
-    extraGroups = ["wheel" "gamemode" "adbusers" "i2c"];
+    extraGroups = ["wheel" "gamemode" "adbusers" "i2c" "networkmanager"];
     packages = with pkgs; [
       tree
     ];
