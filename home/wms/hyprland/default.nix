@@ -289,7 +289,9 @@ in {
         "opacity 1.0, match:class mpv"
 
         # fix wonky big floating windows
-        "max_size 1500 1000, center on, match:float 1"
+        # add back max_size when fixed: https://github.com/hyprwm/Hyprland/discussions/12762
+        # max_size 1500 1000
+        "center on, match:float 1"
       ];
       exec-once = [
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"

@@ -22,25 +22,7 @@
   '';
 
   hardware = {
-    nvidia = let
-      gpl_symbols_linux_617_patch = pkgs.fetchpatch {
-        url = "github.com/CachyOS/kernel-patches/raw/refs/heads/master/6.17/misc/nvidia/0003-Workaround-nv_vm_flags_-calling-GPL-only-code.patch";
-        hash = "sha256-YOTAvONchPPSVDP9eJ9236pAPtxYK5nAePNtm2dlvb4=";
-        stripLen = 1;
-        extraPrefix = "kernel/";
-      };
-
-      nvidiaPackage = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "580.105.08";
-        sha256_64bit = "sha256-2cboGIZy8+t03QTPpp3VhHn6HQFiyMKMjRdiV2MpNHU=";
-        sha256_aarch64 = "sha256-zLRCbpiik2fGDa+d80wqV3ZV1U1b4lRjzNQJsLLlICk=";
-        openSha256 = "sha256-FGmMt3ShQrw4q6wsk8DSvm96ie5yELoDFYinSlGZcwQ=";
-        settingsSha256 = "sha256-YvzWO1U3am4Nt5cQ+b5IJ23yeWx5ud1HCu1U0KoojLY=";
-        persistencedSha256 = "sha256-qh8pKGxUjEimCgwH7q91IV7wdPyV5v5dc5/K/IcbruI=";
-
-        patches = [gpl_symbols_linux_617_patch];
-      };
-    in {
+    nvidia = {
       modesetting.enable = true;
       open = true;
       powerManagement = {
@@ -49,7 +31,7 @@
       };
       nvidiaSettings = true;
       dynamicBoost.enable = true;
-      package = nvidiaPackage;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
     graphics = {
       enable = true;

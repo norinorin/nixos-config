@@ -5,11 +5,13 @@
   lib,
   displayManager,
   ...
-}: {
-  _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
+}: let
+  pkgsUnstable = import inputs.nixpkgs-unstable {
     inherit (pkgs.stdenv.hostPlatform) system;
     inherit (config.nixpkgs) config;
   };
+in {
+  _module.args.pkgsUnstable = pkgsUnstable;
 
   imports = [
     ./hardware-configuration.nix
@@ -35,7 +37,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgsUnstable.linuxPackages_zen;
   boot.kernelParams = [
     "zswap.enabled=1"
     "zswap.compressor=lz4"
