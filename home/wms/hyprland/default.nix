@@ -93,7 +93,7 @@ in {
         };
       };
       animations = {
-        enabled = "yes, please :)";
+        enabled = "0";
         bezier = [
           "easeOutQuint,0.23,1,0.32,1"
           "easeInOutCubic,0.65,0.05,0.36,1"
@@ -315,7 +315,7 @@ in {
   home.file.".config/hypr/gamemode.sh" = {
     text = ''
       #!/usr/bin/env sh
-      HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+      HYPRGAMEMODE=$(hyprctl getoption decoration:blur:enabled | awk 'NR==1{print $2}')
       if [ "$HYPRGAMEMODE" = 1 ] ; then
           hyprctl --batch "\
               keyword animations:enabled 0;\
