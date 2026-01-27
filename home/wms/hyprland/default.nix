@@ -274,8 +274,8 @@ in {
         "match:class ^(Zotero)$, match:title ^(Progress)$, max_size 400 50"
 
         # floating windows
-        "float on, size 1024 576, center yes, match:class mpv"
-        "float on, match:class org.pulseaudio.pavucontrol"
+        "float on, size 1024 576, match:class mpv"
+        "float on, size 1024 576, match:class org.pulseaudio.pavucontrol"
         "float on, match:class steam, match:title negative:^(Steam)$"
         "float on, match:class org.qbittorrent.qBittorrent, match:title negative:^(qBittorrent)\s+v(\d+\.?)+$"
 
@@ -290,8 +290,7 @@ in {
 
         # fix wonky big floating windows
         # add back max_size when fixed: https://github.com/hyprwm/Hyprland/discussions/12762
-        # max_size 1500 1000
-        "center on, match:float 1"
+        # "max_size 1500 1000, match:float 1"
       ];
       exec-once = [
         "sleep 10 && ~/.config/waybar/watchers/spotify-watcher"
