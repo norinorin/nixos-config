@@ -5,7 +5,7 @@
     discord = {
       vencord.enable = true;
     };
-    equibop.enable = true;
+    vesktop.enable = true;
     config = {
       frameless = true;
       plugins = {
