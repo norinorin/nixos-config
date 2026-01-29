@@ -10,6 +10,19 @@
           thumbfast
           simple-mpv-webui
           autoload
+          (autosub.overrideAttrs (oldAttrs: {
+            preInstall =
+              oldAttrs.preInstall
+              + ''
+                substituteInPlace autosub.lua --replace-fail \
+                  "{ 'Dutch', 'nl', 'dut' }," \
+                  "{ 'Indonesian', 'id', 'ind' },"
+
+                substituteInPlace autosub.lua --replace-fail \
+                  "auto = true" \
+                  "auto = false"
+              '';
+          }))
         ];
 
         mpv = pkgs.mpv-unwrapped.override {
