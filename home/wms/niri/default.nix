@@ -75,17 +75,15 @@ in {
     };
 
     layout = let
-      gap-px = 10;
       ringWidth = 2;
     in {
-      gaps = gap-px;
+      gaps = 0;
       struts = {
-        left = -gap-px + ringWidth;
-        right = -gap-px + ringWidth;
-        top = -gap-px + ringWidth;
-        bottom = -gap-px + ringWidth;
+        top = ringWidth;
+        right = ringWidth;
+        bottom = ringWidth;
+        left = ringWidth;
       };
-
       center-focused-column = "never";
       preset-column-widths = [
         {proportion = 1. / 3.;}
