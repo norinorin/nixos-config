@@ -178,6 +178,8 @@ in {
           Value = "0.75";
           Status = "locked";
         };
+        "sidebar.revamp" = lock-true;
+        "sidebar.verticalTabs" = lock-true;
       };
     };
   };
