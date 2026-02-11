@@ -253,6 +253,12 @@ in {
       cursor = {
         no_hardware_cursors = 1;
       };
+      device = [
+        {
+          name = "opentabletdriver-virtual-artist-tablet";
+          output = "HDMI-A-1";
+        }
+      ];
       layerrule = [
         "animation slide, match:namespace notifications"
         "blur on, match:namespace waybar"
@@ -265,6 +271,7 @@ in {
         "match:initial_title ^(gamescope)$, immediate on"
         "match:class ^Minecraft\\* [\\d+\\.]+$, immediate on"
         "match:class ^osu!$, immediate on"
+        "match:class ^steam_app_\\d+$, immediate on"
         "match:class ^cs2$, immediate on"
 
         "match:class .*, idle_inhibit fullscreen"

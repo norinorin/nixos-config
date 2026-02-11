@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  gamePkgs = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system};
+in {
   home.packages = with pkgs; [
     qbittorrent
     audacity
@@ -26,5 +32,6 @@
     libreoffice
     spotify
     tricat
+    gamePkgs.osu-stable
   ];
 }

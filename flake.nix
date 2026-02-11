@@ -37,6 +37,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wayland-pipewire-idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
   outputs = inputs @ {
     self,

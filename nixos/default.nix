@@ -30,6 +30,7 @@ in {
     ./audio.nix
     ./ime.nix
     ./overlays.nix
+    ./gaming.nix
 
     (import ../modules {inherit config lib pkgs inputs displayManager;})
   ];

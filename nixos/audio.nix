@@ -1,9 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+
+    lowLatency.enable = true;
 
     wireplumber.extraConfig = {
       # fix no sound below a volume cutoff
@@ -72,4 +80,6 @@
   services.udev.extraRules = ''
     ATTRS{idVendor}=="2972", ATTRS{idProduct}=="0102", MODE="0660", GROUP="users"
   '';
+
+  security.rtkit.enable = true;
 }
