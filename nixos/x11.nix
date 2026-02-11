@@ -6,8 +6,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    xorg.xsetroot
-    xorg.xinit
-    xorg.xrandr
+    xsetroot
+    xinit
+    xrandr
   ];
 }
