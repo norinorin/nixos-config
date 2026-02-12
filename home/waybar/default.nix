@@ -28,6 +28,7 @@
   xdg.configFile."waybar/sharedModules.jsonc".text = let
     I2C-bus = "5";
     batteryDevice = "BAT1";
+    acPath = "ACAD";
   in ''
     {
         "modules-center": [
@@ -56,6 +57,7 @@
             "memory",
             "custom/padding",
             "battery#icon",
+            "custom/ac",
             "battery#text",
             "custom/padding",
             "custom/network",
@@ -140,6 +142,11 @@
             "orientation": "horizontal",
             "on-scroll-up": "swayosd-client --output-volume +1", // doesn't actually work
             "on-scroll-down": "swayosd-client --output-volume -1",
+        },
+        "custom/ac": {
+            "exec": "grep -q 1 /sys/class/power_supply/${acPath}/online && echo ",
+            "interval": 5,
+            "return-type": "text"
         },
         "battery#icon": {
             "bat": "${batteryDevice}",
@@ -329,6 +336,11 @@
 
     #battery.icon {
         padding-right: 5px;
+    }
+
+    #custom-ac,
+    #battery.icon.plugged {
+        padding-right: 2px;
     }
 
     #custom-brightness-icon {
