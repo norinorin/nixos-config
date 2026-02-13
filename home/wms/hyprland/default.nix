@@ -135,7 +135,7 @@ in {
         kb_layout = "us";
         kb_options = "compose:menu";
         follow_mouse = 2;
-        sensitivity = 0;
+        sensitivity = -0.5;
         accel_profile = "flat";
         repeat_rate = 50;
         repeat_delay = 300;
