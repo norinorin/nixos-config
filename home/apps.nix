@@ -33,5 +33,6 @@ in {
     spotify
     tricat
     gamePkgs.osu-stable
+    parsec-bin
   ];
 }
