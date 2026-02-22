@@ -141,6 +141,16 @@ in {
     };
   };
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      {
+        from = 8000;
+        to = 9000;
+      }
+    ];
+  };
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
 
