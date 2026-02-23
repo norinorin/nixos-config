@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   imports = [
     inputs.anime_rpc.homeModules.anime_rpc
     inputs.wayland-pipewire-idle-inhibit.homeModules.default
@@ -39,7 +43,6 @@
 
   services.wayland-pipewire-idle-inhibit = {
     enable = true;
-    systemdTarget = "sway-session.target";
     settings = {
       verbosity = "INFO";
       media_minimum_duration = 10;
@@ -54,4 +57,9 @@
       ];
     };
   };
+
+  systemd.user.services.wayland-pipewire-idle-inhibit.Install.WantedBy = lib.mkForce [
+    "niri.service"
+    "hyprland-session.target"
+  ];
 }
