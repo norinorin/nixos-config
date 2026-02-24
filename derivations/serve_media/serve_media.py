@@ -9,7 +9,7 @@ from html import escape
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from io import BytesIO
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import override
 from urllib.parse import quote, unquote, urlparse
 
@@ -132,6 +132,11 @@ class PlaylistHandler(SimpleHTTPRequestHandler):
         r.append(f"<title>{title}</title>\n</head>")
         r.append(f"<body>\n<h1>{title}</h1>")
         r.append("<hr>\n<ul>")
+        url_path = PurePosixPath(urlparse(self.path).path)
+        if url_path != PurePosixPath("/"):
+            parent = str(url_path.parent)
+            parent += "/" * (not parent.endswith("/"))
+            r.append(f'<li><a href="{parent}">../</a></li>')
         if any(Path(name).suffix.lower() in VIDEO_EXTENSIONS for name in paths):
             playlist_path = displaypath.rstrip("/") + ".m3u8"
             playlist_name = playlist_path.rstrip("/").split("/")[-1]
