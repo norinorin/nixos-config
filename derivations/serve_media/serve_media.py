@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 
 import argparse
+import os
+import sys
 from dataclasses import dataclass
+from functools import partial
+from html import escape
+from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from io import BytesIO
 from pathlib import Path
 from typing import override
 from urllib.parse import quote, unquote, urlparse
@@ -18,7 +24,7 @@ class Args:
 
 parser = argparse.ArgumentParser("serve_media")
 _ = parser.add_argument("--port", "-p", type=int, default=8000)
-_ = parser.add_argument("path", default=Path.cwd().resolve(), type=Path)
+_ = parser.add_argument("path", default=Path.cwd().resolve(), nargs="?", type=Path)
 args = parser.parse_args(namespace=Args)
 
 
@@ -33,7 +39,7 @@ class PlaylistHandler(SimpleHTTPRequestHandler):
         ):
             return self._serve_playlist(dir)
 
-        file_path = (args.path / parsed.lstrip("/")).resolve()
+        file_path = Path(self.translate_path(parsed))
         if file_path.is_file() and file_path.suffix.lower() in VIDEO_EXTENSIONS:
             return self._serve_file_range(file_path)
 
@@ -95,6 +101,68 @@ class PlaylistHandler(SimpleHTTPRequestHandler):
             _ = self.wfile.write(data)
         except ConnectionResetError:
             pass
+
+    @override
+    def list_directory(self, path: str | os.PathLike[str]) -> BytesIO | None:
+        # copied from https://github.com/python/cpython/blob/fd0400585eb957c7d10812d87a8cb9e1f3c72519/Lib/http/server.py#L817C1-L868C17
+        try:
+            paths = os.listdir(path)
+        except OSError:
+            self.send_error(HTTPStatus.NOT_FOUND, "No permission to list directory")
+            return None
+        paths.sort(key=lambda a: a.lower())
+        r: list[str] = []
+        displaypath = self.path
+        displaypath = displaypath.split("#", 1)[0]
+        displaypath = displaypath.split("?", 1)[0]
+        try:
+            displaypath = unquote(displaypath, errors="surrogatepass")
+        except UnicodeDecodeError:
+            displaypath = unquote(displaypath)
+        displaypath = escape(displaypath, quote=False)
+        enc = sys.getfilesystemencoding()
+        title = f"Directory listing for {displaypath}"
+        r.append("<!DOCTYPE HTML>")
+        r.append('<html lang="en">')
+        r.append("<head>")
+        r.append(f'<meta charset="{enc}">')
+        r.append(
+            '<style type="text/css">\n:root {\ncolor-scheme: light dark;\n}\n</style>'
+        )
+        r.append(f"<title>{title}</title>\n</head>")
+        r.append(f"<body>\n<h1>{title}</h1>")
+        r.append("<hr>\n<ul>")
+        if any(Path(name).suffix.lower() in VIDEO_EXTENSIONS for name in paths):
+            playlist_path = displaypath.rstrip("/") + ".m3u8"
+            playlist_name = playlist_path.rstrip("/").split("/")[-1]
+            r.append(
+                f'<li><a href="{quote(playlist_path)}">{escape(playlist_name)}</a></li>\n'
+            )
+        for name in paths:
+            fullname = os.path.join(path, name)
+            displayname = linkname = name
+            if os.path.isdir(fullname):
+                displayname = name + "/"
+                linkname = name + "/"
+            if os.path.islink(fullname):
+                displayname = name + "@"
+            r.append(
+                '<li><a href="%s">%s</a></li>'
+                % (
+                    quote(linkname, errors="surrogatepass"),
+                    escape(displayname, quote=False),
+                )
+            )
+        r.append("</ul>\n<hr>\n</body>\n</html>\n")
+        encoded = "\n".join(r).encode(enc, "surrogateescape")
+        f = BytesIO()
+        _ = f.write(encoded)
+        _ = f.seek(0)
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-type", "text/html; charset=%s" % enc)
+        self.send_header("Content-Length", str(len(encoded)))
+        self.end_headers()
+        return f
 
 
 if __name__ == "__main__":
