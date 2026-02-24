@@ -100,6 +100,7 @@ class PlaylistHandler(SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     print(f"Serving {args.path} at http://0.0.0.0:{args.port}")
     try:
-        ThreadingHTTPServer(("0.0.0.0", args.port), PlaylistHandler).serve_forever()
+        handler = partial(PlaylistHandler, directory=str(args.path))
+        ThreadingHTTPServer(("0.0.0.0", args.port), handler).serve_forever()
     except KeyboardInterrupt:
         print("\nExiting...")
