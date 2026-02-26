@@ -117,6 +117,7 @@ in {
         };
       };
     };
+    kdeconnect.enable = true;
   };
 
   services = {
