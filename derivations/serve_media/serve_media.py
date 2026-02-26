@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import re
 import sys
 from dataclasses import dataclass
 from functools import partial
@@ -45,6 +46,9 @@ class PlaylistHandler(SimpleHTTPRequestHandler):
 
         return super().do_GET()
 
+    def _clean_filename(self, filename: str) -> str:
+        return re.sub(r"\(.*\)|\[.*\]", "", filename).strip()
+
     def _serve_playlist(self, dir: Path):
         host = self.headers.get("Host", "")
         playlist = ["#EXTM3U"]
@@ -55,7 +59,7 @@ class PlaylistHandler(SimpleHTTPRequestHandler):
                 url_path = "/".join(quote(part) for part in rel_path.parts)
                 url = f"http://{host}/{url_path}"
 
-                playlist.append(f"#EXTINF:-1,{file.stem}")
+                playlist.append(f"#EXTINF:-1,{self._clean_filename(file.stem)}")
                 playlist.append(url)
 
         content = "\n".join(playlist).encode("utf-8")
