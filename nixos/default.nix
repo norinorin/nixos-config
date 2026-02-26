@@ -55,13 +55,7 @@ in {
 
   time.timeZone = "Asia/Jakarta";
 
-  services.libinput.enable = true;
-  services.zerotierone.enable = true;
-
   boot.supportedFilesystems = ["ntfs"];
-  services.udisks2.enable = true;
-
-  programs.zsh.enable = true;
 
   users.users.nori = {
     isNormalUser = true;
@@ -102,42 +96,48 @@ in {
     libsForQt5.qt5ct
   ];
 
-  programs.adb.enable = true;
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  programs.gamemode = {
-    enable = true;
-    enableRenice = true;
-    settings = {
-      general = {
-        softrealtime = "auto";
-        renice = 10;
-      };
-      custom = {
-        start = "/run/current-system/sw/bin/notify-send -a 'Gamemode' 'Optimisations activated'";
-        end = "/run/current-system/sw/bin/notify-send -a 'Gamemode' 'Optimisations deactivated'";
+  programs = {
+    zsh.enable = true;
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    gamemode = {
+      enable = true;
+      enableRenice = true;
+      settings = {
+        general = {
+          softrealtime = "auto";
+          renice = 10;
+        };
+        custom = {
+          start = "/run/current-system/sw/bin/notify-send -a 'Gamemode' 'Optimisations activated'";
+          end = "/run/current-system/sw/bin/notify-send -a 'Gamemode' 'Optimisations deactivated'";
+        };
       };
     };
   };
 
-  services.thermald.enable = true;
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  services = {
+    libinput.enable = true;
+    zerotierone.enable = true;
+    udisks2.enable = true;
+    thermald.enable = true;
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 20;
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 20;
+      };
     };
   };
 
