@@ -162,6 +162,7 @@ in {
         PubkeyAcceptedAlgorithms +ssh-rsa
       '';
     };
+    ratbagd.enable = true;
   };
 
   networking.firewall = {
