@@ -47,30 +47,37 @@ class PlaylistHandler(SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def _clean_filename(self, filename: str) -> str:
-        return re.sub(r"\(.*\)|\[.*\]", "", filename).strip()
+        return re.sub(r"\([^)]*\)|\[[^]]*\]", "", filename)
 
     def _serve_playlist(self, dir: Path):
         host = self.headers.get("Host", "")
         playlist = ["#EXTM3U"]
-
-        for file in sorted(dir.iterdir()):
-            if file.suffix.lower() in VIDEO_EXTENSIONS:
-                rel_path = file.relative_to(args.path)
-                url_path = "/".join(quote(part) for part in rel_path.parts)
-                url = f"http://{host}/{url_path}"
-
-                playlist.append(f"#EXTINF:-1,{self._clean_filename(file.stem)}")
-                playlist.append(url)
-
+        files = [
+            f for f in sorted(dir.iterdir()) if f.suffix.lower() in VIDEO_EXTENSIONS
+        ]
+        cleaned = [self._clean_filename(f.stem) for f in files]
+        if cleaned:
+            prefix = os.path.commonprefix(cleaned)
+            suffix = os.path.commonprefix([s[::-1] for s in cleaned])[::-1]
+        else:
+            prefix = suffix = ""
+        for file, name in zip(files, cleaned):
+            rel_path = file.relative_to(args.path)
+            url_path = "/".join(quote(part) for part in rel_path.parts)
+            url = f"http://{host}/{url_path}"
+            title = name[
+                len(prefix) : len(name) - len(suffix) if suffix else None
+            ].strip(" _-")
+            playlist.append(f"#EXTINF:-1,{title}")
+            playlist.append(url)
         content = "\n".join(playlist).encode("utf-8")
-
         self.send_response(200)
         self.send_header("Content-Type", "application/x-mpegURL")
         self.send_header("Content-Length", str(len(content)))
         self.end_headers()
         try:
             _ = self.wfile.write(content)
-        except ConnectionResetError:
+        except (ConnectionResetError, BrokenPipeError):
             pass
 
     def _serve_file_range(self, path: Path):
@@ -103,7 +110,7 @@ class PlaylistHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         try:
             _ = self.wfile.write(data)
-        except ConnectionResetError:
+        except (ConnectionResetError, BrokenPipeError):
             pass
 
     @override
