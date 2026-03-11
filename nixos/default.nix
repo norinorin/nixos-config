@@ -94,6 +94,7 @@ in {
     vulkan-tools
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
+    upower
   ];
 
   programs = {
@@ -163,6 +164,7 @@ in {
       '';
     };
     ratbagd.enable = true;
+    upower.enable = true;
   };
 
   networking.firewall = {
