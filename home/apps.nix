@@ -35,5 +35,6 @@ in {
     gamePkgs.osu-stable
     parsec-bin
     (pkgs.callPackage ../derivations/serve_media/package.nix {})
+    pinta
   ];
 }
