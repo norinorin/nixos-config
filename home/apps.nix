@@ -35,6 +35,7 @@ in {
     gamePkgs.osu-stable
     parsec-bin
     (pkgs.callPackage ../derivations/serve_media/package.nix {})
+    (pkgs.callPackage ../derivations/sleep-timer/package.nix {})
     pinta
   ];
 }
