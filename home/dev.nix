@@ -5,6 +5,7 @@
     alejandra
     ruff
     nil
+    heroku
   ];
 
   programs = {
