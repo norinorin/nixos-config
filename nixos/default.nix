@@ -165,6 +165,14 @@ in {
     };
     ratbagd.enable = true;
     upower.enable = true;
+    postgresql = {
+      enable = true;
+      ensureDatabases = ["maimai-tracker"];
+      authentication = pkgs.lib.mkOverride 10 ''
+        #type database  DBuser  auth-method
+        local all       all     trust
+      '';
+    };
   };
 
   networking.firewall = {
