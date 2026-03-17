@@ -123,7 +123,13 @@ in {
 
   services = {
     libinput.enable = true;
-    zerotierone.enable = true;
+    zerotierone = {
+      enable = true;
+      joinNetworks = [
+        "2873fd00f2dc345a"
+        "166359304ea191b2"
+      ];
+    };
     udisks2.enable = true;
     thermald.enable = true;
     tlp = {
@@ -183,6 +189,10 @@ in {
         to = 9000;
       }
     ];
+
+    # Palworld
+    allowedTCPPorts = [25575];
+    allowedUDPPorts = [8211];
   };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
