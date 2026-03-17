@@ -6,6 +6,7 @@
     ruff
     nil
     heroku
+    uv
   ];
 
   programs = {
