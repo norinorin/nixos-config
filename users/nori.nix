@@ -11,6 +11,8 @@
   wcs = "warp-cli status";
   wcc = "warp-cli connect";
   wcd = "warp-cli disconnect";
+  cgperf = "echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
+  cgpsave = "echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
   killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
 in {
   imports = [
@@ -68,7 +70,7 @@ in {
     bash = {
       enable = true;
       shellAliases = {
-        inherit nhs nhus nhb nhc killall wcc wcd wcs;
+        inherit nhs nhus nhb nhc killall wcc wcd wcs cgperf cgpsave;
       };
     };
 
@@ -79,7 +81,7 @@ in {
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        inherit nhs nhus nhb nhc killall wcc wcd wcs;
+        inherit nhs nhus nhb nhc killall wcc wcd wcs cgperf cgpsave;
         la = "ls -lah";
       };
 
