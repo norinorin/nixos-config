@@ -26,11 +26,15 @@
               "node.name" = "capture.rnnoise_source";
               "node.passive" = true;
               "audio.rate" = 48000;
+              "audio.channels" = 1;
+              "audio.position" = ["MONO"];
             };
             "playback.props" = {
               "node.name" = "rnnoise_source";
               "media.class" = "Audio/Source";
               "audio.rate" = 48000;
+              "audio.channels" = 1;
+              "audio.position" = ["MONO"];
             };
           };
         }
