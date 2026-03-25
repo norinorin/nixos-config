@@ -95,6 +95,7 @@ in {
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     upower
+    gamescope
   ];
 
   programs = {

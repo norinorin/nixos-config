@@ -9,7 +9,6 @@
     wayland-utils
     libsecret
     cage
-    gamescope
     grim
   ];
 
