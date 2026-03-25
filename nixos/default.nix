@@ -20,7 +20,7 @@ in {
     ./nvidia.nix
     ./wayland.nix
     ./theme.nix
-    # ./x11.nix
+    ./x11.nix
     ./undervolt.nix
     ./tablet.nix
     ./hibernation.nix
