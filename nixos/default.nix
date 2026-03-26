@@ -182,6 +182,14 @@ in {
     };
   };
 
+  specialisation.on-the-go.configuration = {
+    system.nixos.tags = ["on-the-go"];
+    services = {
+      zerotierone.enable = lib.mkForce false;
+      postgresql.enable = lib.mkForce false;
+    };
+  };
+
   networking.firewall = {
     enable = true;
     allowedTCPPortRanges = [
