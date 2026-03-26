@@ -169,7 +169,7 @@ in {
           "$mod      , E, exec, $fileManager"
           "$mod      , V, togglefloating"
           "$mod      , D, exec, $menu"
-          "$mod      , P, togglesplit"
+          "$mod      , P, layoutmsg, togglesplit"
           "$mod      , F, fullscreen"
 
           "$mod      , H, movefocus, l"
