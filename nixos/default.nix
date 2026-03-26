@@ -185,6 +185,7 @@ in {
   specialisation.on-the-go.configuration = {
     system.nixos.tags = ["on-the-go"];
     services = {
+      openssh.enable = lib.mkForce false;
       zerotierone.enable = lib.mkForce false;
       postgresql.enable = lib.mkForce false;
     };

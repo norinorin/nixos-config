@@ -20,6 +20,13 @@
     swayidle.enable = true;
   };
 
+  specialisation.on-the-go.configuration = {
+    system.nixos.tags = ["on-the-go"];
+    services = {
+      anime_rpc.enable = lib.mkForce false;
+    };
+  };
+
   systemd.user.services.swayidle = let
     usingSwayIdle = ["niri.service"];
   in {
