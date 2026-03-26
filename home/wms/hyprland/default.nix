@@ -196,7 +196,10 @@ in {
           "$mod      , mouse_up, workspace, e-1"
 
           "$mod      , C, exec, dunstctl close-all"
-          "          , Print, exec, grimblast copy area"
+          "          , Print, exec, grimblast --freeze copy area"
+          "CTRL      , Print, exec, grimblast --freeze copy active"
+          "CTRL SHIFT, Print, exec, grimblast --freeze copy output"
+          "CTRL SHIFT ALT, Print, exec, grimblast --freeze copy screen"
 
           # floating windows
           "ALT       , Tab, cyclenext"

@@ -307,7 +307,7 @@ in {
             _    _    _    _     _    _    _    _
 
             ;; actual kb
-            _    _    _    _     _    _    _    kp7  kp8  kp9  _    _    _    _
+            prnt _    _    _     _    _    _    kp7  kp8  kp9  _    _    _    _
             _    _    up   _     _    _    _    kp4  kp5  kp6  _    _    _    _
             _    left down right _    _    _    kp1  kp2  kp3  _    _    _
             _    _    _    _     _    _    nlk  kp0  _    _    _    @rsb
