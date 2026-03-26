@@ -32,7 +32,6 @@
           showBots = true;
         };
         biggerStreamPreview.enable = true;
-        homeTyping.enable = true;
         customIdle = {
           enable = true;
           remainInIdle = true;
