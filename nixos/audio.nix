@@ -13,7 +13,7 @@
       extraConfig.pipewire = {
         "91-resample-quality" = {
           "stream.properties" = {
-            "resample.quality" = 6;
+            "resample.quality" = lib.mkForce 6;
           };
         };
       };
