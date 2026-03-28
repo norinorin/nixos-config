@@ -1,9 +1,24 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
+
+  specialisation.on-the-go.configuration = {
+    system.nixos.tags = ["on-the-go"];
+    services.pipewire = {
+      lowLatency.enable = lib.mkForce false;
+      extraConfig.pipewire = {
+        "91-resample-quality" = {
+          "stream.properties" = {
+            "resample.quality" = 6;
+          };
+        };
+      };
+    };
+  };
 
   services.pipewire = {
     enable = true;
@@ -11,7 +26,10 @@
     alsa.support32Bit = true;
     pulse.enable = true;
 
-    lowLatency.enable = true;
+    lowLatency = {
+      enable = true;
+      quantum = 128;
+    };
 
     wireplumber.extraConfig = {
       # fix no sound below a volume cutoff
