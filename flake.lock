@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1774706374,
-        "narHash": "sha256-3QEszEdr+xl3sLMqoKYHMV3+DQrqiVdxVMFpWTheOos=",
+        "lastModified": 1774713927,
+        "narHash": "sha256-ZHRXLjoiW3D5cDxQJ5KzQ4VzkXg60CMttrlCllNCVrM=",
         "owner": "norinorin",
         "repo": "anime_rpc",
-        "rev": "4336cf261faed6d2e4dfe018c1543d55b4451896",
+        "rev": "5fb439b8c630e5543ef1ca062e543884fc4adaa0",
         "type": "github"
       },
       "original": {
