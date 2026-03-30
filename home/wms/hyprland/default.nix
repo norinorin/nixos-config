@@ -263,7 +263,7 @@ in {
         }
       ];
       layerrule = [
-        "animation slide, match:namespace notifications"
+        "animation slide, blur on, match:namespace notifications"
         "blur on, match:namespace waybar"
         "dim_around on, blur on, match:namespace launcher"
         "animation fade, match:namespace kanata-osd"
