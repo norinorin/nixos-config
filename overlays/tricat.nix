@@ -167,7 +167,7 @@ final: prev: {
               if self.fadein:
                   args.append(f"fadein-{self.fadein.duration}s")
 
-              args.append(f"{self.start or ''''}-{self.end or ''''}")
+              args.append(f"{self.start or ${"''"}}-{self.end or ${"''"}}")
 
               if self.fadeout:
                   args.append(f"fadeout-{self.fadeout.duration}s")
@@ -312,7 +312,7 @@ final: prev: {
                   )
                   if not is_single_segment:
                       filters.append(
-                          f"[{output_label}]split={len(segment_ids)}{''''.join([f'[{output_label}i{segment_id}]' for segment_id in segment_ids])}"
+                          f"[{output_label}]split={len(segment_ids)}{${"''"}.join([f'[{output_label}i{segment_id}]' for segment_id in segment_ids])}"
                       )
 
           return ";".join(filters)
@@ -339,7 +339,7 @@ final: prev: {
               filters.append(segment.generate_filters())
               labels.append(f"[v{i}][a{i}]")
 
-          filters.append(f"{''''.join(labels)}concat=n={len(segments)}:v=1:a=1[v][a]")
+          filters.append(f"{${"''"}.join(labels)}concat=n={len(segments)}:v=1:a=1[v][a]")
           args.extend([";".join(filters), "-map", "[v]", "-map", "[a]", f'"{output}"'])
           return " ".join(args)
 
