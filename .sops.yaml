@@ -1,0 +1,9 @@
+keys:
+  - &admin_nori age1eqj8y5rkjvp5tljhx54lqqc56wsq429e4cuhpjvrmzvgmgq8xajsw9xdsu
+  - &server_toaster age1has09wmcv8ts293cq2dyk62vxah9uqdfua2wh5r2h8gqx7v7k5lqyra23a
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_nori
+      - *server_toaster

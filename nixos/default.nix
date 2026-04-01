@@ -31,6 +31,7 @@ in {
     ./ime.nix
     ./overlays.nix
     ./gaming.nix
+    ./sops.nix
 
     (import ../modules {inherit config lib pkgs inputs displayManager;})
   ];

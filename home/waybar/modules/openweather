@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-API_KEY=$(cat ~/.secrets/openweatherapikey)
-LAT=$(cat ~/.secrets/openweatherlat)
-LON=$(cat ~/.secrets/openweatherlon)
+API_KEY=$(cat /run/secrets/openweather/key)
+LAT=$(cat /run/secrets/openweather/lat)
+LON=$(cat /run/secrets/openweather/lon)
 
 RESPONSE=$(curl -s "https://api.openweathermap.org/data/2.5/weather?lat=$LAT&lon=$LON&appid=$API_KEY&units=metric")
 

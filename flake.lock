@@ -1248,6 +1248,7 @@
         "nixpkgs": "nixpkgs_7",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "silentSDDM": "silentSDDM",
+        "sops-nix": "sops-nix",
         "split-monitor-workspaces": "split-monitor-workspaces",
         "stylix": "stylix",
         "wayland-pipewire-idle-inhibit": "wayland-pipewire-idle-inhibit"
@@ -1291,6 +1292,26 @@
       "original": {
         "owner": "uiriansan",
         "repo": "SilentSDDM",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774910634,
+        "narHash": "sha256-B+rZDPyktGEjOMt8PcHKYmgmKoF+GaNAFJhguktXAo0=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "19bf3d8678fbbfbc173beaa0b5b37d37938db301",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     },
