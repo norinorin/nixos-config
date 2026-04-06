@@ -12,7 +12,6 @@ in {
 
     ./denoiser.nix
     ./kanata.nix
-    ./python.nix
     ./thunar.nix
     ./steam.nix
     ./obs.nix
