@@ -124,12 +124,18 @@ in {
             };
           };
           basedpyright = {
-            command = "basedpyright-langserver";
+            command = "${pkgs.basedpyright}/bin/basedpyright-langserver";
             args = ["--stdio"];
           };
           ruff = {
             command = "ruff";
             args = ["server"];
+          };
+          mpls = {
+            command = "${pkgs.mpls}/bin/mpls";
+          };
+          marksman = {
+            command = "${pkgs.marksman}/bin/marksman";
           };
         };
 
@@ -155,6 +161,10 @@ in {
             formatter = {
               command = lib.getExe pkgs.alejandra;
             };
+          }
+          {
+            name = "markdown";
+            language-servers = ["marksman" "mpls"];
           }
         ];
       };
