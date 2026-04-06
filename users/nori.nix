@@ -4,16 +4,19 @@
   config,
   ...
 }: let
-  nhs = "nh os switch ~/Dotfiles";
-  nhus = "nh os switch -u ~/Dotfiles";
-  nhb = "nh os boot ~/Dotfiles";
-  nhc = "nh clean all --optimise";
-  wcs = "warp-cli status";
-  wcc = "warp-cli connect";
-  wcd = "warp-cli disconnect";
-  cgperf = "echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
-  cgpsave = "echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
-  killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
+  shellAliases = {
+    nhs = "nh os switch ~/Dotfiles";
+    nhus = "nh os switch -u ~/Dotfiles";
+    nhb = "nh os boot ~/Dotfiles";
+    nhc = "nh clean all --optimise";
+    wcs = "warp-cli status";
+    wcc = "warp-cli connect";
+    wcd = "warp-cli disconnect";
+    cgperf = "echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
+    cgpsave = "echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
+    killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
+    lg = "lazygit";
+  };
 in {
   imports = [
     ./shared.nix
@@ -68,23 +71,16 @@ in {
     };
 
     bash = {
+      inherit shellAliases;
       enable = true;
-      shellAliases = {
-        inherit nhs nhus nhb nhc killall wcc wcd wcs cgperf cgpsave;
-      };
     };
 
     zsh = {
+      inherit shellAliases;
       enable = true;
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-
-      shellAliases = {
-        inherit nhs nhus nhb nhc killall wcc wcd wcs cgperf cgpsave;
-        la = "ls -lah";
-      };
-
       history.size = 10000;
       history.ignoreAllDups = true;
       history.path = "$HOME/.zsh_history";
