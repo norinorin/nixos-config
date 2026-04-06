@@ -105,6 +105,7 @@ in {
           C-k = ":half-page-up-smooth";
           pageup = ":page-up-smooth";
           pagedown = ":page-down-smooth";
+          C-t = ":sh $TERMINAL"; # $TERMINAL is set in users/<user>.nix
         };
       };
 
