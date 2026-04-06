@@ -106,6 +106,19 @@ in {
           pageup = ":page-up-smooth";
           pagedown = ":page-down-smooth";
           C-t = ":sh $TERMINAL"; # $TERMINAL is set in users/<user>.nix
+          C-g = [
+            ":write-all"
+            ":insert-output lazygit >/dev/tty"
+            ":redraw"
+            ":reload-all"
+          ];
+          space.e = [
+            ":sh rm -f /tmp/unique-file-h21a434"
+            ":insert-output ${pkgs.yazi}/bin/yazi \"%{buffer_name}\" --chooser-file=/tmp/unique-file-h21a434"
+            ":sh printf \"\x1b[?1049h\x1b[?2004h\" > /dev/tty"
+            ":open %sh{cat /tmp/unique-file-h21a434}"
+            ":redraw"
+          ];
         };
       };
 
