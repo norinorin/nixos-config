@@ -7,6 +7,13 @@
     nil
     heroku
     uv
+
+    rustup
+    rustc
+    cargo
+    rust-analyzer
+    rustfmt
+    clippy
   ];
 
   programs = {
@@ -20,6 +27,12 @@
             "editor.formatOnSave" = true;
             "editor.codeActionsOnSave"."source.organizeImports" = "explicit";
           };
+          "[rust]" = {
+            "editor.defaultFormatter" = "rust-lang.rust-analyzer";
+            "editor.formatOnSave" = true;
+          };
+          "rust-analyzer.check.command" = "clippy";
+          "rust-analyzer.cargo.sysroot" = "discover";
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nil";
           "nix.serverSettings" = {
@@ -36,6 +49,9 @@
           ms-python.python
           charliermarsh.ruff
           detachhead.basedpyright
+
+          rust-lang.rust-analyzer
+          tamasfe.even-better-toml
 
           shd101wyy.markdown-preview-enhanced
           prettier.prettier-vscode
