@@ -42,6 +42,7 @@ in {
       ]))
     (lib.lowPrio python311)
     heroku
+    lazygit
   ];
 
   programs = {
