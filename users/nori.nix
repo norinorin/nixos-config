@@ -132,7 +132,7 @@ in {
   };
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "hx";
     TERMINAL = "alacritty";
   };
 
