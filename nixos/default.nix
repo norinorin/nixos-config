@@ -4,14 +4,24 @@
   inputs,
   lib,
   displayManager,
+  username,
+  specialArgs,
   ...
 }: let
-  pkgsUnstable = import inputs.nixpkgs-unstable {
+  pkgs-unstable = import inputs.nixpkgs-unstable {
     inherit (pkgs.stdenv.hostPlatform) system;
     inherit (config.nixpkgs) config;
   };
 in {
-  _module.args.pkgsUnstable = pkgsUnstable;
+  _module.args.pkgs-unstable = pkgs-unstable;
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.${username} = import ../users/${username}.nix;
+    backupFileExtension = "backup";
+    extraSpecialArgs = specialArgs // {inherit pkgs-unstable;};
+  };
 
   imports = [
     ./hardware-configuration.nix
@@ -39,7 +49,7 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgsUnstable.linuxPackages_zen;
+  boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
   boot.kernelParams = [
     "zswap.enabled=1"
     "zswap.compressor=lz4"
