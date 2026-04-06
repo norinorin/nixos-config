@@ -90,15 +90,7 @@ in {
 
     helix = {
       enable = true;
-      package = pkgs.symlinkJoin {
-        name = "steelix-wrapped";
-        paths = [pkgs-unstable.steelix];
-        buildInputs = [pkgs.makeWrapper];
-        postBuild = ''
-          wrapProgram $out/bin/hx \
-            --prefix LD_LIBRARY_PATH : "${presence-lib}/lib"
-        '';
-      };
+      package = pkgs-unstable.steelix;
 
       settings = {
         editor = {
