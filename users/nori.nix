@@ -101,6 +101,7 @@ in {
       settings = {
         keymap_mode = "vim-normal";
       };
+      flags = ["--disable-up-arrow"];
     };
   };
 
