@@ -61,8 +61,21 @@ in {
 
   boot.kernel.sysctl."vm.max_map_count" = 2147483642;
 
-  networking.hostName = "toaster";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "toaster";
+    networkmanager = {
+      enable = true;
+      dns = "none";
+    };
+    useDHCP = false;
+    dhcpcd.enable = false;
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
+  };
 
   time.timeZone = "Asia/Jakarta";
 
