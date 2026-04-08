@@ -66,6 +66,10 @@ in {
     networkmanager = {
       enable = true;
       dns = "none";
+      # prevent nm from resetting enp7s0 during dhcp renewals.
+      # this allows 'create_ap -m bridge' to maintain the bridge enslavement
+      # without the interface flapping at the top of the hour.
+      unmanaged = ["enp7s0"];
     };
     useDHCP = false;
     dhcpcd.enable = false;
