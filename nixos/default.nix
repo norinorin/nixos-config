@@ -70,10 +70,8 @@ in {
     useDHCP = false;
     dhcpcd.enable = false;
     nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "8.8.8.8"
-      "8.8.4.4"
+      "127.0.0.1"
+      "::1"
     ];
   };
 
@@ -203,6 +201,22 @@ in {
         #type database  DBuser  auth-method
         local all       all     trust
       '';
+    };
+    dnscrypt-proxy = {
+      enable = true;
+      settings = {
+        ipv6_servers = true;
+        require_dnssec = true;
+        sources.public-resolvers = {
+          urls = [
+            "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
+            "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
+          ];
+          cache_file = "/var/cache/dnscrypt-proxy/public-resolvers.md";
+          minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+        };
+        server_names = ["cloudflare"];
+      };
     };
   };
 
