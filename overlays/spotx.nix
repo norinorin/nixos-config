@@ -1,11 +1,11 @@
 # from https://github.com/oskardotglobal/.dotfiles/blob/722192203254d842f5a55b4d28267876ab7cdeae/overlays/spotx.nix
-final: prev: let
+{pkgs-unstable}: final: prev: let
   spotx = prev.fetchurl {
-    url = "https://github.com/SpotX-Official/SpotX-Bash/raw/5e9b08f91e55c210bbc64715b4ad698186b3c06b/spotx.sh";
-    hash = "sha256-mlUc62b7Mw+Rpuiy0kqov5JCfrvKqgHLYfTf221gerM=";
+    url = "https://github.com/SpotX-Official/SpotX-Bash/raw/ca98eef240cd26b90ff423a836229275d4a1594f/spotx.sh";
+    hash = "sha256-sx9TzfJdPJqIRzIpzcpfHxXsQ1uJWTeTLs6bIq78HL4=";
   };
 in {
-  spotify = prev.spotify.overrideAttrs (old: {
+  spotify = pkgs-unstable.spotify.overrideAttrs (old: {
     nativeBuildInputs =
       old.nativeBuildInputs
       ++ (with prev; [
