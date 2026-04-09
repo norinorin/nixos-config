@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   pkgs-unstable,
   lib,
@@ -10,24 +11,7 @@
     rev = "1ed8b088e465fb139389c36ad158ba4a2d9e1bbc";
     hash = "sha256-4lxGZrT4cEcg3jqae3uJGGGCSy4WeVZeJ0hIApMb7jY=";
   };
-  presence-hx = pkgs.fetchFromGitHub {
-    owner = "Ciflire";
-    repo = "presence.hx";
-    rev = "5b5f134c30c3a3d9a6f3565e8cc56973230bc7ef";
-    hash = "sha256-L+fExKl4X1BHi+BIKHgBPtqyHHjqAc0qwyvCq8c0B0E=";
-  };
-  presence-lib = pkgs.rustPlatform.buildRustPackage {
-    pname = "helix-discord-rpc";
-    version = "5b5f134";
-    src = presence-hx;
-    cargoHash = "sha256-YnAQ1NFP3hEV/nNK/L8TGpOgqXTU/40WpFbFd5kHizA=";
-    buildType = "release";
-    installPhase = ''
-      mkdir -p $out/lib
-      find . -name "libhelix_discord_rpc.so" -exec cp {} $out/lib/ \;
-    '';
-    doCheck = false;
-  };
+  helix-discord-rpc = inputs.helix-discord-rpc.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.packages = with pkgs; [
     gcc
@@ -151,6 +135,9 @@ in {
           marksman = {
             command = "${pkgs.marksman}/bin/marksman";
           };
+          scheme-langserver = {
+            command = "${pkgs.akkuPackages.scheme-langserver}/bin/scheme-langserver";
+          };
         };
 
         language = [
@@ -178,7 +165,17 @@ in {
           }
           {
             name = "markdown";
+            auto-format = true;
             language-servers = ["marksman" "mpls"];
+          }
+          {
+            name = "scheme";
+            auto-format = true;
+            language-servers = ["scheme-langserver"];
+            formatter = {
+              command = lib.getExe pkgs.schemat;
+            };
+            file-types = ["scm" "ss" "lisp" "rkt"];
           }
         ];
       };
@@ -196,12 +193,14 @@ in {
 
   # helix plugins
   xdg.configFile."helix/plugins/smooth-scroll.hx".source = smooth-scroll;
-  xdg.configFile."helix/plugins/presence.hx".source = presence-hx;
+  xdg.configFile."helix/plugins/helix-discord-rpc".source = "${helix-discord-rpc}/share/helix-discord-rpc";
   xdg.configFile."helix/init.scm".text = ''
     (require "plugins/smooth-scroll.hx/smooth-scroll.scm")
     (require "plugins/presence.hx/helix-discord-rpc.scm")
+
+    (discord-rpc-connect)
   '';
   home.file = {
-    ".steel/native/libhelix_discord_rpc.so".source = "${presence-lib}/lib/libhelix_discord_rpc.so";
+    ".steel/native/libhelix_discord_rpc.so".source = "${helix-discord-rpc}/lib/libhelix_discord_rpc.so";
   };
 }

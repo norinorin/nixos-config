@@ -42,6 +42,10 @@
     };
     wayland-pipewire-idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    helix-discord-rpc = {
+      url = "github:norinorin/helix-discord-rpc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,
