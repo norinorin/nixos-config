@@ -196,7 +196,37 @@ in {
   xdg.configFile."helix/plugins/helix-discord-rpc".source = "${helix-discord-rpc}/share/helix-discord-rpc";
   xdg.configFile."helix/init.scm".text = ''
     (require "plugins/smooth-scroll.hx/smooth-scroll.scm")
-    (require "plugins/presence.hx/helix-discord-rpc.scm")
+    (require "plugins/helix-discord-rpc/helix-discord-rpc.scm")
+    (require "plugins/helix-discord-rpc/utils.scm")
+
+    (discord-rpc-register-details-fn
+      (lambda ()
+        "In a workspace"))
+
+    (require-builtin steel/strings)
+
+    ; naive impl
+    (define (a-or-an word)
+      (let ([w (string-downcase word)])
+        (if (or (starts-with? w "a")
+             (starts-with? w "e")
+             (starts-with? w "i")
+             (starts-with? w "o")
+             (starts-with? w "u"))
+          "an"
+          "a")))
+
+    (discord-rpc-register-state-fn
+      (lambda ()
+        (let ([lang (discord-rpc-current-language)])
+          (if (string=? lang "")
+            "Editing a file"
+            (string-append
+              "Editing "
+              (a-or-an lang)
+              " "
+              lang
+              " file")))))
 
     (discord-rpc-connect)
   '';
