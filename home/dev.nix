@@ -138,6 +138,25 @@ in {
           scheme-langserver = {
             command = "${pkgs.akkuPackages.scheme-langserver}/bin/scheme-langserver";
           };
+          typescript-language-server = {
+            command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
+          };
+          eslint = {
+            command = "${pkgs.eslint}/bin/eslint";
+          };
+          deno = {
+            command = "${pkgs.deno}/bin/deno";
+            args = ["lsp"];
+          };
+          vscode-json-language-server = {
+            command = "${pkgs.vscode-langservers-extracted}/bin/vscode-json-language-server";
+          };
+          vscode-html-language-server = {
+            command = "${pkgs.vscode-langservers-extracted}/bin/vscode-html-language-server";
+          };
+          vscode-css-language-server = {
+            command = "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
+          };
         };
 
         language = [
@@ -176,6 +195,69 @@ in {
               command = lib.getExe pkgs.schemat;
             };
             file-types = ["scm" "ss" "lisp" "rkt"];
+          }
+          {
+            name = "typescript";
+            auto-format = true;
+            language-servers = ["typescript-language-server" "eslint"];
+            formatter = {
+              command = lib.getExe pkgs.dprint;
+              args = ["fmt" "--stdin" "typescript"];
+            };
+          }
+          {
+            name = "javascript";
+            auto-format = true;
+            language-servers = ["typescript-language-server" "eslint"];
+            formatter = {
+              command = lib.getExe pkgs.dprint;
+              args = ["fmt" "--stdin" "javascript"];
+            };
+          }
+          {
+            name = "jsx";
+            auto-format = true;
+            language-servers = ["typescript-language-server" "eslint"];
+            formatter = {
+              command = lib.getExe pkgs.dprint;
+              args = ["fmt" "--stdin" "jsx"];
+            };
+          }
+          {
+            name = "tsx";
+            auto-format = true;
+            language-servers = ["deno" "eslint"];
+            formatter = {
+              command = lib.getExe pkgs.dprint;
+              args = ["fmt" "--stdin" "tsx"];
+            };
+          }
+          {
+            name = "json";
+            auto-format = true;
+            language-servers = ["vscode-json-language-server"];
+            formatter = {
+              command = lib.getExe pkgs.dprint;
+              args = ["fmt" "--stdin" "json"];
+            };
+          }
+          {
+            name = "html";
+            auto-format = true;
+            language-servers = ["vscode-html-language-server"];
+            formatter = {
+              command = lib.getExe pkgs.prettier;
+              args = ["--parser" "html"];
+            };
+          }
+          {
+            name = "css";
+            auto-format = true;
+            language-servers = ["vscode-css-language-server"];
+            formatter = {
+              command = lib.getExe pkgs.prettier;
+              args = ["--parser" "css"];
+            };
           }
         ];
       };
