@@ -157,6 +157,9 @@ in {
           vscode-css-language-server = {
             command = "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
           };
+          tombi = {
+            command = "${pkgs.tombi}/bin/tombi";
+          };
         };
 
         language = [
@@ -258,6 +261,11 @@ in {
               command = lib.getExe pkgs.prettier;
               args = ["--parser" "css"];
             };
+          }
+          {
+            name = "toml";
+            auto-format = true;
+            language-servers = ["tombi"];
           }
         ];
       };
