@@ -14,6 +14,7 @@
     anime_rpc = {
       enable = true;
       enableWebserver = true;
+      enableUI = true;
       pollers = ["mpv-webui:14567" "mpc"];
       fetchEpisodeTitles = true;
     };
