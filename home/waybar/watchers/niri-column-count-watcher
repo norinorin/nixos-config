@@ -35,7 +35,7 @@ get_column_info
 niri msg event-stream | \
     while read -r line; do
         case "$line" in
-            *"Window opened"*|*"Window closed"*|*"Workspace focused"*|*"focus"*|*"move"*)
+            *"Window opened"*|*"Window closed"*|*"Workspace focused"*|*"focus"*|*"layouts"*)
                 get_column_info
                 ;;
         esac
