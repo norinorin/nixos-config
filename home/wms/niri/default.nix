@@ -401,6 +401,8 @@ in {
           allow-inhibiting = false;
           action = toggle-keyboard-shortcuts-inhibit;
         };
+
+        "Mod+X" = {action = toggle-overview;};
       };
 
       environment = {
