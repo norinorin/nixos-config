@@ -6,7 +6,7 @@
   "margin": "2px",
   "reload_style_on_change": true,
   "modules-center": [
-    "custom/window-count",
+    "custom/column-count",
     "niri/workspaces"
   ],
   "niri/workspaces": {

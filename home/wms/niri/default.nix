@@ -435,9 +435,9 @@ in {
       spawn-at-startup = [
         {sh = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY";}
         {sh = "sleep 10 && ~/.config/waybar/watchers/spotify-watcher";}
-        {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-1";}
-        {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher HDMI-A-5";}
-        {sh = "sleep 10 && ~/.config/waybar/watchers/niri-window-count-watcher eDP-1";}
+        {sh = "sleep 10 && ~/.config/waybar/watchers/niri-column-count-watcher HDMI-A-1";}
+        {sh = "sleep 10 && ~/.config/waybar/watchers/niri-column-count-watcher HDMI-A-5";}
+        {sh = "sleep 10 && ~/.config/waybar/watchers/niri-column-count-watcher eDP-1";}
       ];
     };
   };
