@@ -850,7 +850,9 @@
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
-        "niri-unstable": "niri-unstable",
+        "niri-unstable": [
+          "niri-blur"
+        ],
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "xwayland-satellite-stable": "xwayland-satellite-stable",
@@ -870,6 +872,23 @@
         "type": "github"
       }
     },
+    "niri-blur": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775982996,
+        "narHash": "sha256-ZHLgS5kvYRJd6jHsCjlKhvRyUZZQS4fDLipDXxsVlv0=",
+        "owner": "YaLTeR",
+        "repo": "niri",
+        "rev": "8cc8756bea3987c6bf13a3693a5c4acbfa896c34",
+        "type": "github"
+      },
+      "original": {
+        "owner": "YaLTeR",
+        "repo": "niri",
+        "rev": "8cc8756bea3987c6bf13a3693a5c4acbfa896c34",
+        "type": "github"
+      }
+    },
     "niri-stable": {
       "flake": false,
       "locked": {
@@ -883,22 +902,6 @@
       "original": {
         "owner": "YaLTeR",
         "ref": "v25.08",
-        "repo": "niri",
-        "type": "github"
-      }
-    },
-    "niri-unstable": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775389417,
-        "narHash": "sha256-6hFJBpP31H97upBDHJVPsm++io+9pjgApbXfxD0dCFo=",
-        "owner": "YaLTeR",
-        "repo": "niri",
-        "rev": "d1a0380eed224363749f1704ca3ff2ab1690b7f2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "YaLTeR",
         "repo": "niri",
         "type": "github"
       }
@@ -1281,6 +1284,7 @@
         "hyprland-plugins": "hyprland-plugins",
         "lanzaboote": "lanzaboote",
         "niri": "niri",
+        "niri-blur": "niri-blur",
         "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database",
         "nix-vscode-extensions": "nix-vscode-extensions",

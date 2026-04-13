@@ -28,6 +28,11 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     anime_rpc.url = "github:norinorin/anime_rpc";
     niri.url = "github:sodiboo/niri-flake";
+    niri-blur = {
+      url = "github:YaLTeR/niri/8cc8756bea3987c6bf13a3693a5c4acbfa896c34";
+      flake = false;
+    };
+    niri.inputs.niri-unstable.follows = "niri-blur";
     silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
       inputs.nixpkgs.follows = "nixpkgs";

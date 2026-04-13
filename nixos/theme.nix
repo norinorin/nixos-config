@@ -10,8 +10,8 @@
     autoEnable = true;
     opacity = {
       applications = 1.;
-      desktop = 1.;
-      terminal = 1.;
+      desktop = 0.9;
+      terminal = 0.9;
     };
     fonts.monospace = {
       name = "Azeret Mono";
