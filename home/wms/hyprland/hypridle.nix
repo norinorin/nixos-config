@@ -14,11 +14,11 @@
 
       listener = [
         {
-          timeout = 420;
+          timeout = 300;
           on-timeout = "${swaylock}";
         }
         {
-          timeout = 300;
+          timeout = 420;
           on-timeout = "${monitor} off";
           on-resume = "${monitor} on";
         }
