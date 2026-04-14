@@ -6,7 +6,7 @@
 }: let
   sddm-theme = let
     wallpaper = pkgs.runCommand "login-screen.jpg" {} ''
-      cp ${../home/wallpapers/pitvice-lake.jpg} $out
+      cp ${../../home/wallpapers/pitvice-lake.jpg} $out
     '';
   in
     inputs.silentSDDM.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
