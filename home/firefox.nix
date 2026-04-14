@@ -51,59 +51,99 @@
       icon = "firefox";
     };
   };
+  parfait = pkgs.stdenv.mkDerivation rec {
+    pname = "parfait-firefox-theme";
+    version = "0.14";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "reizumii";
+      repo = "parfait";
+      rev = "v${version}";
+      sha256 = "sha256-vdI5VYlUa1XiVyirkN0TryiDHy9PHmB26FD6mWFs+JU=";
+    };
+
+    installPhase = ''
+      mkdir -p $out
+      cp -r parfait $out/
+    '';
+  };
+  parfaitSettings = {
+    "layout.css.prefers-color-scheme.content-override" = 2; # 0 dark, 1 light, 2 system
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+    "svg.context-properties.content.enabled" = true;
+    "parfait.urlbar.url.center" = true;
+    "parfait.urlbar.search-mode.glow" = true;
+  };
+  getCss = bgColour: {
+    userChrome = ''
+      @import "${parfait}/parfait/parfait.css";
+
+      :root {
+        --toolbox-bgcolor: ${bgColour} !important;
+        --toolbox-bgcolor-inactive: var(--toolbox-bgcolor) !important;
+      }
+    '';
+    userContent = ''
+      @import "${parfait}/parfait/pages.css";
+
+      :root {
+        --newtab-background-color: ${bgColour} !important;
+      }
+    '';
+  };
 in {
   programs.firefox = {
     enable = true;
     profiles = {
-      default = {
-        settings = {
-          "layout.css.prefers-color-scheme.content-override" = 2;
-        };
-        extensions.force = true; # stylix shenanigans
-        search = {
-          force = true;
-          engines =
-            sharedSearchEngines
-            // {
-              youtube = {
-                name = "YouTube";
-                urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
-                definedAliases = ["@yt" "www.youtube.com" "youtube.com"];
+      default =
+        {
+          settings = parfaitSettings;
+          extensions.force = true; # stylix shenanigans
+          search = {
+            force = true;
+            engines =
+              sharedSearchEngines
+              // {
+                youtube = {
+                  name = "YouTube";
+                  urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
+                  definedAliases = ["@yt" "www.youtube.com" "youtube.com"];
+                };
+                anilist = {
+                  name = "AniList";
+                  urls = [{template = "https://anilist.co/search/anime?search={searchTerms}";}];
+                  definedAliases = ["@al" "anilist.co"];
+                };
+                myanimelist = {
+                  name = "MyAnimeList";
+                  urls = [{template = "https://myanimelist.net/search/all?q={searchTerms}&cat=all";}];
+                  definedAliases = ["@mal" "myanimelist.net"];
+                };
+                mydramalist = {
+                  name = "MyDramaList";
+                  urls = [{template = "https://mydramalist.com/search?q={searchTerms}";}];
+                  definedAliases = ["@mdl" "mydramalist.com"];
+                };
+                jisho = {
+                  name = "Jisho";
+                  urls = [{template = "https://jisho.org/search/{searchTerms}";}];
+                  definedAliases = ["@jd" "jisho.org"];
+                };
               };
-              anilist = {
-                name = "AniList";
-                urls = [{template = "https://anilist.co/search/anime?search={searchTerms}";}];
-                definedAliases = ["@al" "anilist.co"];
-              };
-              myanimelist = {
-                name = "MyAnimeList";
-                urls = [{template = "https://myanimelist.net/search/all?q={searchTerms}&cat=all";}];
-                definedAliases = ["@mal" "myanimelist.net"];
-              };
-              mydramalist = {
-                name = "MyDramaList";
-                urls = [{template = "https://mydramalist.com/search?q={searchTerms}";}];
-                definedAliases = ["@mdl" "mydramalist.com"];
-              };
-              jisho = {
-                name = "Jisho";
-                urls = [{template = "https://jisho.org/search/{searchTerms}";}];
-                definedAliases = ["@jd" "jisho.org"];
-              };
-            };
-        };
-      };
-      school = {
-        id = 1;
-        settings = {
-          "layout.css.prefers-color-scheme.content-override" = 1;
-        };
-        extensions.force = true; # stylix shenanigans
-        search = {
-          force = true;
-          engines = sharedSearchEngines;
-        };
-      };
+          };
+        }
+        // getCss "#a75a6dcc";
+      school =
+        {
+          id = 1;
+          settings = parfaitSettings;
+          extensions.force = true; # stylix shenanigans
+          search = {
+            force = true;
+            engines = sharedSearchEngines;
+          };
+        }
+        // getCss "#0ba2e3cc";
     };
     policies = {
       DisableTelemetry = true;
@@ -185,8 +225,8 @@ in {
   };
 
   stylix.targets.firefox = {
-    enable = true;
-    colorTheme.enable = true;
+    enable = false;
+    colorTheme.enable = false;
     profileNames = ["default" "school"];
   };
 
