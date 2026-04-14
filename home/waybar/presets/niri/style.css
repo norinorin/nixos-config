@@ -17,8 +17,8 @@ window#waybar {
 }
 
 #waybar.workspaces .modules-center {
-  background-color: @base00;
+  background-color: alpha(@base00, 0.7);
   padding: 8px 3px 8px 0;
-  color: alpha(@base07, 0.7);
+  color: @base07;
   border-radius: 12px;
 }
