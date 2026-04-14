@@ -55,8 +55,8 @@ in {
       temp = 85;
 
       # likely will still be 45
-      p1.limit = 20;
-      p2.limit = 20;
+      p1.limit = 2;
+      p2.limit = 3;
 
       gpuOffset = -50;
     };
@@ -67,7 +67,8 @@ in {
     wantedBy = ["graphical.target"];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = [undervoltScript];
+      # ignore failures
+      ExecStart = ["-${undervoltScript}"];
     };
   };
   specialisation.no-undervolt.configuration = {

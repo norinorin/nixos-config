@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   environment.systemPackages = [pkgs.nvtopPackages.nvidia];
@@ -37,6 +38,11 @@
       enable = true;
       enable32Bit = true;
     };
+  };
+
+  specialisation.on-the-go.configuration = {
+    system.nixos.tags = ["on-the-go"];
+    hardware.nvidia.dynamicBoost.enable = lib.mkForce false;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
