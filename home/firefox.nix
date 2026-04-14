@@ -132,7 +132,7 @@ in {
               };
           };
         }
-        // getCss "#a75a6dcc";
+        // getCss "${config.lib.stylix.colors.withHashtag.base00}cc";
       school =
         {
           id = 1;
