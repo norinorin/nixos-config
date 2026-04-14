@@ -136,14 +136,16 @@ in {
       school =
         {
           id = 1;
-          settings = parfaitSettings;
+          settings =
+            parfaitSettings
+            // {"ui.systemUsesDarkTheme" = 0;}; # force light mode
           extensions.force = true; # stylix shenanigans
           search = {
             force = true;
             engines = sharedSearchEngines;
           };
         }
-        // getCss "#0ba2e3cc";
+        // getCss "${config.lib.stylix.colors.withHashtag.base07}cc";
     };
     policies = {
       DisableTelemetry = true;
