@@ -51,6 +51,10 @@
       url = "github:norinorin/helix-discord-rpc";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
   outputs = inputs @ {
     self,

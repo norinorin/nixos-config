@@ -18,6 +18,7 @@ in {
     ./vscode.nix
     ./prism-launcher.nix
     ./warp.nix
+    ./winapps.nix
 
     # wms
     ./niri.nix

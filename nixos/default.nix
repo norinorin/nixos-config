@@ -43,6 +43,7 @@ in {
     ./gaming.nix
     ./sops.nix
     ./tlp.nix
+    ./virt.nix
 
     (import ./shared {inherit config lib pkgs inputs displayManager;})
   ];

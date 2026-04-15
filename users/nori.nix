@@ -128,6 +128,10 @@ in {
     };
   };
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   home.sessionVariables = {
     EDITOR = "hx";
     TERMINAL = "alacritty";
