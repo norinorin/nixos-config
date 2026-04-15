@@ -189,6 +189,7 @@ in {
             name = "markdown";
             auto-format = true;
             language-servers = ["marksman" "mpls"];
+            soft-wrap.enable = true;
           }
           {
             name = "scheme";
@@ -243,6 +244,8 @@ in {
               command = lib.getExe pkgs.dprint;
               args = ["fmt" "--stdin" "json"];
             };
+            file-types = ["json" "jsonl"];
+            soft-wrap.enable = true;
           }
           {
             name = "html";
@@ -252,6 +255,7 @@ in {
               command = lib.getExe pkgs.prettier;
               args = ["--parser" "html"];
             };
+            soft-wrap.enable = true;
           }
           {
             name = "css";
@@ -266,6 +270,7 @@ in {
             name = "toml";
             auto-format = true;
             language-servers = ["tombi"];
+            soft-wrap.enable = true;
           }
         ];
       };
