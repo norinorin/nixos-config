@@ -20,6 +20,23 @@
   binds = call "${inputs.niri}/parse-binds.nix";
   docs = call "${inputs.niri}/generate-docs.nix";
   settings = call "${inputs.niri}/settings.nix";
+  niri-bin = lib.getExe config.programs.niri.package;
+  jq-bin = lib.getExe pkgs.jq;
+  # modified from https://github.com/niri-wm/niri/discussions/3331#discussioncomment-15974148
+  move-column-to-a-new-workspace = pkgs.writeShellScript "niri-move-column-to-a-new-workspace" ''
+    read CURR_IDX CURR_OUT LAST_WS <<EOF
+    $(${niri-bin} msg -j workspaces | ${jq-bin} -r '
+      map(select(.is_focused))[0] as $f
+      | [$f.idx, $f.output,
+         (map(select(.output == $f.output)) | length)]
+      | @tsv')
+    EOF
+    DOWN_WSPACE=$((CURR_IDX+1))
+    ${niri-bin} msg action set-workspace-name _tempws --workspace "$LAST_WS"
+    ${niri-bin} msg action move-workspace-to-index "$DOWN_WSPACE" --reference _tempws
+    ${niri-bin} msg action move-column-to-workspace _tempws
+    ${niri-bin} msg action unset-workspace-name _tempws
+  '';
 in {
   home.packages = with pkgs; [
     xwayland-satellite-unstable
@@ -295,6 +312,7 @@ in {
         "Mod+Ctrl+J".action = move-window-down-or-to-workspace-down;
         "Mod+Ctrl+K".action = move-window-up-or-to-workspace-up;
         "Mod+Ctrl+L".action = move-column-right;
+        "Mod+Ctrl+N".action = spawn-sh (toString move-column-to-a-new-workspace);
 
         "Mod+Home".action = focus-column-first;
         "Mod+End".action = focus-column-last;
