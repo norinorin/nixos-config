@@ -72,6 +72,16 @@ in {
             (leaf "saturation" 3)
           ])
         ])
+        (plain "layer-rule" [
+          (node "match" {namespace = "launcher";} [])
+          (leaf "geometry-corner-radius" 12)
+          (plain "background-effect" [
+            (leaf "xray" true)
+            (leaf "blur" true)
+            (leaf "noise" 0.05)
+            (leaf "saturation" 3)
+          ])
+        ])
         (plain "window-rule" [
           (node "match" {app-id = "^firefox.*";} [])
           (leaf "opacity" 0.99)
