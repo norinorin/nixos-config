@@ -144,6 +144,7 @@ in {
           mode = {
             width = 1920;
             height = 1080;
+            refresh = 144.001;
           };
           position = {
             x = 1920;
@@ -481,6 +482,16 @@ in {
         {sh = "sleep 10 && ~/.config/waybar/watchers/niri-column-count-watcher HDMI-A-5";}
         {sh = "sleep 10 && ~/.config/waybar/watchers/niri-column-count-watcher eDP-1";}
       ];
+    };
+  };
+
+  specialisation.on-the-go.configuration = {
+    programs.niri.settings = {
+      outputs = {
+        "eDP-1" = {
+          mode.refresh = lib.mkForce 60.001;
+        };
+      };
     };
   };
 }
