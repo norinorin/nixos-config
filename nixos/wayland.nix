@@ -13,6 +13,9 @@
       "org.freedesktop.impl.portal.Secret" = [
         "gnome-keyring"
       ];
+      "org.freedesktop.impl.portal.fileChooser" = [
+        "gtk"
+      ];
     };
   };
 
