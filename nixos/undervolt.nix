@@ -54,9 +54,10 @@ in {
       uncoreOffset = -55;
       temp = 85;
 
-      # likely will still be 45
-      p1.limit = 2;
-      p2.limit = 3;
+      # setting to values lower than these
+      # decrease perf while not reducing wattage
+      p1.limit = 5;
+      p2.limit = 7;
 
       gpuOffset = -50;
     };
