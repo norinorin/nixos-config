@@ -7,7 +7,6 @@
   imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
 
   specialisation.on-the-go.configuration = {
-    system.nixos.tags = ["on-the-go"];
     services.pipewire = {
       lowLatency.enable = lib.mkForce false;
       extraConfig.pipewire = {

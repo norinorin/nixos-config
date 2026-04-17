@@ -47,7 +47,6 @@ in {
     };
   };
   specialisation.on-the-go.configuration = {
-    system.nixos.tags = ["on-the-go"];
     services.undervolt = {
       turbo = 1;
       coreOffset = -95;

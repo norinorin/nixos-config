@@ -41,7 +41,6 @@
   };
 
   specialisation.on-the-go.configuration = {
-    system.nixos.tags = ["on-the-go"];
     hardware.nvidia.dynamicBoost.enable = lib.mkForce false;
   };
 

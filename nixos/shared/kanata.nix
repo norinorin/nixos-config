@@ -330,7 +330,6 @@ in {
   };
 
   specialisation.on-the-go.configuration = {
-    system.nixos.tags = ["on-the-go"];
     services.kanata.enable = lib.mkForce false;
     systemd.user.services.kanata-osd.enable = lib.mkForce false;
   };
