@@ -260,6 +260,7 @@ in {
         "Mod+Shift+C".action = spawn "dunstctl" "close-all";
         "Mod+E".action = spawn "thunar";
         "Alt+F4".action = spawn "wlogout";
+        "Mod+Ctrl+P".action = spawn "pavucontrol";
 
         "XF86AudioRaiseVolume" = {
           allow-when-locked = true;
