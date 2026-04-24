@@ -11,5 +11,6 @@
     (import ../overlays/spotx.nix {inherit pkgs-unstable;})
     (import ../overlays/obsidian.nix)
     (import ../overlays/tricat.nix)
+    (import ../overlays/gamescope.nix)
   ];
 }
