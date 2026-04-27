@@ -27,7 +27,7 @@ in {
     ./hardware-configuration.nix
     ./gc.nix
     ./fonts.nix
-    ./nvidia.nix
+    ./gpu.nix
     ./wayland.nix
     ./theme.nix
     ./x11.nix

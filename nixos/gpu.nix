@@ -4,7 +4,14 @@
   lib,
   ...
 }: {
-  environment.systemPackages = [pkgs.nvtopPackages.nvidia];
+  environment.systemPackages = [
+    (pkgs.callPackage
+      (pkgs.path + "/pkgs/tools/system/nvtop/build-nvtop.nix")
+      {
+        intel = true;
+        nvidia = true;
+      })
+  ];
 
   boot.kernelParams = [
     "mem_sleep_default=deep"
