@@ -44,6 +44,7 @@ in {
     ./sops.nix
     ./tlp.nix
     ./virt.nix
+    ./ld.nix
 
     (import ./shared {inherit config lib pkgs inputs displayManager;})
   ];
