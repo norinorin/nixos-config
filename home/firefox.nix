@@ -208,6 +208,7 @@ in {
         "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
         "browser.tabs.insertAfterCurrent" = lock-true;
+        "browser.tabs.unloadOnLowMemory".Value = true;
         "network.trr.mode" = {
           Value = 3;
           Status = "default";
