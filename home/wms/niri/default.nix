@@ -449,6 +449,10 @@ in {
         "Mod+X" = {action = toggle-overview;};
       };
 
+      debug = {
+        render-drm-device = "/dev/dri/renderD129";
+      };
+
       environment = {
         DISPLAY = ":0";
         QT_QPA_PLATFORM = "wayland";
@@ -494,6 +498,9 @@ in {
         "eDP-1" = {
           mode.refresh = lib.mkForce 60.001;
         };
+      };
+      debug = {
+        render-drm-device = lib.mkForce "/dev/dri/renderD128";
       };
     };
   };
