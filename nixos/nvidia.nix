@@ -6,21 +6,9 @@
 }: {
   environment.systemPackages = [pkgs.nvtopPackages.nvidia];
 
-  # https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Changing_suspend_method
-  # set suspend method to s2idle for suspend to work
   boot.kernelParams = [
-    "nvidia-modeset.hdmi_deepcolor=0"
-    "mem_sleep_default=s2idle" # on deep internal display won't turn on!
+    "mem_sleep_default=deep"
   ];
-
-  # s2idle
-  systemd.sleep.extraConfig = ''
-    SuspendState=freeze
-  '';
-
-  boot.extraModprobeConfig = ''
-    options nvidia_modeset vblank_sem_control=0
-  '';
 
   hardware = {
     nvidia = {
@@ -29,6 +17,11 @@
       powerManagement = {
         enable = true;
         finegrained = false;
+      };
+      prime = {
+        sync.enable = true;
+        intelBusId = "PCI:0@0:2:0";
+        nvidiaBusId = "PCI:1@0:0:0";
       };
       nvidiaSettings = true;
       dynamicBoost.enable = true;
@@ -41,14 +34,16 @@
   };
 
   specialisation.on-the-go.configuration = {
-    hardware.nvidia.dynamicBoost.enable = lib.mkForce false;
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-
-  systemd.services."systemd-suspend" = {
-    serviceConfig = {
-      Environment = ''"SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false"'';
+    hardware.nvidia = {
+      dynamicBoost.enable = lib.mkForce false;
+      powerManagement.finegrained = lib.mkForce true;
+      prime = {
+        offload.enable = lib.mkForce true;
+        offload.enableOffloadCmd = lib.mkForce true;
+        sync.enable = lib.mkForce false;
+      };
     };
   };
+
+  services.xserver.videoDrivers = ["nvidia" "modesetting"];
 }

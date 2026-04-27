@@ -63,7 +63,8 @@ in {
       "$fileManager" = "thunar";
       "$menu" = "fuzzel";
       monitor = [
-        "HDMI-A-1,1920x1080@180,0x0,1"
+        "HDMI-A-1,1920x1080@180,0x0,1" # external monitor in dGPU-only mode
+        "HDMI-A-5,1920x1080@180,0x0,1" # external monitor in hybrid mode
         "eDP-1,1920x1080@144,auto-right,1"
       ];
       general = {
@@ -259,7 +260,7 @@ in {
       device = [
         {
           name = "opentabletdriver-virtual-artist-tablet";
-          output = "HDMI-A-1";
+          output = "HDMI-A-5";
         }
       ];
       layerrule = [

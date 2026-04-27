@@ -19,6 +19,17 @@
   {
     "height": 10,
     "include": "~/.config/waybar/presets/niri/workspaces.jsonc",
+    "output": "HDMI-A-5",
+    "custom/column-count": {
+      "exec": "cat /tmp/sb-niri-column-count-HDMI-A-5 2>/dev/null",
+      "format": "{}",
+      "interval": "once",
+      "signal": 13
+    }
+  },
+  {
+    "height": 10,
+    "include": "~/.config/waybar/presets/niri/workspaces.jsonc",
     "output": "eDP-1",
     "custom/column-count": {
       "exec": "cat /tmp/sb-niri-column-count-eDP-1 2>/dev/null",

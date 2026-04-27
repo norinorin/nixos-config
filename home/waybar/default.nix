@@ -26,7 +26,7 @@
   };
 
   xdg.configFile."waybar/sharedModules.jsonc".text = let
-    I2C-bus = "5";
+    I2C-bus = "17";
     batteryDevice = "BAT1";
     acPath = "ACAD";
   in ''

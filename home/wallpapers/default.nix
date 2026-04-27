@@ -22,6 +22,7 @@
       ExecStart = ''
         ${pkgs.swaybg}/bin/swaybg \
           -o HDMI-A-1 -i ${config.home.homeDirectory}/Wallpapers/liquid_abstract.jpg \
+          -o HDMI-A-5 -i ${config.home.homeDirectory}/Wallpapers/liquid_abstract.jpg \
           -o eDP-1    -i ${config.home.homeDirectory}/Wallpapers/facade_arch_relief.jpg
       '';
     };

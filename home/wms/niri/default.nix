@@ -83,15 +83,19 @@ in {
           ])
         ])
         (plain "window-rule" [
-          (node "match" {app-id = "^firefox.*";} [])
-          (leaf "opacity" 0.99)
-          (leaf "draw-border-with-background" false)
+          (node "match" {app-id = ".*";} [])
           (plain "background-effect" [
             (leaf "xray" true)
             (leaf "blur" true)
             (leaf "noise" 0.05)
             (leaf "saturation" 3)
           ])
+        ])
+        # https://github.com/niri-wm/niri/pull/3483#issuecomment-3940281904
+        (plain "window-rule" [
+          (node "match" {app-id = "^firefox.*";} [])
+          (leaf "opacity" 0.99)
+          (leaf "draw-border-with-background" false)
         ])
       ];
 
@@ -111,7 +115,7 @@ in {
       };
 
       outputs = {
-        # iGPU disabled
+        # external monitor in dGPU-only mode
         "HDMI-A-1" = {
           enable = true;
           mode = {
@@ -125,8 +129,7 @@ in {
           focus-at-startup = true;
         };
 
-        # when iGPU is enabled
-        # external monitor becomes HDMI-A-5
+        # external monitor in hybrid mode
         "HDMI-A-5" = {
           enable = true;
           mode = {
