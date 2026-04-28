@@ -178,15 +178,15 @@ in {
           width = ringWidth;
           active = {
             gradient = {
-              from = lib.mkDefault "#80c8ff";
-              to = lib.mkDefault "#bbddff";
+              from = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base0D}";
+              to = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base0C}";
               angle = 45;
             };
           };
           inactive = {
             gradient = {
-              from = lib.mkDefault "#505050";
-              to = lib.mkDefault "#808080";
+              from = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base03}";
+              to = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base04}";
               relative-to = "workspace-view";
             };
           };
@@ -202,7 +202,7 @@ in {
             x = 0;
             y = 5;
           };
-          color = lib.mkDefault "#0007";
+          color = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base00}";
         };
       };
 
