@@ -28,9 +28,6 @@
       ...
     }: let
       shellAliases = {
-        nhs = "nh os switch ~/Dotfiles";
-        nhus = "nh os switch -u ~/Dotfiles";
-        nhb = "nh os boot ~/Dotfiles";
         nhc = "nh clean all --optimise";
         wcs = "warp-cli status";
         wcc = "warp-cli connect";
@@ -40,6 +37,23 @@
         killall = "function _killall(){ ps aux | grep \"[ ]\$1\" | awk '{print \$2}' | xargs kill; }; _killall";
         lg = "lazygit";
       };
+      nhFunctions = ''
+        _nh_profile() {
+          echo "''${1:-toaster}"
+        }
+
+        nhs() {
+          nh os switch ~/Dotfiles#"$(_nh_profile "$1")"
+        }
+
+        nhus() {
+          nh os switch -u ~/Dotfiles#"$(_nh_profile "$1")"
+        }
+
+        nhb() {
+          nh os boot ~/Dotfiles#"$(_nh_profile "$1")"
+        }
+      '';
     in {
       programs = {
         git = {
@@ -108,6 +122,9 @@
             ];
             theme = "wedisagree";
           };
+
+          # only zsh since bash is rarely used
+          initContent = nhFunctions;
         };
 
         atuin = {
