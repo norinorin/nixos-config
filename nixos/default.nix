@@ -47,18 +47,21 @@ in {
     ./ld.nix
 
     (import ./shared {inherit config lib pkgs inputs displayManager;})
+
+    "${inputs.nixpkgs-unstable}/nixos/modules/system/boot/zswap.nix"
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
-  boot.kernelParams = [
-    "zswap.enabled=1"
-    "zswap.compressor=zstd"
-    "zswap.max_pool_percent=25"
-    "zswap.shrinker_enabled=1"
-  ];
+  boot.zswap = {
+    enable = true;
+    compressor = "zstd";
+    zpool = "zsmalloc";
+    maxPoolPercent = 30;
+    shrinkerEnabled = true;
+  };
   boot.initrd.systemd.enable = true;
   boot.kernel.sysctl = {
     "vm.swappiness" = 100;
