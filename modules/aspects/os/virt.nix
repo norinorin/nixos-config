@@ -9,8 +9,6 @@
       };
     };
 
-    provides.to-users = {user, ...}: {
-      nixos.users.users."${user.userName}".extraGroups = ["docker" "kvm"];
-    };
+    users.extraGroups = ["docker" "kvm"];
   };
 }

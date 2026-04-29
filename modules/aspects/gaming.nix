@@ -76,8 +76,6 @@
       ];
     };
 
-    provides.to-users = {user, ...}: {
-      nixos.users.users."${user.userName}".extraGroups = ["gamemode"];
-    };
+    users.extraGroups = ["gamemode"];
   };
 }

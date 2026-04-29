@@ -5,8 +5,6 @@
       environment.systemPackages = [pkgs.ddcutil];
     };
 
-    provides.to-users = {user, ...}: {
-      nixos.users.users."${user.userName}" = ["i2c"];
-    };
+    users.extraGroups = ["i2c"];
   };
 }

@@ -78,8 +78,6 @@
       ];
     };
 
-    provides.to-users = {user, ...}: {
-      nixos.users.users."${user.userName}".extraGroups = ["adbusers"];
-    };
+    users.extraGroups = ["adbusers"];
   };
 }
