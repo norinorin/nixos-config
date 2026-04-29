@@ -530,7 +530,7 @@
       };
     };
 
-    nixosOtg = {lib, ...}: {
+    homeManagerOtg = {lib, ...}: {
       programs.niri.settings = {
         outputs = {
           "eDP-1" = {
