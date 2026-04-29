@@ -56,7 +56,7 @@ in {
   boot.kernelParams = [
     "zswap.enabled=1"
     "zswap.compressor=zstd"
-    "zswap.max_pool_percent=20"
+    "zswap.max_pool_percent=25"
     "zswap.shrinker_enabled=1"
   ];
   boot.initrd.systemd.enable = true;
