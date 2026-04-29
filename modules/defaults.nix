@@ -16,18 +16,14 @@
       };
     };
 
-    homeManager = {
+    homeManager = {config, ...}: {
       home.stateVersion = "25.11";
-    };
-
-    provides.to-users = {user, ...}: {
-      homeManager = {
-        programs.nh = {
-          enable = true;
-          clean.enable = true;
-          clean.extraArgs = "--keep-since 4d --keep 3";
-          flake = "/home/${user.userName}/Dotfiles";
-        };
+      programs.nh = {
+        enable = true;
+        clean.enable = true;
+        clean.extraArgs = "--keep-since 4d --keep 3";
+        # IMPORTANT: this assumes the repo is located in ~/Dotfiles
+        flake = "${config.home.homeDirectory}/Dotfiles";
       };
     };
   };
