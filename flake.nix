@@ -1,71 +1,53 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  description = "NixOS config";
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    anime_rpc.url = "github:norinorin/anime_rpc";
+    den.url = "github:vic/den";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+      url = "github:hercules-ci/flake-parts";
+    };
+    helix-discord-rpc = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:norinorin/helix-discord-rpc";
+    };
     home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    import-tree.url = "github:vic/import-tree";
+    lanzaboote = {
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/lanzaboote/v1.0.0";
     };
-    stylix = {
-      url = "github:nix-community/stylix/release-25.11";
+    niri.url = "github:sodiboo/niri-flake";
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-index-database = {
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nix-index-database";
     };
     nixcord.url = "github:kaylorben/nixcord";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
-    };
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    anime_rpc.url = "github:norinorin/anime_rpc";
-    niri.url = "github:sodiboo/niri-flake";
-    silentSDDM = {
-      url = "github:uiriansan/SilentSDDM";
+    nixpkgs.url = "nixpkgs/nixos-25.11";
+    nixpkgs-lib.follows = "nixpkgs";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    sops-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:Mic92/sops-nix";
     };
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v1.0.0";
+    stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/stylix/release-25.11";
     };
     wayland-pipewire-idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    helix-discord-rpc = {
-      url = "github:norinorin/helix-discord-rpc";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     winapps = {
-      url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:winapps-org/winapps";
     };
   };
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    ...
-  }: {
-    nixosConfigurations = {
-      toaster = let
-        username = "nori";
-        displayManager = "ly";
-        specialArgs = {inherit inputs username displayManager;};
-      in
-        nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          modules = [./nixos];
-        };
-    };
-  };
+
 }
