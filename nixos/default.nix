@@ -55,11 +55,10 @@ in {
   boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
   boot.kernelParams = [
     "zswap.enabled=1"
-    "zswap.compressor=lz4"
+    "zswap.compressor=zstd"
     "zswap.max_pool_percent=20"
     "zswap.shrinker_enabled=1"
   ];
-  boot.initrd.kernelModules = ["lz4"];
   boot.initrd.systemd.enable = true;
 
   boot.kernel.sysctl."vm.max_map_count" = 2147483642;
