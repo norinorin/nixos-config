@@ -35,6 +35,7 @@ in {
     coreOffset = lib.mkDefault (-137);
     uncoreOffset = lib.mkDefault (-95);
     analogioOffset = lib.mkDefault (-45);
+    gpuOffset = lib.mkDefault (-50);
     turbo = lib.mkDefault 0;
     temp = lib.mkDefault 95;
     p1 = lib.mkDefault {
@@ -57,8 +58,6 @@ in {
       # decrease perf while not reducing wattage
       p1.limit = 5;
       p2.limit = 7;
-
-      gpuOffset = -50;
     };
   };
   systemd.services.undervolt-nvidia = {
