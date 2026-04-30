@@ -1,23 +1,29 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 ICON_PATH="/tmp/sb-openweather-icon"
 TEXT_PATH="/tmp/sb-openweather-text"
 
-rm -f "$ICON_PATH"
-rm -f "$TEXT_PATH"
+rm -f "$ICON_PATH" "$TEXT_PATH"
 
 API_KEY=$(cat /run/secrets/openweather/key)
 LAT=$(cat /run/secrets/openweather/lat)
 LON=$(cat /run/secrets/openweather/lon)
 
-RESPONSE=$(curl -s "https://api.openweathermap.org/data/2.5/weather?lat=$LAT&lon=$LON&appid=$API_KEY&units=metric")
+RESPONSE=$(curl -sf "https://api.openweathermap.org/data/2.5/weather?lat=$LAT&lon=$LON&appid=$API_KEY&units=metric")
 
-TEMP_C=$(echo $RESPONSE | jq '.main.temp')
+echo "$RESPONSE" | jq -e '
+  .main.temp != null and
+  .weather[0].description != null and
+  .weather[0].icon != null
+' > /dev/null
+
+TEMP_C=$(echo "$RESPONSE" | jq -r '.main.temp')
 TEMP_C=$(printf "%.0f" "$TEMP_C")
-DESCRIPTION=$(echo $RESPONSE | jq -r '.weather[0].description' | sed -E 's/^(.)/\U\1/')
-ICON_CODE=$(echo $RESPONSE | jq -r '.weather[0].icon')
+DESCRIPTION=$(echo "$RESPONSE" | jq -r '.weather[0].description' | sed -E 's/^(.)/\U\1/')
+ICON_CODE=$(echo "$RESPONSE" | jq -r '.weather[0].icon')
 
-curl -s -o "$ICON_PATH" "https://openweathermap.org/img/wn/${ICON_CODE}.png"
+curl -sf -o "$ICON_PATH" "https://openweathermap.org/img/wn/${ICON_CODE}.png"
 echo "$DESCRIPTION $TEMP_C°C" > "$TEXT_PATH"
 
 pkill -RTMIN+12 waybar
