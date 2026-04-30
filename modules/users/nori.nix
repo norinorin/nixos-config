@@ -59,6 +59,9 @@
         }
       '';
     in {
+      home.file.".ssh/id_ed25519.pub".text = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA/FdVyICiXk3bgmtldcoAeTEOZ0jSPPaa/5F88xZyzQ nori@main";
+      home.file.".ssh/gh-school.pub".text = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfcKrm1sXr3eUIKvWhc5fye8oKrh0CIwYDEw2vIs5gK nori@school";
+
       programs = {
         git = {
           enable = true;

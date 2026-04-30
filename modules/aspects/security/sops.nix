@@ -20,6 +20,17 @@
         sops.secrets."openweather/key" = {owner = "nori";};
         sops.secrets."openweather/lat" = {owner = "nori";};
         sops.secrets."openweather/lon" = {owner = "nori";};
+
+        sops.secrets."ssh/main" = {
+          path = "/home/nori/.ssh/id_ed25519";
+          owner = "nori";
+          mode = "0400";
+        };
+        sops.secrets."ssh/school" = {
+          path = "/home/nori/.ssh/gh-school";
+          owner = "nori";
+          mode = "0400";
+        };
       };
     };
   };
