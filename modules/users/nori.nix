@@ -5,6 +5,8 @@
       den.provides.primary-user
       (den.provides.user-shell "zsh")
 
+      den.aspects.sops._.nori
+
       den.aspects.niri
       den.aspects.multimedia
       den.aspects.gaming
