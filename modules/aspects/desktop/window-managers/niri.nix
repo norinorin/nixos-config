@@ -147,6 +147,7 @@
               repeat-delay = 300;
             };
 
+            tablet.map-to-output = "HDMI-A-5";
             mouse.accel-profile = "flat";
             warp-mouse-to-focus.enable = true;
           };
