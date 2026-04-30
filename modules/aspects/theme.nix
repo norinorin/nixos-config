@@ -25,10 +25,21 @@
         };
         polarity = "dark";
       };
+    };
 
-      environment.systemPackages = [
-        pkgs.bibata-cursors
-      ];
+    provides.cursor = {
+      user,
+      pkgs,
+      lib,
+      ...
+    }: {
+      homeManager = {
+        home.pointerCursor = {
+          gtk.enable = true;
+          package = lib.getAttr user.cursor.pname pkgs;
+          inherit (user.cursor) name size;
+        };
+      };
     };
   };
 }

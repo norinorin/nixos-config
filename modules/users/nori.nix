@@ -22,6 +22,8 @@
       den.aspects.anime_rpc
       den.aspects.postgresql._.nori
       den.aspects.serve_media
+
+      den.aspects.theme._.cursor
     ];
 
     homeManager = {
