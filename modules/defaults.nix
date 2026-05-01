@@ -29,9 +29,5 @@
   };
 
   den.schema.user.classes = lib.mkDefault ["homeManager"];
-  den.ctx.host.includes = [
-    (import ../classes/otg.nix {inherit lib den;})
-    (import ../classes/users.nix {inherit lib den;})
-  ];
   den.ctx.user.includes = [den.provides.mutual-provider];
 }
