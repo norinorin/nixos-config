@@ -1,15 +1,21 @@
-{
+{den, ...}: {
+  den.aspects.wallpapers = {
+    homeManager = {
+      home.file."Pictures/Wallpapers" = {
+        source = ./.;
+        recursive = true;
+      };
+    };
+  };
+
   den.aspects.wally = {
+    includes = [den.aspects.wallpapers];
+
     homeManager = {
       pkgs,
       config,
       ...
     }: {
-      home.file."Wallpapers" = {
-        source = ./.;
-        recursive = true;
-      };
-
       systemd.user.services.wally = let
         units = [
           "niri.service"

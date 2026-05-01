@@ -173,8 +173,6 @@
         EDITOR = "hx";
         TERMINAL = "alacritty";
       };
-
-      stylix.targets.qt.enable = false;
     };
   };
 }

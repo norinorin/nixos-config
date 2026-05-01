@@ -7,6 +7,18 @@
   inputs = {
     anime_rpc.url = "github:norinorin/anime_rpc";
     den.url = "github:vic/den";
+    dgop = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:AvengeMedia/dgop";
+    };
+    dms = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+    };
+    dms-plugin-registry = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:AvengeMedia/dms-plugin-registry";
+    };
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
@@ -43,6 +55,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/stylix/release-25.11";
     };
+    stylix-unstable.url = "github:nix-community/stylix";
     wayland-pipewire-idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
     winapps = {
       inputs.nixpkgs.follows = "nixpkgs-unstable";

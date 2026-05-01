@@ -8,20 +8,24 @@
   den.aspects.niri = {
     includes = [
       den.aspects.theme
-      den.aspects.wally
-      den.aspects.waybar
-      den.aspects.waybar._.niri
       den.aspects.alacritty
-      den.aspects.fuzzel
       den.aspects.thunar
-      den.aspects.swaylock
-      den.aspects.swayidle
-      den.aspects.swayosd
-      den.aspects.wayland-pipewire-idle-inhibit
-      den.aspects.wlogout
-      den.aspects.dunst
+
+      # den.aspects.fuzzel
+      # den.aspects.wally
+      # den.aspects.waybar
+      # den.aspects.waybar._.niri
+      # den.aspects.swaylock
+      # den.aspects.swayidle
+      # den.aspects.swayosd
+      # den.aspects.wayland-pipewire-idle-inhibit
+      # den.aspects.wlogout
+      # den.aspects.dunst
+
       den.aspects.tools
       den.aspects.wayland-tools
+      den.aspects.dms
+      den.aspects.dms._.niri
     ];
 
     nixos = {pkgs, ...}: {
@@ -96,31 +100,9 @@
               (leaf "noise" 0.02)
               (leaf "saturation" 0.8)
             ])
-            (plain "layer-rule" [
-              (node "match" {namespace = "waybar";} [])
-              (node "match" {at-startup = true;} [])
-              (node "match" {layer = "top";} [])
-              (leaf "opacity" 0.8)
-              (leaf "geometry-corner-radius" 20)
-              (plain "background-effect" [
-                (leaf "xray" true)
-                (leaf "blur" true)
-                (leaf "noise" 0.05)
-                (leaf "saturation" 3)
-              ])
-            ])
-            (plain "layer-rule" [
-              (node "match" {namespace = "launcher";} [])
-              (leaf "geometry-corner-radius" 12)
-              (plain "background-effect" [
-                (leaf "xray" true)
-                (leaf "blur" true)
-                (leaf "noise" 0.05)
-                (leaf "saturation" 3)
-              ])
-            ])
             (plain "window-rule" [
-              (node "match" {app-id = ".*";} [])
+              (node "match" {app-id = "Alacritty";} [])
+              (node "match" {app-id = "^firefox.*";} [])
               (plain "background-effect" [
                 (leaf "xray" true)
                 (leaf "blur" true)
@@ -292,41 +274,18 @@
             "Mod+Shift+Slash".action = show-hotkey-overlay;
             "Mod+Shift+E".action = quit;
             "Ctrl+Alt+Delete".action = quit;
-            "Mod+Shift+P".action = power-off-monitors;
 
             "Mod+T".action = spawn "alacritty";
             "Mod+Return".action = spawn "alacritty";
-            "Mod+D".action = spawn "fuzzel";
-            "Super+Alt+L".action = spawn "swaylock";
-            "Mod+Shift+C".action = spawn "dunstctl" "close-all";
             "Mod+E".action = spawn "thunar";
-            "Alt+F4".action = spawn "wlogout";
-            "Mod+Ctrl+P".action = spawn "pavucontrol";
-
-            "XF86AudioRaiseVolume" = {
-              allow-when-locked = true;
-              action = spawn "swayosd-client" "--output-volume" "raise";
-            };
-            "XF86AudioLowerVolume" = {
-              allow-when-locked = true;
-              action = spawn "swayosd-client" "--output-volume" "lower";
-            };
-            "XF86AudioMute" = {
-              allow-when-locked = true;
-              action = spawn "swayosd-client" "--output-volume" "mute-toggle";
-            };
-            "XF86AudioMicMute" = {
-              allow-when-locked = true;
-              action = spawn "swayosd-client" "--input-volume" "mute-toggle";
-            };
 
             "XF86AudioPlay" = {
               allow-when-locked = true;
-              action = spawn "swayosd-client" "--playerctl" "play-pause";
+              action = spawn "playerctl" "-p" "playerctld" "play-pause";
             };
             "XF86AudioPause" = {
               allow-when-locked = true;
-              action = spawn "swayosd-client" "--playerctl" "play-pause";
+              action = spawn "playerctl" "-p" "playerctld" "play-pause";
             };
             "XF86AudioNext" = {
               allow-when-locked = true;
@@ -335,15 +294,6 @@
             "XF86AudioPrev" = {
               allow-when-locked = true;
               action = spawn "playerctl" "-p" "playerctld" "previous";
-            };
-
-            "XF86MonBrightnessUp" = {
-              allow-when-locked = true;
-              action = spawn "swayosd-client" "--brightness" "+5";
-            };
-            "XF86MonBrightnessDown" = {
-              allow-when-locked = true;
-              action = spawn "swayosd-client" "--brightness" "-5";
             };
 
             "Mod+Q".action = close-window;
@@ -454,8 +404,6 @@
 
             "Mod+BracketLeft".action = consume-or-expel-window-left;
             "Mod+BracketRight".action = consume-or-expel-window-right;
-            "Mod+Comma".action = consume-window-into-column;
-            "Mod+Period".action = expel-window-from-column;
 
             "Mod+R".action = switch-preset-column-width;
             "Mod+Shift+R".action = switch-preset-window-height;
@@ -471,8 +419,8 @@
             "Mod+Shift+Minus".action = set-window-height "-10%";
             "Mod+Shift+Equal".action = set-window-height "+10%";
 
-            "Mod+V".action = toggle-window-floating;
-            "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
+            "Mod+Z".action = toggle-window-floating;
+            "Mod+Shift+Z".action = switch-focus-between-floating-and-tiling;
             "Mod+W".action = toggle-column-tabbed-display;
 
             "Print".action.screenshot = [];
@@ -484,7 +432,7 @@
               action = toggle-keyboard-shortcuts-inhibit;
             };
 
-            "Mod+X" = {action = toggle-overview;};
+            "Mod+O" = {action = toggle-overview;};
           };
 
           debug = {
