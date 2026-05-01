@@ -7,7 +7,7 @@
 }: {
   den.ctx.host.includes = [
     (
-      {
+      {host, ...}: {
         class,
         aspect-chain,
       }:
@@ -17,6 +17,7 @@
           intoClass = lib.id;
           intoPath = _: ["specialisation" "on-the-go" "configuration"];
           fromAspect = _: lib.head aspect-chain;
+          guard = {...}: _: lib.mkIf (host.isMobile or false);
         }
     )
   ];
