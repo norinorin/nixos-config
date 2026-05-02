@@ -105,7 +105,12 @@
         profiles = {
           default =
             {
-              settings = parfaitSettings;
+              settings =
+                parfaitSettings
+                // {
+                  "ui.systemUsesDarkTheme" = 1;
+                };
+
               extensions.force = true; # stylix shenanigans
               search = {
                 force = true;
@@ -141,20 +146,12 @@
               };
             }
             // getCss
-            "${config.lib.stylix.colors.withHashtag.base00}5F"
-            "${config.lib.stylix.colors.withHashtag.base05}";
+            "${config.lib.my.getBgColour "dark"}5F"
+            "${config.lib.my.getTextColour "dark"}";
           school =
             {
               id = 1;
-              settings =
-                parfaitSettings
-                // {
-                  # force opposite polarity
-                  "ui.systemUsesDarkTheme" =
-                    if config.stylix.polarity == "dark"
-                    then 0
-                    else 1;
-                };
+              settings = parfaitSettings;
               extensions.force = true; # stylix shenanigans
               search = {
                 force = true;
@@ -162,8 +159,8 @@
               };
             }
             // getCss
-            "${config.lib.stylix.colors.withHashtag.base07}5F"
-            "${config.lib.stylix.colors.withHashtag.base00}";
+            "${config.lib.my.getBgColour "light"}5F"
+            "${config.lib.my.getTextColour "light"}";
         };
         policies = {
           DisableTelemetry = true;

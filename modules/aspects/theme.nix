@@ -45,7 +45,7 @@
       };
     };
 
-    homeManager = {
+    homeManager = {config, ...}: {
       imports = [
         # TODO: is this ever going to get backported?
         (
@@ -65,6 +65,16 @@
             }
         )
       ];
+
+      config.lib.my.getBgColour = polarity:
+        if config.stylix.polarity == "dark"
+        then "${config.lib.stylix.colors.withHashtag.base00}"
+        else "${config.lib.stylix.colors.withHashtag.base07}";
+
+      config.lib.my.getTextColour = polarity:
+        if config.stylix.polarity == "dark"
+        then "${config.lib.stylix.colors.withHashtag.base05}"
+        else "${config.lib.stylix.colors.withHashtag.base00}";
     };
 
     provides.cursor = {
