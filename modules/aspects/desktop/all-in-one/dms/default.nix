@@ -137,6 +137,7 @@
           };
 
           settings = {
+            niriLayoutGapsOverride = 12;
             barConfigs = [
               {
                 id = "default";
