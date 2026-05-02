@@ -66,15 +66,37 @@
         )
       ];
 
-      config.lib.my.getBgColour = polarity:
-        if config.stylix.polarity == "dark"
-        then "${config.lib.stylix.colors.withHashtag.base00}"
-        else "${config.lib.stylix.colors.withHashtag.base07}";
+      config.lib.my.getBgColour = polarity: let
+        c = config.lib.stylix.colors.withHashtag;
+        dark =
+          if config.stylix.polarity == "dark"
+          then c.base00
+          else c.base07;
+        light =
+          if config.stylix.polarity == "dark"
+          then c.base07
+          else c.base00;
+      in
+        if polarity == "dark"
+        then dark
+        else light;
 
-      config.lib.my.getTextColour = polarity:
-        if config.stylix.polarity == "dark"
-        then "${config.lib.stylix.colors.withHashtag.base05}"
-        else "${config.lib.stylix.colors.withHashtag.base00}";
+      config.lib.my.getTextColour = polarity: let
+        c = config.lib.stylix.colors.withHashtag;
+        isDarkTheme = config.stylix.polarity == "dark";
+
+        textOnDark =
+          if isDarkTheme
+          then c.base05
+          else c.base00;
+        textOnLight =
+          if isDarkTheme
+          then c.base00
+          else c.base05;
+      in
+        if polarity == "dark"
+        then textOnDark
+        else textOnLight;
     };
 
     provides.cursor = {

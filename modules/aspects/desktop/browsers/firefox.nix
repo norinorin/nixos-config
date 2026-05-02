@@ -151,7 +151,11 @@
           school =
             {
               id = 1;
-              settings = parfaitSettings;
+              settings =
+                parfaitSettings
+                // {
+                  "ui.systemUsesDarkTheme" = 0;
+                };
               extensions.force = true; # stylix shenanigans
               search = {
                 force = true;
