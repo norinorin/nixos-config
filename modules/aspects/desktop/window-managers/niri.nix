@@ -167,13 +167,6 @@
           layout = let
             ringWidth = 2;
           in {
-            gaps = 0;
-            # struts = {
-            #   top = ringWidth;
-            #   right = ringWidth;
-            #   bottom = ringWidth;
-            #   left = ringWidth;
-            # };
             center-focused-column = "never";
             preset-column-widths = [
               {proportion = 1. / 3.;}
