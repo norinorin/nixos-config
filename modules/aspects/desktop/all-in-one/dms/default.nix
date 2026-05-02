@@ -150,10 +150,10 @@
                 leftWidgets = [
                   "launcherButton"
                   "workspaceSwitcher"
+                  "niriColumns"
                   "focusedWindow"
                 ];
                 centerWidgets = [
-                  "niriColumns"
                   "music"
                   "clock"
                   "weather"
