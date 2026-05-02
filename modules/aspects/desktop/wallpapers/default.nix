@@ -1,9 +1,43 @@
 {den, ...}: {
   den.aspects.wallpapers = {
+    includes = [den.aspects.theme];
+
     homeManager = {
-      home.file."Pictures/Wallpapers" = {
-        source = ./.;
-        recursive = true;
+      config,
+      pkgs,
+      ...
+    }: {
+      home.file."Pictures/Wallpapers".source =
+        config.lib.my.mkAspectSymlink "desktop/wallpapers";
+
+      home.packages = [pkgs.lutgen];
+
+      systemd.user.services.wallpaper-fuse = let
+        pythonEnv = pkgs.python3.withPackages (ps: [ps.fusepy]);
+      in {
+        Unit = {
+          Description = "Base16 FUSE Wallpaper Filter";
+          After = ["graphical-session.target"];
+        };
+
+        Service = {
+          Type = "simple";
+          ExecStartPre = ''
+            ${pkgs.coreutils}/bin/mkdir -p %h/WallpapersFiltered %h/.cache/wallpaper-fuse
+          '';
+          ExecStart = ''
+            ${pythonEnv}/bin/python3 \
+              %h/Wallpapers \
+              %h/WallpapersFiltered \
+              %h/.cache/wallpaper-fuse
+          '';
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/WallpapersFiltered";
+          Restart = "on-failure";
+        };
+
+        Install = {
+          WantedBy = ["default.target"];
+        };
       };
     };
   };
