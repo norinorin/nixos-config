@@ -10,18 +10,6 @@
       den.aspects.theme
       den.aspects.alacritty
       den.aspects.thunar
-
-      # den.aspects.fuzzel
-      # den.aspects.wally
-      # den.aspects.waybar
-      # den.aspects.waybar._.niri
-      # den.aspects.swaylock
-      # den.aspects.swayidle
-      # den.aspects.swayosd
-      # den.aspects.wayland-pipewire-idle-inhibit
-      # den.aspects.wlogout
-      # den.aspects.dunst
-
       den.aspects.tools
       den.aspects.wayland-tools
       den.aspects.dms
