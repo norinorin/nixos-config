@@ -49,7 +49,7 @@
 
         settings = {
           widgetColorMode = "colorful";
-          cornerRadius = 16;
+          cornerRadius = 8;
           use24HourClock = true;
           blurEnabled = true;
           blurForegroundLayers = true;
@@ -137,7 +137,6 @@
           };
 
           settings = {
-            niriLayoutGapsOverride = 10;
             barConfigs = [
               {
                 id = "default";
@@ -183,12 +182,12 @@
                 gothCornersEnabled = true;
                 gothCornerRadiusOverride = false;
                 gothCornerRadiusValue = 12;
-                borderEnabled = false;
+                borderEnabled = true;
                 borderColor = "surfaceText";
                 borderOpacity = 1;
                 borderThickness = 1;
-                widgetOutlineEnabled = false;
-                widgetOutlineColor = "primary";
+                widgetOutlineEnabled = true;
+                widgetOutlineColor = "surfaceText";
                 widgetOutlineOpacity = 1;
                 widgetOutlineThickness = 1;
                 fontScale = 1;

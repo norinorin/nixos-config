@@ -159,7 +159,11 @@
           };
 
           layout = let
-            ringWidth = 2;
+            ringWidth = 3;
+            activeShadowColour =
+              if config.stylix.polarity == "dark"
+              then config.lib.stylix.colors.withHashtag.base02
+              else config.lib.stylix.colors.withHashtag.base06;
           in {
             center-focused-column = "never";
             preset-column-widths = [
@@ -171,20 +175,8 @@
             border = {
               enable = true;
               width = ringWidth;
-              active = {
-                gradient = {
-                  from = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base0D}";
-                  to = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base0C}";
-                  angle = 45;
-                };
-              };
-              inactive = {
-                gradient = {
-                  from = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base03}";
-                  to = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base04}";
-                  relative-to = "workspace-view";
-                };
-              };
+              active.color = activeShadowColour;
+              inactive.color = config.lib.stylix.colors.withHashtag.base04;
             };
             focus-ring = {
               enable = false;
@@ -197,12 +189,8 @@
                 x = 5;
                 y = 5;
               };
-              color = lib.mkDefault (
-                if config.stylix.polarity == "dark"
-                then config.lib.stylix.colors.withHashtag.base00
-                else config.lib.stylix.colors.withHashtag.base07
-              );
-              inactive-color = config.lib.stylix.colors.withHashtag.base05;
+              color = activeShadowColour;
+              inactive-color = config.lib.stylix.colors.withHashtag.base04;
             };
           };
 
