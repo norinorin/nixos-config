@@ -107,6 +107,9 @@
             tombi = {
               command = "${pkgs.tombi}/bin/tombi";
             };
+            qmlls = {
+              command = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
+            };
           };
 
           language = [
