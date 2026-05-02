@@ -1,0 +1,10 @@
+{
+  "id": "niriColumns",
+  "name": "Niri Columns",
+  "description": "Shows current Niri column count and index per output",
+  "version": "0.0.1",
+  "author": "norinorin",
+  "icon": "view_column",
+  "type": "widget",
+  "component": "./Widget.qml"
+}

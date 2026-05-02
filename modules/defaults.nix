@@ -35,7 +35,7 @@
           clean.extraArgs = "--keep-since 4d --keep 3";
           flake = "${cfg.dotfilesDirectory}";
         };
-        lib.mkAspectSymlink = path: cfg.lib.file.mkOutOfStoreSymlink "${cfg.dotfilesDirectory}/modules/aspects/${path}";
+        lib.my.mkAspectSymlink = path: cfg.lib.file.mkOutOfStoreSymlink "${cfg.dotfilesDirectory}/modules/aspects/${path}";
       };
     };
   };

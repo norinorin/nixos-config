@@ -75,7 +75,76 @@
           matugenTemplateEmacs = false;
           matugenTemplateZed = false;
 
-          barConfigs = [
+          # on ac give a 15s period
+          # to cancel the lock
+          acMonitorTimeout = 300;
+          acLockTimeout = 315;
+          acSuspendTimeout = 0;
+
+          # on battery lock right away when
+          # the monitor times out
+          batteryMonitorTimeout = 180;
+          batteryLockTimeout = 180;
+          batterySuspendTimeout = 300;
+          # i assume 0: suspend 1: hibernate 2: suspend-then-hibernate
+          batterySuspendBehavior = 0;
+        };
+
+        session = {
+          isLightMode = false;
+          perMonitorWallpaper = true;
+          monitorWallpapers = {
+            HDMI-A-5 = "${config.home.homeDirectory}/Pictures/Wallpapers/liquid_abstract.jpg";
+            eDP-1 = "${config.home.homeDirectory}/Pictures/Wallpapers/facade_arch_relief.jpg";
+          };
+          hiddenTrayIds = [
+            "Fcitx"
+          ];
+        };
+
+        clipboardSettings = {
+          maxHistory = 25;
+          autoClearDays = 1;
+          clearAtStartup = true;
+          disabled = false;
+          disableHistory = false;
+          disablePersist = true;
+        };
+
+        plugins = {
+          dankBatteryAlerts.enable = true;
+          dockerManager.enable = true;
+          mediaPlayer = {
+            enable = true;
+            settings.preferredSource = "spotify";
+          };
+        };
+      };
+    };
+
+    provides.niri = {
+      includes = [den.aspects.impure];
+
+      homeManager = {config, ...}: {
+        imports = [inputs.dms.homeModules.niri];
+
+        xdg.configFile = {
+          "DankMaterialShell/plugins/NiriColumns".source =
+            config.lib.my.mkAspectSymlink
+            "desktop/all-in-one/dms/plugins/NiriColumns";
+        };
+
+        programs.dank-material-shell = {
+          systemd.enable = false;
+
+          plugins = {
+            niriColumns = {
+              enable = true;
+              src = "${config.home.homeDirectory}/.config/DankMaterialShell/plugins/NiriColumns";
+            };
+          };
+
+          settings.barConfigs = [
             {
               id = "default";
               name = "Main Bar";
@@ -91,6 +160,7 @@
                 "focusedWindow"
               ];
               centerWidgets = [
+                "niriColumns"
                 "music"
                 "clock"
                 "weather"
@@ -147,60 +217,6 @@
               clickThrough = false;
             }
           ];
-
-          # on ac give a 15s period
-          # to cancel the lock
-          acMonitorTimeout = 300;
-          acLockTimeout = 315;
-          acSuspendTimeout = 0;
-
-          # on battery lock right away when
-          # the monitor times out
-          batteryMonitorTimeout = 180;
-          batteryLockTimeout = 180;
-          batterySuspendTimeout = 300;
-          # i assume 0: suspend 1: hibernate 2: suspend-then-hibernate
-          batterySuspendBehavior = 0;
-        };
-
-        session = {
-          isLightMode = false;
-          perMonitorWallpaper = true;
-          monitorWallpapers = {
-            HDMI-A-5 = "${config.home.homeDirectory}/Pictures/Wallpapers/liquid_abstract.jpg";
-            eDP-1 = "${config.home.homeDirectory}/Pictures/Wallpapers/facade_arch_relief.jpg";
-          };
-          hiddenTrayIds = [
-            "Fcitx"
-          ];
-        };
-
-        clipboardSettings = {
-          maxHistory = 25;
-          autoClearDays = 1;
-          clearAtStartup = true;
-          disabled = false;
-          disableHistory = false;
-          disablePersist = true;
-        };
-
-        plugins = {
-          dankBatteryAlerts.enable = true;
-          dockerManager.enable = true;
-          mediaPlayer = {
-            enable = true;
-            settings.preferredSource = "spotify";
-          };
-        };
-      };
-    };
-
-    provides.niri = {
-      homeManager = {
-        imports = [inputs.dms.homeModules.niri];
-
-        programs.dank-material-shell = {
-          systemd.enable = false;
 
           niri = {
             enableKeybinds = true;
