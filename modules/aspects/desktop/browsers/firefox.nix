@@ -141,7 +141,7 @@
               };
             }
             // getCss
-            "${config.lib.stylix.colors.withHashtag.base00}cc"
+            "${config.lib.stylix.colors.withHashtag.base00}5F"
             "${config.lib.stylix.colors.withHashtag.base05}";
           school =
             {
@@ -162,7 +162,7 @@
               };
             }
             // getCss
-            "${config.lib.stylix.colors.withHashtag.base07}cc"
+            "${config.lib.stylix.colors.withHashtag.base07}5F"
             "${config.lib.stylix.colors.withHashtag.base00}";
         };
         policies = {
