@@ -45,7 +45,7 @@
 
         settings = {
           widgetColorMode = "colorful";
-          cornerRadius = 6;
+          cornerRadius = 16;
           use24HourClock = true;
           blurEnabled = true;
           blurForegroundLayers = true;
