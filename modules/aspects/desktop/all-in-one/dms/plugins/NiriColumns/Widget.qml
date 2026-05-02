@@ -15,6 +15,8 @@ PluginComponent {
     property string currentOutput: parentScreen ? parentScreen.name : ""
     property real maxWidth: parentScreen ? parentScreen.width * 0.5 : 1000
 
+    visible: columnInfo !== ""
+
     property int maxRows: {
         let m = 0;
         if (!columnList)
