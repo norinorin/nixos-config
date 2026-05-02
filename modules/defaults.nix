@@ -16,14 +16,26 @@
       };
     };
 
-    homeManager = {config, ...}: {
-      home.stateVersion = "25.11";
-      programs.nh = {
-        enable = true;
-        clean.enable = true;
-        clean.extraArgs = "--keep-since 4d --keep 3";
-        # IMPORTANT: this assumes the repo is located in ~/Dotfiles
-        flake = "${config.home.homeDirectory}/Dotfiles";
+    homeManager = {config, ...}: let
+      cfg = config;
+    in {
+      options = {
+        dotfilesDirectory = lib.mkOption {
+          type = lib.types.str;
+          default = "${cfg.home.homeDirectory}/Dotfiles";
+          example = "${cfg.home.homeDirectory}/Dotfiles";
+        };
+      };
+
+      config = {
+        home.stateVersion = "25.11";
+        programs.nh = {
+          enable = true;
+          clean.enable = true;
+          clean.extraArgs = "--keep-since 4d --keep 3";
+          flake = "${cfg.dotfilesDirectory}";
+        };
+        lib.mkAspectSymlink = path: cfg.lib.file.mkOutOfStoreSymlink "${cfg.dotfilesDirectory}/modules/aspects/${path}";
       };
     };
   };
