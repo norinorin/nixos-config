@@ -21,17 +21,18 @@
         };
 
         Service = {
+          WorkingDirectory = "%h/Pictures/Wallpapers";
           Type = "simple";
           ExecStartPre = ''
-            ${pkgs.coreutils}/bin/mkdir -p %h/WallpapersFiltered %h/.cache/wallpaper-fuse
+            ${pkgs.coreutils}/bin/mkdir -p %h/Pictures/WallpapersFiltered %h/.cache/wallpaper-fuse
           '';
           ExecStart = ''
-            ${pythonEnv}/bin/python3 \
-              %h/Wallpapers \
-              %h/WallpapersFiltered \
+            ${pythonEnv}/bin/python3 fuse_daemon.py \
+              ./ \
+              %h/Pictures/WallpapersFiltered \
               %h/.cache/wallpaper-fuse
           '';
-          ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/WallpapersFiltered";
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/Pictures/WallpapersFiltered";
           Restart = "on-failure";
         };
 
