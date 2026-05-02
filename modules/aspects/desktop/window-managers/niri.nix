@@ -197,13 +197,18 @@
             };
             shadow = {
               enable = true;
-              softness = 30;
-              spread = 5;
+              softness = 0;
+              spread = 0;
               offset = {
-                x = 0;
+                x = 5;
                 y = 5;
               };
-              color = lib.mkDefault "${config.lib.stylix.colors.withHashtag.base00}";
+              color = lib.mkDefault (
+                if config.stylix.polarity == "dark"
+                then config.lib.stylix.colors.withHashtag.base00
+                else config.lib.stylix.colors.withHashtag.base07
+              );
+              inactive-color = config.lib.stylix.colors.withHashtag.base05;
             };
           };
 
