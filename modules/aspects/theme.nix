@@ -29,7 +29,7 @@
           applications = 1.;
           desktop = 0.97;
           terminal = 0.97;
-          popups = 0.8;
+          popups = 0.95;
         };
         fonts.monospace = {
           name = "Azeret Mono";
