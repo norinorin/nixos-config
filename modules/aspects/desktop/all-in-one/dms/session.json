@@ -1,0 +1,11 @@
+{
+  "hiddenTrayIds": [
+    "Fcitx"
+  ],
+  "isLightMode": true,
+  "monitorWallpapers": {
+    "HDMI-A-5": "/home/nori/Pictures/Wallpapers/liquid_abstract.jpg",
+    "eDP-1": "/home/nori/Pictures/Wallpapers/facade_arch_relief.jpg"
+  },
+  "perMonitorWallpaper": true
+}

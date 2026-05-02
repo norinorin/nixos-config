@@ -34,6 +34,10 @@
         inputs.dms-plugin-registry.modules.default
       ];
 
+      # TODO: fix this for when there are multiple users
+      xdg.stateFile."DankMaterialShell/session.json".source =
+        config.lib.my.mkAspectSymlink "desktop/all-in-one/dms/session.json";
+
       programs.dank-material-shell = {
         enable = true;
 
@@ -88,18 +92,6 @@
           batterySuspendTimeout = 300;
           # i assume 0: suspend 1: hibernate 2: suspend-then-hibernate
           batterySuspendBehavior = 0;
-        };
-
-        session = {
-          isLightMode = false;
-          perMonitorWallpaper = true;
-          monitorWallpapers = {
-            HDMI-A-5 = "${config.home.homeDirectory}/Pictures/Wallpapers/liquid_abstract.jpg";
-            eDP-1 = "${config.home.homeDirectory}/Pictures/Wallpapers/facade_arch_relief.jpg";
-          };
-          hiddenTrayIds = [
-            "Fcitx"
-          ];
         };
 
         clipboardSettings = {
