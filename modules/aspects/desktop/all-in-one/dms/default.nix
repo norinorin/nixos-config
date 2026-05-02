@@ -123,15 +123,15 @@
     };
 
     provides.niri = {
-      includes = [den.aspects.impure];
-
-      homeManager = {config, ...}: {
+      homeManager = {config, ...}: let
+        niriColumnsSrc =
+          config.lib.my.mkAspectSymlink
+          "desktop/all-in-one/dms/plugins/NiriColumns";
+      in {
         imports = [inputs.dms.homeModules.niri];
 
         xdg.configFile = {
-          "DankMaterialShell/plugins/NiriColumns".source =
-            config.lib.my.mkAspectSymlink
-            "desktop/all-in-one/dms/plugins/NiriColumns";
+          "DankMaterialShell/plugins/NiriColumns".source = niriColumnsSrc;
         };
 
         programs.dank-material-shell = {
@@ -140,7 +140,7 @@
           plugins = {
             niriColumns = {
               enable = true;
-              src = "${config.home.homeDirectory}/.config/DankMaterialShell/plugins/NiriColumns";
+              src = niriColumnsSrc;
             };
           };
 
