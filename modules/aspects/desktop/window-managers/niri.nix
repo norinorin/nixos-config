@@ -98,12 +98,6 @@
                 (leaf "saturation" 3)
               ])
             ])
-            # https://github.com/niri-wm/niri/pull/3483#issuecomment-3940281904
-            (plain "window-rule" [
-              (node "match" {app-id = "^firefox.*";} [])
-              (leaf "opacity" 0.99)
-              (leaf "draw-border-with-background" false)
-            ])
           ];
 
         settings = {

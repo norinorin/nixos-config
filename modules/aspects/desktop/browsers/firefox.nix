@@ -146,8 +146,8 @@
               };
             }
             // getCss
-            "${config.lib.my.getBgColour "dark"}5F"
-            "${config.lib.my.getTextColour "dark"}";
+            config.lib.my.getBgColour "dark"
+            config.lib.my.getTextColour "dark";
           school =
             {
               id = 1;
@@ -159,8 +159,8 @@
               };
             }
             // getCss
-            "${config.lib.my.getBgColour "light"}5F"
-            "${config.lib.my.getTextColour "light"}";
+            config.lib.my.getBgColour "light"
+            config.lib.my.getTextColour "light";
         };
         policies = {
           DisableTelemetry = true;
