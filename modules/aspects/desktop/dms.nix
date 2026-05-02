@@ -147,6 +147,20 @@
               clickThrough = false;
             }
           ];
+
+          # on ac give a 15s period
+          # to cancel the lock
+          acMonitorTimeout = 300;
+          acLockTimeout = 315;
+          acSuspendTimeout = 0;
+
+          # on battery lock right away when
+          # the monitor times out
+          batteryMonitorTimeout = 180;
+          batteryLockTimeout = 180;
+          batterySuspendTimeout = 300;
+          # i assume 0: suspend 1: hibernate 2: suspend-then-hibernate
+          batterySuspendBehavior = 0;
         };
 
         session = {
