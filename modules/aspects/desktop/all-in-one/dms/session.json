@@ -5,7 +5,7 @@
   "perMonitorWallpaper": true,
   "monitorWallpapers": {
     "eDP-1": "/home/nori/Pictures/WallpapersFiltered/cartoon-castle.png",
-    "HDMI-A-5": "/home/nori/Pictures/WallpapersFiltered/dino.jpg"
+    "HDMI-A-5": "/home/nori/Pictures/WallpapersFiltered/tiger.jpg"
   },
   "perModeWallpaper": false,
   "wallpaperPathLight": "",
@@ -54,7 +54,9 @@
   "barPinnedApps": [],
   "dockLauncherPosition": 0,
   "hiddenTrayIds": [
-    "Fcitx"
+    "Fcitx",
+    "zero-trust-client",
+    "spotify-client"
   ],
   "trayItemOrder": [],
   "recentColors": [],
