@@ -78,13 +78,15 @@
         "parfait.urlbar.url.center" = true;
         "parfait.urlbar.search-mode.glow" = true;
       };
-      getCss = bgColour: {
+      # FIXME: adjust colours in private mode
+      getCss = bgColour: textColour: {
         userChrome = ''
           @import "${parfait}/parfait/parfait.css";
 
           :root {
             --toolbox-bgcolor: ${bgColour} !important;
             --toolbox-bgcolor-inactive: var(--toolbox-bgcolor) !important;
+            --pf-textcolor: ${textColour} !important;
           }
         '';
         userContent = ''
@@ -92,6 +94,8 @@
 
           :root {
             --newtab-background-color: ${bgColour} !important;
+            /* no need to set !important here */
+            color: ${textColour};
           }
         '';
       };
@@ -136,20 +140,30 @@
                   };
               };
             }
-            // getCss "${config.lib.stylix.colors.withHashtag.base00}cc";
+            // getCss
+            "${config.lib.stylix.colors.withHashtag.base00}cc"
+            "${config.lib.stylix.colors.withHashtag.base05}";
           school =
             {
               id = 1;
               settings =
                 parfaitSettings
-                // {"ui.systemUsesDarkTheme" = 0;}; # force light mode
+                // {
+                  # force opposite polarity
+                  "ui.systemUsesDarkTheme" =
+                    if config.stylix.polarity == "dark"
+                    then 0
+                    else 1;
+                };
               extensions.force = true; # stylix shenanigans
               search = {
                 force = true;
                 engines = sharedSearchEngines;
               };
             }
-            // getCss "${config.lib.stylix.colors.withHashtag.base07}cc";
+            // getCss
+            "${config.lib.stylix.colors.withHashtag.base07}cc"
+            "${config.lib.stylix.colors.withHashtag.base00}";
         };
         policies = {
           DisableTelemetry = true;

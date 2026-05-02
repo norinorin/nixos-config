@@ -1164,6 +1164,7 @@
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "stylix-unstable": "stylix-unstable",
+        "tinted-schemes": "tinted-schemes_3",
         "wayland-pipewire-idle-inhibit": "wayland-pipewire-idle-inhibit",
         "winapps": "winapps"
       }
@@ -1423,6 +1424,22 @@
         "owner": "tinted-theming",
         "repo": "schemes",
         "rev": "13b5b0c299982bb361039601e2d72587d6846294",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tinted-theming",
+        "repo": "schemes",
+        "type": "github"
+      }
+    },
+    "tinted-schemes_3": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777041405,
+        "narHash": "sha256-BAGZ7ObFV/9Z61OJZun7ifPyhkuHqNuW1QIhQ8LuzCo=",
+        "owner": "tinted-theming",
+        "repo": "schemes",
+        "rev": "5f868b3a338b6904c47f3833b9c411be641983a8",
         "type": "github"
       },
       "original": {

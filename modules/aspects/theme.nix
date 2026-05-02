@@ -7,6 +7,10 @@
     stylix-unstable = {
       url = "github:nix-community/stylix";
     };
+    tinted-schemes = {
+      url = "github:tinted-theming/schemes";
+      flake = false;
+    };
   };
 
   den.aspects.theme = {
@@ -19,19 +23,19 @@
 
       stylix = {
         enable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+        base16Scheme = "${inputs.tinted-schemes}/base16/everforest-light-soft.yaml";
         autoEnable = true;
         opacity = {
           applications = 1.;
-          desktop = 0.9;
-          terminal = 0.9;
+          desktop = 0.97;
+          terminal = 0.97;
           popups = 0.8;
         };
         fonts.monospace = {
           name = "Azeret Mono";
           package = pkgs.azeret-mono;
         };
-        polarity = "dark";
+        polarity = "light";
 
         # Desirable for single user
         homeManagerIntegration = {

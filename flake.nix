@@ -56,6 +56,10 @@
       url = "github:nix-community/stylix/release-25.11";
     };
     stylix-unstable.url = "github:nix-community/stylix";
+    tinted-schemes = {
+      flake = false;
+      url = "github:tinted-theming/schemes";
+    };
     wayland-pipewire-idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
     winapps = {
       inputs.nixpkgs.follows = "nixpkgs-unstable";
