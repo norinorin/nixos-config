@@ -47,15 +47,15 @@
         }
 
         nhs() {
-          nh os switch ${config.dotfilesDirectory}#"$(_nh_profile "$1")"
+          nh os switch ${config.dotfilesDirectory}#"$(_nh_profile "$1")" "''${@:2}"
         }
 
         nhus() {
-          nh os switch -u ${config.dotfilesDirectory}#"$(_nh_profile "$1")"
+          nh os switch -u ${config.dotfilesDirectory}#"$(_nh_profile "$1")" "''${@:2}"
         }
 
         nhb() {
-          nh os boot ${config.dotfilesDirectory}#"$(_nh_profile "$1")"
+          nh os boot ${config.dotfilesDirectory}#"$(_nh_profile "$1")" "''${@:2}"
         }
       '';
     in {
