@@ -2,16 +2,28 @@
   flake-file.inputs.nixcord.url = "github:kaylorben/nixcord";
 
   den.aspects.nixcord = {
-    homeManager = {
+    homeManager = {pkgs, ...}: {
       imports = [inputs.nixcord.homeModules.nixcord];
       programs.nixcord = {
         enable = true;
         discord = {
           vencord.enable = false;
           equicord.enable = true;
-        };
-        equibop = {
-          enable = true;
+          package = inputs.nixcord.packages.${pkgs.stdenv.hostPlatform.system}.discord.overrideAttrs (old: {
+            nativeBuildInputs =
+              (old.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
+
+            # run it through steam-run because discord modules aren't patched
+            # and that breaks hw-accelerated screensharing
+            postFixup =
+              (old.postFixup or "")
+              + ''
+                mv $out/opt/Discord/Discord $out/opt/Discord-unwrapped
+
+                makeWrapper ${pkgs.steam-run}/bin/steam-run $out/opt/Discord/Discord \
+                  --add-flags "$out/opt/Discord-unwrapped"
+              '';
+          });
         };
         config = {
           frameless = true;
