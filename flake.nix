@@ -1,70 +1,67 @@
 # DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
 # Use `nix run .#write-flake` to regenerate it.
 {
-
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
     anime_rpc.url = "github:norinorin/anime_rpc";
     den.url = "github:vic/den";
     dgop = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     dms = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     dms-plugin-registry = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     helix-discord-rpc = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:norinorin/helix-discord-rpc";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
     lanzaboote = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-index-database = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixcord.url = "github:kaylorben/nixcord";
     nixpkgs.url = "nixpkgs/nixos-25.11";
-    nixpkgs-lib.follows = "nixpkgs";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     sops-nix = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix-unstable.url = "github:nix-community/stylix";
     tinted-schemes = {
-      flake = false;
       url = "github:tinted-theming/schemes";
+      flake = false;
     };
     wayland-pipewire-idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
     winapps = {
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
       url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
-
 }
