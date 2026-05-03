@@ -16,45 +16,42 @@
             })
         ];
 
+        # https://discourse.nixos.org/t/why-nixos-using-dgpu-instead-of-igpu/73973/2
+        # dunno if this is still needed, but I'll just keep it here
+        services.graphical-desktop.enable = true;
+
         boot.kernelParams = [
           "mem_sleep_default=deep"
         ];
 
         hardware = {
           nvidia = {
-            modesetting.enable = true;
             open = true;
             powerManagement = {
               enable = true;
-              finegrained = false;
+              finegrained = true;
             };
             prime = {
-              sync.enable = true;
+              offload.enable = true;
+              offload.enableOffloadCmd = true;
               intelBusId = "PCI:0@0:2:0";
               nvidiaBusId = "PCI:1@0:0:0";
             };
-            nvidiaSettings = true;
             dynamicBoost.enable = true;
-            package = config.boot.kernelPackages.nvidiaPackages.stable;
           };
           graphics = {
             enable = true;
             enable32Bit = true;
+            extraPackages = [pkgs.intel-media-driver];
           };
         };
 
-        services.xserver.videoDrivers = ["nvidia" "modesetting"];
+        services.xserver.videoDrivers = ["nvidia"];
       };
 
       nixosOtg = {lib, ...}: {
         hardware.nvidia = {
           dynamicBoost.enable = lib.mkForce false;
-          powerManagement.finegrained = lib.mkForce true;
-          prime = {
-            offload.enable = lib.mkForce true;
-            offload.enableOffloadCmd = lib.mkForce true;
-            sync.enable = lib.mkForce false;
-          };
         };
       };
     };
