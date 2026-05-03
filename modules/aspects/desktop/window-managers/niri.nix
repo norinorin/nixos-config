@@ -23,19 +23,21 @@
         enable = true;
         package = pkgs.niri-unstable;
       };
-      environment.systemPackages = [pkgs.xdg-desktop-portal-gtk];
-      xdg.portal.config = {
-        niri = {
-          default = [
-            "gnome"
-            "gtk"
-          ];
-          "org.freedesktop.impl.portal.Secret" = [
-            "gnome-keyring"
-          ];
-          "org.freedesktop.impl.portal.FileChooser" = [
-            "gtk"
-          ];
+      xdg.portal = {
+        extraPortals = [pkgs.xdg-desktop-portal-gtk];
+        config = {
+          niri = {
+            default = [
+              "gnome"
+              "gtk"
+            ];
+            "org.freedesktop.impl.portal.Secret" = [
+              "gnome-keyring"
+            ];
+            "org.freedesktop.impl.portal.FileChooser" = [
+              "gtk"
+            ];
+          };
         };
       };
     };
