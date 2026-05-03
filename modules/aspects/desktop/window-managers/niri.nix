@@ -404,7 +404,7 @@
           };
 
           debug = {
-            render-drm-device = "/dev/dri/renderD129";
+            render-drm-device = "/dev/dri/by-path/pci-0000:01:00.0-render";
           };
 
           environment = {
@@ -455,8 +455,38 @@
           };
         };
         debug = {
-          render-drm-device = lib.mkForce "/dev/dri/renderD128";
+          render-drm-device = lib.mkForce "/dev/dri/by-path/pci-0000:00:02.0-render";
         };
+      };
+    };
+
+    provides.nvidia = {
+      nixos = {
+        # https://github.com/niri-wm/niri/wiki/Nvidia
+        environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors.json".text = ''
+          {
+              "rules": [
+                  {
+                      "pattern": {
+                          "feature": "procname",
+                          "matches": "niri"
+                      },
+                      "profile": "Limit Free Buffer Pool On Wayland Compositors"
+                  }
+              ],
+              "profiles": [
+                  {
+                      "name": "Limit Free Buffer Pool On Wayland Compositors",
+                      "settings": [
+                          {
+                              "key": "GLVidHeapReuseRatio",
+                              "value": 0
+                          }
+                      ]
+                  }
+              ]
+          }
+        '';
       };
     };
   };

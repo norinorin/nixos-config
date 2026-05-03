@@ -39,6 +39,7 @@
       # desktop
       ly
       niri
+      niri._.nvidia
 
       # hardware
       gpu._.nvidiaHybrid
