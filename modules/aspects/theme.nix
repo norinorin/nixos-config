@@ -23,7 +23,7 @@
 
       stylix = {
         enable = true;
-        base16Scheme = "${inputs.tinted-schemes}/base16/everforest-light-soft.yaml";
+        base16Scheme = "${inputs.tinted-schemes}/base16/brushtrees.yaml";
         autoEnable = true;
         opacity = {
           applications = 1.;
