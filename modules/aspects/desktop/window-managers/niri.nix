@@ -162,7 +162,7 @@
 
           layout = let
             ringWidth = 3;
-            activeShadowColour =
+            inactiveShadowColour =
               if config.stylix.polarity == "dark"
               then config.lib.stylix.colors.withHashtag.base02
               else config.lib.stylix.colors.withHashtag.base06;
@@ -177,8 +177,8 @@
             border = {
               enable = true;
               width = ringWidth;
-              active.color = activeShadowColour;
-              inactive.color = config.lib.stylix.colors.withHashtag.base04;
+              active.color = config.lib.stylix.colors.withHashtag.base04;
+              inactive.color = inactiveShadowColour;
             };
             focus-ring = {
               enable = false;
@@ -191,8 +191,8 @@
                 x = 5;
                 y = 5;
               };
-              color = activeShadowColour;
-              inactive-color = config.lib.stylix.colors.withHashtag.base04;
+              color = config.lib.stylix.colors.withHashtag.base04;
+              inactive-color = inactiveShadowColour;
             };
           };
 
