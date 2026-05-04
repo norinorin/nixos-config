@@ -54,14 +54,14 @@
         };
       };
       firefoxProfileLauncher = name: {
-        name = "firefox-${name}.desktop";
+        name = "firefox-${name}";
         value = {
           type = "Application";
-          name = "Firefox (${name})";
-          exec = "firefox --name firefox-${name} -P ${name}";
+          name = "Firefox Beta (${name})";
+          exec = "firefox-beta --name firefox-${name} -P ${name} %U";
           terminal = false;
           categories = ["Network" "WebBrowser"];
-          icon = "firefox";
+          icon = "firefox-beta";
         };
       };
       parfaitSettings = {
@@ -95,6 +95,7 @@
     in {
       programs.firefox = {
         enable = true;
+        package = pkgs.unstable.firefox-beta;
         profiles = {
           default =
             {
