@@ -118,48 +118,6 @@
             warp-mouse-to-focus.enable = true;
           };
 
-          outputs = {
-            # external monitor in dGPU-only mode
-            "HDMI-A-1" = {
-              enable = true;
-              mode = {
-                width = 1920;
-                height = 1080;
-              };
-              position = {
-                x = 0;
-                y = 0;
-              };
-              focus-at-startup = true;
-            };
-
-            # external monitor in hybrid mode
-            "HDMI-A-5" = {
-              enable = true;
-              mode = {
-                width = 1920;
-                height = 1080;
-              };
-              position = {
-                x = 0;
-                y = 0;
-              };
-            };
-
-            "eDP-1" = {
-              enable = true;
-              mode = {
-                width = 1920;
-                height = 1080;
-                refresh = 144.001;
-              };
-              position = {
-                x = 1920;
-                y = 0;
-              };
-            };
-          };
-
           layout = let
             ringWidth = 3;
             inactiveShadowColour =
@@ -463,11 +421,6 @@
 
     homeManagerOtg = {lib, ...}: {
       programs.niri.settings = {
-        outputs = {
-          "eDP-1" = {
-            mode.refresh = lib.mkForce 60.001;
-          };
-        };
         debug = {
           render-drm-device = lib.mkForce "/dev/dri/by-path/pci-0000:00:02.0-render";
         };

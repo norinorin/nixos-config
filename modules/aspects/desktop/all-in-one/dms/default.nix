@@ -222,9 +222,7 @@
               filesToInclude = [
                 "alttab"
                 "layout"
-
-                # not used yet
-                "wpblur"
+                "outputs"
               ];
             };
           };
