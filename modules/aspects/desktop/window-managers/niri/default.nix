@@ -412,10 +412,6 @@
 
           spawn-at-startup = [
             {sh = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY && systemctl --user restart xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome";}
-            {sh = "sleep 10 && ~/.config/waybar/watchers/spotify-watcher";}
-            {sh = "sleep 10 && ~/.config/waybar/watchers/niri-column-count-watcher HDMI-A-1";}
-            {sh = "sleep 10 && ~/.config/waybar/watchers/niri-column-count-watcher HDMI-A-5";}
-            {sh = "sleep 10 && ~/.config/waybar/watchers/niri-column-count-watcher eDP-1";}
           ];
         };
       };
