@@ -1094,6 +1094,22 @@
         "type": "github"
       }
     },
+    "parfait": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777359003,
+        "narHash": "sha256-Oteaj5JLaQkQyu5K1CdowKX4TLD77fBm6vNF14zYwbk=",
+        "owner": "reizumii",
+        "repo": "parfait",
+        "rev": "0a6e2918d29d7eb83131b6b8e64e833e871e7bc3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "reizumii",
+        "repo": "parfait",
+        "type": "github"
+      }
+    },
     "pre-commit": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1158,6 +1174,7 @@
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "parfait": "parfait",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "stylix-unstable": "stylix-unstable",

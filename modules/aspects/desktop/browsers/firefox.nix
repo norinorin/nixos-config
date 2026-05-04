@@ -1,4 +1,13 @@
-{den, ...}: {
+{
+  den,
+  inputs,
+  ...
+}: {
+  flake-file.inputs.parfait = {
+    url = "github:reizumii/parfait";
+    flake = false;
+  };
+
   den.aspects.firefox = {
     includes = [den.aspects.theme];
 
@@ -55,22 +64,6 @@
           icon = "firefox";
         };
       };
-      parfait = pkgs.stdenv.mkDerivation rec {
-        pname = "parfait-firefox-theme";
-        version = "0.14";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "reizumii";
-          repo = "parfait";
-          rev = "v${version}";
-          sha256 = "sha256-vdI5VYlUa1XiVyirkN0TryiDHy9PHmB26FD6mWFs+JU=";
-        };
-
-        installPhase = ''
-          mkdir -p $out
-          cp -r parfait $out/
-        '';
-      };
       parfaitSettings = {
         "layout.css.prefers-color-scheme.content-override" = 2; # 0 dark, 1 light, 2 system
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -81,7 +74,7 @@
       # FIXME: adjust colours in private mode
       getCss = bgColour: textColour: {
         userChrome = ''
-          @import "${parfait}/parfait/parfait.css";
+          @import "${inputs.parfait}/parfait/parfait.css";
 
           :root {
             --toolbox-bgcolor: ${bgColour} !important;
@@ -90,7 +83,7 @@
           }
         '';
         userContent = ''
-          @import "${parfait}/parfait/pages.css";
+          @import "${inputs.parfait}/parfait/pages.css";
 
           :root {
             --newtab-background-color: ${bgColour} !important;
