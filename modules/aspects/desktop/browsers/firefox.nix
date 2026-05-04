@@ -85,10 +85,11 @@
         userContent = ''
           @import "${inputs.parfait}/parfait/pages.css";
 
-          :root {
-            --newtab-background-color: ${bgColour} !important;
-            /* no need to set !important here */
-            color: ${textColour};
+          @-moz-document url("about:newtab"), url("about:home"), url("about:blank") {
+            :root {
+              --newtab-background-color: ${bgColour} !important;
+              color: ${textColour} !important;
+            }
           }
         '';
       };
