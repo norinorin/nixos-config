@@ -233,6 +233,18 @@
               ];
               open-floating = true;
             }
+            {
+              # zotero pop up
+              matches = [
+                {
+                  app-id = "Microsoft Word";
+                  is-floating = true;
+                }
+              ];
+
+              min-width = 100;
+              min-height = 200;
+            }
           ];
 
           cursor = {
