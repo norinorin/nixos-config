@@ -4,9 +4,9 @@
   "wallpaperPath": "",
   "perMonitorWallpaper": true,
   "monitorWallpapers": {
-    "eDP-1": "/home/nori/Pictures/WallpapersFiltered/cartoon-castle.png",
     "HDMI-A-5": "/home/nori/Pictures/WallpapersFiltered/pixel-galaxy.png",
-    "HDMI-A-1": "/home/nori/Pictures/WallpapersFiltered/pixel-galaxy.png"
+    "HDMI-A-1": "/home/nori/Pictures/WallpapersFiltered/pixel-galaxy.png",
+    "eDP-1": "/home/nori/Pictures/WallpapersFiltered/cartoon-castle.png"
   },
   "perModeWallpaper": false,
   "wallpaperPathLight": "",
