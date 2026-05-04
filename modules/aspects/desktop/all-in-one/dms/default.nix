@@ -223,6 +223,7 @@
                 "alttab"
                 "layout"
                 "outputs"
+                "inputs"
               ];
             };
           };

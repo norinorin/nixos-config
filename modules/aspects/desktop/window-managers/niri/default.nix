@@ -80,6 +80,9 @@
         ${niri-bin} msg action unset-workspace-name _tempws
       '';
     in {
+      xdg.configFile."niri/dms/inputs.kdl".source =
+        config.lib.my.mkAspectSymlink "desktop/window-managers/niri/inputs.kdl";
+
       programs.niri = {
         config = with inputs.niri.lib.kdl;
           (settings.render config.programs.niri.settings)
@@ -113,7 +116,6 @@
               repeat-delay = 300;
             };
 
-            tablet.map-to-output = "HDMI-A-5";
             mouse.accel-profile = "flat";
             warp-mouse-to-focus.enable = true;
           };
