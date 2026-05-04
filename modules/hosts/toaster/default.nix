@@ -24,6 +24,10 @@
         services.swapspace.enable = lib.mkForce false;
         swapDevices = lib.mkForce [];
       };
+
+      environment.sessionVariables = {
+        "__GL_VidHeapReuseRatio" = 0;
+      };
     };
 
     includes = with den.aspects; [
@@ -45,7 +49,6 @@
       # desktop
       ly
       niri
-      niri._.nvidia
 
       # hardware
       gpu._.nvidiaHybrid
