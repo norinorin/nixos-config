@@ -94,6 +94,10 @@
         '';
       };
     in {
+      home.sessionVariables = {
+        MOZ_DISABLE_RDD_SANDBOX = "1";
+      };
+
       programs.firefox = {
         enable = true;
         package = pkgs.unstable.firefox-beta;
@@ -200,6 +204,11 @@
           };
 
           Preferences = {
+            # https://github.com/elFarto/nvidia-vaapi-driver#firefox
+            "media.hardware-video-decoding.force-enabled" = true;
+            "gfx.x11-egl.force-enabled" = true;
+            "widget.dmabuf.force-enabled" = true;
+
             "browser.contentblocking.category" = {
               Value = "strict";
               Status = "locked";
