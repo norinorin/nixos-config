@@ -7,11 +7,15 @@
     nixos = {pkgs, ...}: {
       imports = [./_hardware-configuration.nix];
 
-      # make HDMI-A-5 persistent
+      # make external monitor connectors persistent
       # this fixes a bug in niri where the context menu in firefox
-      # is rendered offscreen (invisible) after the connector HDMI-A-5
-      # gets reinitialised on dpms off/on (which happens regularly on idle)
-      boot.kernelParams = ["video=HDMI-A-5:e"];
+      # is rendered offscreen (invisible) after the connector HDMI-A-5 (hybrid)
+      # or HDMI-A-5 (dGPU only) gets reinitialised on dpms off/on (which happens
+      # regularly on idle)
+      boot.kernelParams = [
+        "video=HDMI-A-5:e"
+        "video=HDMI-A-1:e"
+      ];
 
       virtualisation.vmVariant = {
         imports = [(den.provides.tty-autologin "nori").nixos];
