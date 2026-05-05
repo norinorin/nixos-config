@@ -36,6 +36,7 @@
 
         config = {
           profile = "high-quality";
+          hwdec = "auto";
           ytdl-format = "bestvideo+bestaudio";
           input-ipc-server = "/tmp/mpvsocket";
           slang = "en";
