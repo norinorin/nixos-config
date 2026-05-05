@@ -49,13 +49,17 @@
         services.xserver.videoDrivers = ["nvidia"];
 
         environment.sessionVariables = {
-          LIBVA_DRIVER_NAME = "iHD";
+          LIBVA_DRIVER_NAME = lib.mkDefault "nvidia";
         };
       };
 
       nixosOtg = {lib, ...}: {
         hardware.nvidia = {
           dynamicBoost.enable = lib.mkForce false;
+        };
+
+        environment.sessionVariables = {
+          LIBVA_DRIVER_NAME = "iHD";
         };
       };
     };
