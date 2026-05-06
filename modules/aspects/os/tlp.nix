@@ -1,26 +1,9 @@
 {
-  den,
-  inputs,
-  ...
-}: {
   den.aspects.tlp = {
-    includes = [den.aspects.unstable];
-
     nixos = {pkgs, ...}: {
-      disabledModules = [
-        "services/hardware/tlp.nix"
-      ];
-
-      imports = [
-        "${inputs.nixpkgs-unstable}/nixos/modules/services/hardware/tlp.nix"
-      ];
-
       services.tlp = {
         enable = true;
-        pd = {
-          enable = true;
-          package = pkgs.unstable.tlp-pd;
-        };
+        pd.enable = true;
         settings = {
           CPU_SCALING_GOVERNOR_ON_AC = "performance";
           CPU_SCALING_GOVERNOR_ON_BAT = "powersave";

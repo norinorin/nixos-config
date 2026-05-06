@@ -1,11 +1,8 @@
 {inputs, ...}: {
   flake-file.inputs = {
     stylix = {
-      url = "github:nix-community/stylix/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix-unstable = {
       url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     tinted-schemes = {
       url = "github:tinted-theming/schemes";
@@ -46,57 +43,41 @@
     };
 
     homeManager = {config, ...}: {
-      imports = [
-        # TODO: is this ever going to get backported?
-        (
-          {
-            lib,
-            pkgs,
-            options,
-            ...
-          }: let
-            mkTarget = import "${inputs.stylix-unstable}/stylix/mk-target.nix" {
-              name = "dank-material-shell";
-              humanName = "DankMaterialShell";
-            };
-          in
-            import "${inputs.stylix-unstable}/modules/dank-material-shell/hm.nix" {
-              inherit mkTarget lib pkgs options;
-            }
-        )
-      ];
+      config = {
+        lib.my.getBgColour = polarity: let
+          c = config.lib.stylix.colors.withHashtag;
+          dark =
+            if config.stylix.polarity == "dark"
+            then c.base00
+            else c.base07;
+          light =
+            if config.stylix.polarity == "dark"
+            then c.base07
+            else c.base00;
+        in
+          if polarity == "dark"
+          then dark
+          else light;
 
-      config.lib.my.getBgColour = polarity: let
-        c = config.lib.stylix.colors.withHashtag;
-        dark =
-          if config.stylix.polarity == "dark"
-          then c.base00
-          else c.base07;
-        light =
-          if config.stylix.polarity == "dark"
-          then c.base07
-          else c.base00;
-      in
-        if polarity == "dark"
-        then dark
-        else light;
+        lib.my.getTextColour = polarity: let
+          c = config.lib.stylix.colors.withHashtag;
+          isDarkTheme = config.stylix.polarity == "dark";
 
-      config.lib.my.getTextColour = polarity: let
-        c = config.lib.stylix.colors.withHashtag;
-        isDarkTheme = config.stylix.polarity == "dark";
+          textOnDark =
+            if isDarkTheme
+            then c.base05
+            else c.base00;
+          textOnLight =
+            if isDarkTheme
+            then c.base00
+            else c.base05;
+        in
+          if polarity == "dark"
+          then textOnDark
+          else textOnLight;
 
-        textOnDark =
-          if isDarkTheme
-          then c.base05
-          else c.base00;
-        textOnLight =
-          if isDarkTheme
-          then c.base00
-          else c.base05;
-      in
-        if polarity == "dark"
-        then textOnDark
-        else textOnLight;
+        gtk.gtk4.theme = config.gtk.theme;
+      };
     };
 
     provides.cursor = {

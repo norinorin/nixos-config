@@ -5,7 +5,7 @@
         enable = true;
 
         package = (
-          pkgs.mpv-unwrapped.wrapper {
+          pkgs.mpv.override {
             scripts = with pkgs.mpvScripts; [
               uosc
               sponsorblock
@@ -26,8 +26,7 @@
                   '';
               }))
             ];
-
-            mpv = pkgs.mpv-unwrapped.override {
+            mpv-unwrapped = pkgs.mpv-unwrapped.override {
               waylandSupport = true;
               ffmpeg = pkgs.ffmpeg-full;
             };

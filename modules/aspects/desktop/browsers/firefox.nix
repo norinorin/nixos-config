@@ -100,7 +100,8 @@
 
       programs.firefox = {
         enable = true;
-        package = pkgs.unstable.firefox-beta;
+        package = pkgs.firefox-beta;
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
         profiles = {
           default =
             {

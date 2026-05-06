@@ -1,12 +1,6 @@
 {
-  inputs,
-  den,
-  ...
-}: {
   den.aspects.boot = {
     nixos = {pkgs, ...}: {
-      imports = ["${inputs.nixpkgs-unstable}/nixos/modules/system/boot/zswap.nix"];
-
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
       boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
@@ -24,7 +18,5 @@
       };
       boot.supportedFilesystems = ["ntfs"];
     };
-
-    includes = [den.aspects.unstable];
   };
 }

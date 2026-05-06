@@ -20,7 +20,7 @@
     in {
       programs.helix = {
         enable = true;
-        package = pkgs.unstable.steelix;
+        package = pkgs.steelix;
 
         settings = {
           editor = {
@@ -229,10 +229,10 @@
       # do i really have to do this?
       # i just want --tutor mane
       xdg.configFile = {
-        "helix/runtime/tutor".source = "${pkgs.unstable.steelix.src}/runtime/tutor";
-        "helix/runtime/themes".source = "${pkgs.unstable.steelix.src}/runtime/themes";
-        "helix/runtime/queries".source = "${pkgs.unstable.helix}/lib/runtime/queries";
-        "helix/runtime/grammars".source = "${pkgs.unstable.helix}/lib/runtime/grammars";
+        "helix/runtime/tutor".source = "${pkgs.steelix.src}/runtime/tutor";
+        "helix/runtime/themes".source = "${pkgs.steelix.src}/runtime/themes";
+        "helix/runtime/queries".source = "${pkgs.helix}/lib/runtime/queries";
+        "helix/runtime/grammars".source = "${pkgs.helix}/lib/runtime/grammars";
       };
 
       # helix plugins

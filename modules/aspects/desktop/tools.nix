@@ -25,8 +25,8 @@
         unrar
         mission-center
         gnome-clocks
-        helvum
-        zotero-beta
+        crosspipe
+        zotero
 
         (writeShellApplication {
           name = "sleep-timer";

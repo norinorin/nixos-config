@@ -8,7 +8,7 @@
 {inputs, ...}: {
   flake-file.inputs.winapps = {
     url = "github:winapps-org/winapps";
-    inputs.nixpkgs.follows = "nixpkgs-unstable";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
 
   den.aspects.winapps = {
