@@ -18,6 +18,7 @@
       den.aspects.warp
       den.aspects.nix-index-database
       den.aspects.kanata
+      den.aspects.dev
 
       den.aspects.anime_rpc
       den.aspects.postgresql._.nori

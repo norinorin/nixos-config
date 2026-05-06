@@ -6,7 +6,6 @@
         android-tools
         wget
         tree
-        gitingest
         lshw
         inxi
         brightnessctl
@@ -27,8 +26,6 @@
         mission-center
         gnome-clocks
         helvum
-        lazygit
-        uv
         zotero-beta
 
         (writeShellApplication {
