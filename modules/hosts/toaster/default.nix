@@ -46,7 +46,6 @@
       gc
       hibernation
       swap
-      tlp
       virt
       x11
 
@@ -65,6 +64,7 @@
       tablet
       undervolt._.nvidia
       undervolt._.intel
+      tlp
 
       # networking
       networking
