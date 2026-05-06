@@ -55,9 +55,9 @@
   "barPinnedApps": [],
   "dockLauncherPosition": 0,
   "hiddenTrayIds": [
-    "Fcitx",
     "zero-trust-client",
-    "spotify-client"
+    "spotify-client",
+    "Fcitx::Input Method"
   ],
   "trayItemOrder": [],
   "recentColors": [],
