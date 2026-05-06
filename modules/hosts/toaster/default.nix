@@ -65,6 +65,7 @@
       undervolt._.nvidia
       undervolt._.intel
       tlp
+      upower
 
       # networking
       networking
