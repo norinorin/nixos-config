@@ -11,6 +11,7 @@
             requests
           ]))
         (lib.lowPrio python311)
+        heroku
       ];
     };
   };
