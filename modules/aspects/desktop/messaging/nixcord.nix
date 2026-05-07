@@ -14,18 +14,13 @@
           vencord.enable = false;
           equicord.enable = true;
           package = nixcordPkgs.discord.overrideAttrs (old: {
-            nativeBuildInputs =
-              (old.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
+            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
 
-            # run it through steam-run because discord modules aren't patched
-            # and that breaks hw-accelerated screensharing
             postFixup =
               (old.postFixup or "")
               + ''
-                mv $out/opt/Discord/Discord $out/opt/Discord-unwrapped
-
-                makeWrapper ${pkgs.steam-run}/bin/steam-run $out/opt/Discord/Discord \
-                  --add-flags "$out/opt/Discord-unwrapped"
+                wrapProgram $out/opt/Discord/Discord \
+                  --prefix LD_LIBRARY_PATH : "/run/opengl-driver/lib"
               '';
           });
         };
