@@ -25,6 +25,7 @@
       den.aspects.serve_media
 
       den.aspects.theme._.cursor
+      den.aspects.specialisations
     ];
 
     homeManager = {
