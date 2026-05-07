@@ -42,7 +42,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixcord.url = "github:kaylorben/nixcord";
+    nixcord.url = "github:FlameFlag/nixcord/dev";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     parfait = {
       url = "github:reizumii/parfait";

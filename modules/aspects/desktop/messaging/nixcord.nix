@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake-file.inputs.nixcord.url = "github:kaylorben/nixcord";
+  flake-file.inputs.nixcord.url = "github:FlameFlag/nixcord/dev";
 
   den.aspects.nixcord = {
     homeManager = {
