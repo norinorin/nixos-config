@@ -2,14 +2,18 @@
   flake-file.inputs.nixcord.url = "github:kaylorben/nixcord";
 
   den.aspects.nixcord = {
-    homeManager = {pkgs, ...}: {
+    homeManager = {
+      pkgs,
+      nixcordPkgs,
+      ...
+    }: {
       imports = [inputs.nixcord.homeModules.nixcord];
       programs.nixcord = {
         enable = true;
         discord = {
           vencord.enable = false;
           equicord.enable = true;
-          package = inputs.nixcord.packages.${pkgs.stdenv.hostPlatform.system}.discord.overrideAttrs (old: {
+          package = nixcordPkgs.discord.overrideAttrs (old: {
             nativeBuildInputs =
               (old.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
 
