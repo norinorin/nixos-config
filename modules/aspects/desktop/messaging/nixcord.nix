@@ -29,12 +29,13 @@
               '';
           });
         };
+        equibop.enable = true;
         config = {
           frameless = true;
           plugins = {
             alwaysTrust.enable = true;
             anonymiseFileNames.enable = true;
-            # betterAudioPlayer.enable = true;
+            betterAudioPlayer.enable = true;
             disableCallIdle.enable = true;
             experiments.enable = true;
             fakeNitro = {
