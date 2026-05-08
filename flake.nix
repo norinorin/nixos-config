@@ -44,6 +44,7 @@
     };
     nixcord.url = "github:FlameFlag/nixcord/dev";
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-rolling.url = "nixpkgs/nixos-unstable-small";
     parfait = {
       url = "github:reizumii/parfait";
       flake = false;
