@@ -17,7 +17,7 @@
         fastfetch
         vulkan-tools
         playerctl
-        xarchiver
+        kdePackages.ark
         ouch
         zip
         unzip
