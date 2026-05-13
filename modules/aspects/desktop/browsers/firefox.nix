@@ -57,11 +57,11 @@
         name = "firefox-${name}";
         value = {
           type = "Application";
-          name = "Firefox Beta (${name})";
-          exec = "firefox-beta --name firefox-${name} -P ${name} %U";
+          name = "Firefox (${name})";
+          exec = "firefox --name firefox-${name} -P ${name} %U";
           terminal = false;
           categories = ["Network" "WebBrowser"];
-          icon = "firefox-beta";
+          icon = "firefox";
         };
       };
       parfaitSettings = {
@@ -100,7 +100,6 @@
 
       programs.firefox = {
         enable = true;
-        package = pkgs.firefox-beta;
         configPath = "${config.xdg.configHome}/mozilla/firefox";
         profiles = {
           default =
@@ -189,7 +188,7 @@
           ExtensionSettings = {
             "*".installation_mode = "blocked";
             "uBlock0@raymondhill.net" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+              install_url = "https://github.com/gorhill/uBlock/releases/download/1.70.1rc0/uBlock0_1.70.1rc0.firefox.signed.xpi";
               installation_mode = "force_installed";
             };
 
@@ -199,7 +198,7 @@
             };
 
             "{c84d89d9-a826-4015-957b-affebd9eb603}" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4617271/mal_sync-0.12.2.xpi";
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4710960/mal_sync-0.12.3.xpi";
               installation_mode = "force_installed";
             };
           };
