@@ -85,24 +85,24 @@
         ssh = {
           enable = true;
           enableDefaultConfig = false;
-          matchBlocks = {
+          settings = {
             "*" = {
-              identityFile = "~/.ssh/id_ed25519";
-              identitiesOnly = true;
+              IdentityFile = "~/.ssh/id_ed25519";
+              IdentitiesOnly = true;
             };
 
             "github.com" = {
-              hostname = "github.com";
-              user = "git";
-              identityFile = "~/.ssh/id_ed25519";
-              identitiesOnly = true;
+              HostName = "github.com";
+              User = "git";
+              IdentityFile = "~/.ssh/id_ed25519";
+              IdentitiesOnly = true;
             };
 
             "github-school" = {
-              hostname = "github.com";
-              user = "git";
-              identityFile = "~/.ssh/gh-school";
-              identitiesOnly = true;
+              HostName = "github.com";
+              User = "git";
+              IdentityFile = "~/.ssh/gh-school";
+              IdentitiesOnly = true;
             };
           };
         };

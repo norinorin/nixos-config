@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  den.ctx.host.includes = [
+  den.schema.host.includes = [
     ({host}: {
       class,
       aspect-chain,
