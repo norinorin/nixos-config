@@ -1,7 +1,9 @@
 {
   den.aspects.networking = {
-    nixos = {
+    nixos = {host}: {
       networking = {
+        hostName = host.name;
+
         networkmanager = {
           enable = true;
           dns = "none";
