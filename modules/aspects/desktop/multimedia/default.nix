@@ -39,8 +39,8 @@
           # from https://github.com/oskardotglobal/.dotfiles/blob/722192203254d842f5a55b4d28267876ab7cdeae/overlays/spotx.nix
           pkgs.spotify.overrideAttrs (old: let
             spotx = pkgs.fetchurl {
-              url = "https://github.com/SpotX-Official/SpotX-Bash/raw/ca98eef240cd26b90ff423a836229275d4a1594f/spotx.sh";
-              hash = "sha256-sx9TzfJdPJqIRzIpzcpfHxXsQ1uJWTeTLs6bIq78HL4=";
+              url = "https://raw.githubusercontent.com/SpotX-Official/SpotX-Bash/496309d7ca789c7e24c87f12f081d80ced115d48/spotx.sh";
+              hash = "sha256-B+1VuC5GsaYaKK/tLl/iu+z9y3E/vc9JFgO3Q5BAtwY=";
             };
           in {
             nativeBuildInputs =
