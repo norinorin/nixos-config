@@ -130,13 +130,13 @@
           "DankMaterialShell/plugins/NiriColumns".source = niriColumnsSrc;
         };
 
-        # missing tray icon workaround
-        # https://github.com/AvengeMedia/DankMaterialShell/issues/1073#issuecomment-3896573727
+        # Override icon theme to fix fcitx5 icon
         systemd.user.services.dms = {
-          Service.ExecStartPost = "${pkgs.coreutils}/bin/sleep 5";
-          Unit.Before = [
-            "xdg-desktop-autostart.target"
-          ];
+          Service = {
+            Environment = [
+              "QS_ICON_THEME=Adwaita"
+            ];
+          };
         };
 
         programs.dank-material-shell = {

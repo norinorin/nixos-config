@@ -17,6 +17,13 @@
       imports = [
         inputs.stylix.nixosModules.stylix
       ];
+      # users are supposed to set their own icons
+      # these are just fallback for apps like dms
+      environment.systemPackages = with pkgs; [
+        adwaita-icon-theme
+        kdePackages.breeze-icons
+        hicolor-icon-theme
+      ];
 
       stylix = {
         enable = true;
@@ -42,7 +49,11 @@
       };
     };
 
-    homeManager = {config, ...}: {
+    homeManager = {
+      config,
+      pkgs,
+      ...
+    }: {
       config = {
         lib.my.getBgColour = polarity: let
           c = config.lib.stylix.colors.withHashtag;
