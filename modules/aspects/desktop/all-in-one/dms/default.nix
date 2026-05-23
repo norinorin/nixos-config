@@ -115,7 +115,11 @@
     };
 
     provides.niri = {
-      homeManager = {config, ...}: let
+      homeManager = {
+        config,
+        pkgs,
+        ...
+      }: let
         niriColumnsSrc =
           config.lib.my.mkAspectSymlink
           "desktop/all-in-one/dms/plugins/NiriColumns";
@@ -126,8 +130,17 @@
           "DankMaterialShell/plugins/NiriColumns".source = niriColumnsSrc;
         };
 
+        # missing tray icon workaround
+        # https://github.com/AvengeMedia/DankMaterialShell/issues/1073#issuecomment-3896573727
+        systemd.user.services.dms = {
+          Service.ExecStartPost = "${pkgs.coreutils}/bin/sleep 5";
+          Unit.Before = [
+            "xdg-desktop-autostart.target"
+          ];
+        };
+
         programs.dank-material-shell = {
-          systemd.enable = false;
+          systemd.enable = true;
 
           plugins = {
             niriColumns = {
@@ -215,7 +228,7 @@
 
           niri = {
             enableKeybinds = false;
-            enableSpawn = true;
+            enableSpawn = false;
             includes = {
               enable = true;
               originalFileName = "hm";
