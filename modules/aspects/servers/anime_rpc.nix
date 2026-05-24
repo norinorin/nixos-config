@@ -9,17 +9,25 @@
     homeManager = {
       imports = [inputs.anime_rpc.homeModules.anime_rpc];
 
-      services.anime_rpc = {
+      programs.anime_rpc = {
         enable = true;
-        enableWebserver = true;
-        enableUI = true;
-        pollers = ["mpv-webui:14567" "mpc"];
-        fetchEpisodeTitles = true;
+        ui.enable = true;
+        settings = {
+          webserver.enable = true;
+          pollers = {
+            mpvWebui = {
+              enable = true;
+              port = 14567;
+            };
+            mpc.enable = true;
+          };
+          fetchEpisodeTitles = true;
+        };
       };
     };
 
     homeManagerOtg = {lib, ...}: {
-      services.anime_rpc.enable = lib.mkForce false;
+      systemd.user.services.anime_rpc = lib.mkForce {};
     };
   };
 }
