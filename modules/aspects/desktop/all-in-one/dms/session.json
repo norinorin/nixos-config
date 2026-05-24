@@ -71,7 +71,7 @@
   "nvidiaGpuTempEnabled": false,
   "nonNvidiaGpuTempEnabled": false,
   "enabledGpuPciIds": [],
-  "wifiDeviceOverride": "",
+  "wifiDeviceOverride": "wlp8s0",
   "weatherHourlyDetailed": true,
   "hiddenApps": [],
   "appOverrides": {},
