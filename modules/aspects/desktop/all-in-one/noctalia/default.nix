@@ -22,8 +22,15 @@
     }: {
       imports = [inputs.noctalia.homeModules.default];
 
-      xdg.stateFile."noctalia/settings.toml".source =
-        config.lib.my.mkAspectSymlink "desktop/all-in-one/noctalia/settings.toml";
+      # noctalia writes the overrides file atomically, hence breaking
+      # the symlink created by mkAspectSymlink
+      #
+      # we can just tell it to write in this dir instead
+      systemd.user.services.noctalia = {
+        Service.Environment = [
+          "NOCTALIA_STATE_HOME=${config.dotfilesDirectory}/modules/aspects/desktop/all-in-one"
+        ];
+      };
 
       programs.noctalia = {
         enable = true;
