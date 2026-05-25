@@ -18,8 +18,6 @@
       den.aspects.thunar
       den.aspects.tools
       den.aspects.wayland-tools
-      den.aspects.dms
-      den.aspects.dms._.niri
     ];
 
     nixos = {
@@ -109,8 +107,13 @@
         ${niri-bin} msg action unset-workspace-name _tempws
       '';
     in {
-      xdg.configFile."niri/dms/inputs.kdl".source =
-        config.lib.my.mkAspectSymlink "desktop/window-managers/niri/inputs.kdl";
+      xdg.configFile."niri/overrides.kdl".source =
+        config.lib.my.mkAspectSymlink "desktop/window-managers/niri/overrides.kdl";
+
+      # allow this to be overriden by the dms aspect
+      xdg.configFile."niri/config.kdl".text = lib.mkDefault ''include "overrides.kdl"'';
+
+      xdg.configFile.niri-config.target = lib.mkForce "niri/hm.kdl";
 
       programs.niri = {
         config = with inputs.niri.lib.kdl;

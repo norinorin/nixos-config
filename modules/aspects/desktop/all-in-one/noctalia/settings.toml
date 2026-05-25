@@ -1,0 +1,82 @@
+[bar.default]
+end = [ "tray", "notifications", "network", "cpu", "ram", "volume", "brightness", "battery", "session" ]
+margin_edge = 0.0
+margin_ends = 50.0
+position = "left"
+radius = 0
+radius_bottom_right = 20
+radius_top_right = 20
+
+[brightness]
+enable_ddcutil = true
+
+[idle]
+behavior_order = [ "lock", "screen-off", "suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660
+
+    [idle.behavior.suspend]
+    action = "suspend"
+    enabled = false
+    lock_before_suspend = true
+    timeout = 900
+
+[shell]
+niri_overview_type_to_launch_enabled = true
+polkit_agent = true
+settings_show_advanced = true
+
+[theme]
+custom_palette = "stylix"
+mode = "light"
+source = "custom"
+
+[wallpaper]
+directory = "/home/nori/Pictures/WallpapersFiltered"
+
+    [wallpaper.last]
+    path = "/home/nori/Pictures/WallpapersFiltered/pixel-galaxy.png"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/nori/Pictures/WallpapersFiltered/pixel-galaxy.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/nori/Pictures/WallpapersFiltered/cartoon-castle.png"
+
+[weather]
+auto_locate = true
+
+[widget.clock]
+format = "{:%H:%M}:—:{:%m:%d}"
+
+[widget.cpu]
+show_label = false
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.network]
+show_label = false
+
+[widget.ram]
+display = "gauge"
+show_label = false
+
+[widget.tray]
+capsule = true
+drawer = true
+pinned = [ "Fcitx", "qBittorrent" ]
+
+[widget.workspaces]
+display = "none"
+focused_color = "hover"
+hide_when_empty = true
+occupied_color = "on_surface"

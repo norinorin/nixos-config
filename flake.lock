@@ -874,6 +874,19 @@
     },
     "nixpkgs_6": {
       "locked": {
+        "lastModified": 1777268161,
+        "narHash": "sha256-e1tDUQMbFCxCnke314UpghgRqg3FJLtcXFfq/WTRLYI=",
+        "rev": "1c3fe55ad329cbcb28471bb30f05c9827f724c76",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre987561.1c3fe55ad329/nixexprs.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
         "lastModified": 1773821835,
         "narHash": "sha256-TJ3lSQtW0E2JrznGVm8hOQGVpXjJyXY2guAxku2O9A4=",
         "owner": "nixos",
@@ -885,6 +898,25 @@
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_6"
+      },
+      "locked": {
+        "lastModified": 1779671504,
+        "narHash": "sha256-f/AZfrdXLOaypAHOsZZh3NrjmEy4vNaQSrUMeHdoMAA=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "1023f91fc2ec3ee534a292ec3abd2dbfdd0ade29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "ref": "v5",
+        "repo": "noctalia-shell",
         "type": "github"
       }
     },
@@ -993,6 +1025,7 @@
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-rolling": "nixpkgs-rolling",
+        "noctalia": "noctalia",
         "parfait": "parfait",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
@@ -1240,7 +1273,7 @@
     "wayland-pipewire-idle-inhibit": {
       "inputs": {
         "flake-parts": "flake-parts_5",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_7",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       },

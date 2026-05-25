@@ -236,7 +236,7 @@
                 "alttab"
                 "layout"
                 "outputs"
-                "inputs"
+                "overrides"
               ];
             };
           };

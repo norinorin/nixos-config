@@ -45,6 +45,7 @@
     nixcord.url = "github:FlameFlag/nixcord/dev";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-rolling.url = "nixpkgs/nixos-unstable-small";
+    noctalia.url = "github:noctalia-dev/noctalia-shell/v5";
     parfait = {
       url = "github:reizumii/parfait";
       flake = false;
