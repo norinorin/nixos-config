@@ -1,3 +1,7 @@
+[audio]
+enable_sounds = true
+sound_volume = 1.0
+
 [bar.default]
 end = [ "tray", "notifications", "network", "cpu", "ram", "volume", "brightness", "battery", "session" ]
 margin_edge = 0.0
