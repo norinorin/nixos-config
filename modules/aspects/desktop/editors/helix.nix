@@ -32,28 +32,31 @@
         toml = pkgs.formats.toml {};
         semanticBold = [
           "tag"
+        ];
+
+        semanticNormal = [
           "variable"
-          "keyword"
           "label"
           "namespace"
         ];
 
-        boldText = {
-          fg = "base05";
-          modifiers = ["bold"];
-        };
-
-        theme =
+        theme = let
+          mkScope = value: names:
+            builtins.listToAttrs (map (name: {
+                inherit name value;
+              })
+              names);
+        in
           {
             inherits = "stylix";
           }
-          // builtins.listToAttrs (
-            map (name: {
-              inherit name;
-              value = boldText;
-            })
-            semanticBold
-          );
+          // mkScope {
+            fg = "base05";
+            modifiers = ["bold"];
+          }
+          semanticBold
+          // mkScope "base05"
+          semanticNormal;
       in
         toml.generate "stylix-min" theme;
 
