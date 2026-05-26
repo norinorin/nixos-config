@@ -1,12 +1,21 @@
-{inputs, ...}: {
+{
+  den,
+  inputs,
+  ...
+}: {
   flake-file.inputs.helix-discord-rpc = {
     url = "github:norinorin/helix-discord-rpc";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
   den.aspects.helix = {
+    includes = [
+      den.aspects.theme
+    ];
+
     homeManager = {
       pkgs,
+      config,
       lib,
       ...
     }: let
@@ -18,11 +27,41 @@
       };
       helix-discord-rpc = inputs.helix-discord-rpc.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in {
+      xdg.configFile."helix/themes/stylix-min.toml".source = let
+        toml = pkgs.formats.toml {};
+        semanticBold = [
+          "tag"
+          "variable"
+          "keyword"
+          "label"
+          "namespace"
+        ];
+
+        boldText = {
+          fg = "base05";
+          modifiers = ["bold"];
+        };
+
+        theme =
+          {
+            inherits = "stylix";
+          }
+          // builtins.listToAttrs (
+            map (name: {
+              inherit name;
+              value = boldText;
+            })
+            semanticBold
+          );
+      in
+        toml.generate "stylix-min" theme;
+
       programs.helix = {
         enable = true;
         package = pkgs.steelix;
 
         settings = {
+          theme = lib.mkForce "stylix-min";
           editor = {
             cursor-shape = {
               normal = "block";
