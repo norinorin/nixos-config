@@ -266,14 +266,8 @@
         };
       };
 
-      # do i really have to do this?
-      # i just want --tutor mane
-      xdg.configFile = {
-        "helix/runtime/tutor".source = "${pkgs.steelix.src}/runtime/tutor";
-        "helix/runtime/themes".source = "${pkgs.steelix.src}/runtime/themes";
-        "helix/runtime/queries".source = "${pkgs.helix}/lib/runtime/queries";
-        "helix/runtime/grammars".source = "${pkgs.helix}/lib/runtime/grammars";
-      };
+      # for --tutor
+      xdg.configFile."helix/runtime/tutor".source = "${pkgs.steelix.src}/runtime/tutor";
 
       # helix plugins
       xdg.configFile."helix/plugins/smooth-scroll.hx".source = inputs.smooth-scroll;
