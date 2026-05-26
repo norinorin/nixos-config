@@ -50,6 +50,10 @@
       url = "github:reizumii/parfait";
       flake = false;
     };
+    smooth-scroll = {
+      url = "github:thomasschafer/smooth-scroll.hx";
+      flake = false;
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

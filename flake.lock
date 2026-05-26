@@ -1027,6 +1027,7 @@
         "nixpkgs-rolling": "nixpkgs-rolling",
         "noctalia": "noctalia",
         "parfait": "parfait",
+        "smooth-scroll": "smooth-scroll",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "tinted-schemes": "tinted-schemes_2",
@@ -1053,6 +1054,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "smooth-scroll": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763025298,
+        "narHash": "sha256-4lxGZrT4cEcg3jqae3uJGGGCSy4WeVZeJ0hIApMb7jY=",
+        "owner": "thomasschafer",
+        "repo": "smooth-scroll.hx",
+        "rev": "1ed8b088e465fb139389c36ad158ba4a2d9e1bbc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thomasschafer",
+        "repo": "smooth-scroll.hx",
         "type": "github"
       }
     },

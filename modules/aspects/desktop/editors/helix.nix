@@ -3,9 +3,16 @@
   inputs,
   ...
 }: {
-  flake-file.inputs.helix-discord-rpc = {
-    url = "github:norinorin/helix-discord-rpc";
-    inputs.nixpkgs.follows = "nixpkgs";
+  flake-file.inputs = {
+    smooth-scroll = {
+      url = "github:thomasschafer/smooth-scroll.hx";
+      flake = false;
+    };
+
+    helix-discord-rpc = {
+      url = "github:norinorin/helix-discord-rpc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   den.aspects.helix = {
@@ -19,12 +26,6 @@
       lib,
       ...
     }: let
-      smooth-scroll = pkgs.fetchFromGitHub {
-        owner = "thomasschafer";
-        repo = "smooth-scroll.hx";
-        rev = "1ed8b088e465fb139389c36ad158ba4a2d9e1bbc";
-        hash = "sha256-4lxGZrT4cEcg3jqae3uJGGGCSy4WeVZeJ0hIApMb7jY=";
-      };
       helix-discord-rpc = inputs.helix-discord-rpc.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in {
       xdg.configFile."helix/themes/stylix-min.toml".source = let
@@ -275,7 +276,7 @@
       };
 
       # helix plugins
-      xdg.configFile."helix/plugins/smooth-scroll.hx".source = smooth-scroll;
+      xdg.configFile."helix/plugins/smooth-scroll.hx".source = inputs.smooth-scroll;
       xdg.configFile."helix/plugins/helix-discord-rpc".source = "${helix-discord-rpc}/share/helix-discord-rpc";
       xdg.configFile."helix/init.scm".text = ''
         (require "plugins/smooth-scroll.hx/smooth-scroll.scm")
