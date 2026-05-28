@@ -4,7 +4,10 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    anime_rpc.url = "github:norinorin/anime_rpc";
+    anime_rpc = {
+      url = "github:norinorin/anime_rpc";
+      inputs.nixpkgs.follows = "nixpkgs-rolling";
+    };
     den.url = "github:vic/den";
     dgop = {
       url = "github:AvengeMedia/dgop";
@@ -25,7 +28,7 @@
     };
     helix-discord-rpc = {
       url = "github:norinorin/helix-discord-rpc";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-rolling";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -37,7 +40,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs-rolling";
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -27,7 +27,7 @@
     }: {
       imports = [inputs.niri.nixosModules.niri];
       nixpkgs.overlays = [
-        inputs.niri.overlays.niri
+        # inputs.niri.overlays.niri
         (final: prev: {
           xdg-desktop-portal = prev.xdg-desktop-portal.overrideAttrs (old: {
             src = inputs.xdg-desktop-portal;
@@ -48,7 +48,7 @@
       ];
       programs.niri = {
         enable = true;
-        package = pkgs.niri-unstable;
+        package = pkgs.rolling.niri;
       };
       xdg.portal = {
         extraPortals = [pkgs.xdg-desktop-portal-gtk];
@@ -439,7 +439,7 @@
 
           xwayland-satellite = {
             enable = true;
-            path = lib.getExe pkgs.xwayland-satellite-unstable;
+            path = lib.getExe pkgs.rolling.xwayland-satellite;
           };
 
           spawn-at-startup = [

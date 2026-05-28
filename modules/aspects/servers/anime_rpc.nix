@@ -1,5 +1,8 @@
 {inputs, ...}: {
-  flake-file.inputs.anime_rpc.url = "github:norinorin/anime_rpc";
+  flake-file.inputs.anime_rpc = {
+    url = "github:norinorin/anime_rpc";
+    inputs.nixpkgs.follows = "nixpkgs-rolling";
+    };
 
   den.aspects.anime_rpc = {
     nixos = {

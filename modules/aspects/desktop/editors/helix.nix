@@ -11,7 +11,7 @@
 
     helix-discord-rpc = {
       url = "github:norinorin/helix-discord-rpc";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-rolling";
     };
   };
 
