@@ -12,6 +12,7 @@
         pavucontrol
         bat
         jq
+        yazi
         feh
         btop
         fastfetch
