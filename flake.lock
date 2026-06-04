@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779949567,
-        "narHash": "sha256-pJYhXGp9G21k5n1IpCu70QhoFcn9Crt3oKKuUJmeB6s=",
+        "lastModified": 1779998281,
+        "narHash": "sha256-gKfFOBEaQSgk1Z7cx71Am3WPN6TWQ9Ru1J/tE0inqL4=",
         "owner": "norinorin",
         "repo": "anime_rpc",
-        "rev": "20ec6e0d43b5a9307641b20062312f2c61037ccb",
+        "rev": "b03194ef36c634ddcffc331905b3dbe4b3195687",
         "type": "github"
       },
       "original": {
