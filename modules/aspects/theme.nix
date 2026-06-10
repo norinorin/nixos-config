@@ -86,8 +86,6 @@
           if polarity == "dark"
           then textOnDark
           else textOnLight;
-
-        gtk.gtk4.theme = config.gtk.theme;
       };
     };
 
