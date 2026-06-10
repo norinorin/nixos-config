@@ -111,7 +111,7 @@
             hotkey-overlay.title = "Toggle Settings";
           };
           "Super+Alt+L" = {
-            action = nm "screen-lock";
+            action = nm "session lock";
             hotkey-overlay.title = "Toggle Lock Screen";
           };
           "Alt+F4" = {
