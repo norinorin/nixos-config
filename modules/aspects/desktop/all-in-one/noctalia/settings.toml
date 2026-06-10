@@ -33,10 +33,20 @@ behavior_order = [ "lock", "screen-off", "suspend" ]
     lock_before_suspend = true
     timeout = 900
 
+[location]
+auto_locate = true
+
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+widget_order = [
+    "lockscreen-login-box@HDMI-A-1",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000004",
+    "lockscreen-widget-0000000000000005"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -46,8 +56,8 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
     box_height = 0.0
     box_width = 0.0
-    cx = 960.0
-    cy = 957.0
+    cx = 515.0
+    cy = 901.0
     output = "HDMI-A-1"
     rotation = 0.0
     type = "login_box"
@@ -60,6 +70,60 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
     output = "eDP-1"
     rotation = 0.0
     type = "login_box"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 209.0
+    box_width = 706.0
+    cx = 427.0
+    cy = 781.5
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        clock_style = "digital"
+        color = "on_tertiary"
+        format = "{:%H:%M:%S}"
+        shadow = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 112.0
+    box_width = 196.0
+    cx = 183.0
+    cy = 899.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "weather"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        color = "surface"
+        shadow = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    box_height = 205.0
+    box_width = 276.0
+    cx = 1752.0
+    cy = 133.5
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "sysmon"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
+    box_height = 206.5
+    box_width = 274.0
+    cx = 1752.0
+    cy = 369.75
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "sysmon"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000005.settings]
+        stat = "cpu_temp"
+
+[osd]
+position = "top_right"
 
 [shell]
 niri_overview_type_to_launch_enabled = true
