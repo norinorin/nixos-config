@@ -3,7 +3,7 @@
   den,
   ...
 }: {
-  flake-file.inputs.noctalia.url = "github:noctalia-dev/noctalia-shell/v5";
+  flake-file.inputs.noctalia.url = "github:noctalia-dev/noctalia";
 
   den.aspects.noctalia = {
     includes = [

@@ -33,6 +33,34 @@ behavior_order = [ "lock", "screen-off", "suspend" ]
     lock_before_suspend = true
     timeout = 900
 
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 957.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 957.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
 [shell]
 niri_overview_type_to_launch_enabled = true
 polkit_agent = true
