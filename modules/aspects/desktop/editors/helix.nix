@@ -269,9 +269,6 @@
         };
       };
 
-      # for --tutor
-      xdg.configFile."helix/runtime/tutor".source = "${pkgs.steelix.src}/runtime/tutor";
-
       # helix plugins
       xdg.configFile."helix/plugins/smooth-scroll.hx".source = inputs.smooth-scroll;
       xdg.configFile."helix/plugins/helix-discord-rpc".source = "${helix-discord-rpc}/share/helix-discord-rpc";
