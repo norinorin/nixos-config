@@ -70,27 +70,27 @@
         "svg.context-properties.content.enabled" = true;
         "parfait.urlbar.url.center" = true;
         "parfait.urlbar.search-mode.glow" = true;
+        "parfait.bg.accent-color" = true;
       };
-      # FIXME: adjust colours in private mode
       getCss = bgColour: textColour: {
         userChrome = ''
           @import "${inputs.parfait}/parfait/parfait.css";
 
           :root {
-            --toolbox-bgcolor: ${bgColour} !important;
-            --toolbox-bgcolor-inactive: var(--toolbox-bgcolor) !important;
-            --pf-textcolor: ${textColour} !important;
+            --pf-browser-bgcolor: ${bgColour} !important;
+            --pf-browser-opacity: ${toString (builtins.floor (config.stylix.opacity.desktop * 100))}% !important;
+            --pf-text-color: ${textColour} !important;
+            --pf-icon-color: ${textColour} !important;
+          }
+
+          :root[privatebrowsingmode="temporary"] {
+            --pf-browser-bgcolor: ${textColour} !important;
+            --pf-text-color: ${bgColour} !important;
+            --pf-icon-color: ${bgColour} !important;
           }
         '';
         userContent = ''
           @import "${inputs.parfait}/parfait/pages.css";
-
-          @-moz-document url("about:newtab"), url("about:home"), url("about:blank") {
-            :root {
-              --newtab-background-color: ${bgColour} !important;
-              color: ${textColour} !important;
-            }
-          }
         '';
       };
     in {
