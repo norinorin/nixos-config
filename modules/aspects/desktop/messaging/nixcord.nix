@@ -9,6 +9,10 @@
         discord = {
           vencord.enable = false;
           equicord.enable = true;
+          commandLineArgs = [
+            "--ozone-platform-hint=auto"
+            "--enable-wayland-ime"
+          ];
         };
         equibop.enable = true;
         config = {
