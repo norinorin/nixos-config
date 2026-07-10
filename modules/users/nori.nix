@@ -26,7 +26,6 @@
       den.aspects.postgresql._.nori
       den.aspects.serve_media
 
-      den.aspects.theme._.cursor
       den.aspects.specialisations
     ];
 
@@ -145,6 +144,14 @@
           };
           flags = ["--disable-up-arrow"];
         };
+      };
+
+      home.pointerCursor = {
+        enable = true;
+        gtk.enable = true;
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Ice";
+        size = 16;
       };
 
       gtk = {
