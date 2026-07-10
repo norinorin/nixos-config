@@ -38,7 +38,7 @@
               nvidiaBusId = "PCI:1@0:0:0";
             };
             dynamicBoost.enable = true;
-            package = config.boot.kernelPackages.nvidiaPackages.beta;
+            package = config.boot.kernelPackages.nvidiaPackages.latest;
           };
           graphics = {
             enable = true;
