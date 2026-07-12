@@ -153,6 +153,10 @@
             qmlls = {
               command = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
             };
+            air = {
+              command = lib.getExe pkgs.air;
+              args = ["language-server"];
+            };
           };
 
           language = [
@@ -264,6 +268,11 @@
               auto-format = true;
               language-servers = ["tombi"];
               soft-wrap.enable = true;
+            }
+            {
+              name = "r";
+              language-servers = ["air" "r"];
+              auto-format = true;
             }
           ];
         };
