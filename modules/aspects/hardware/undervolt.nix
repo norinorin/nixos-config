@@ -94,8 +94,14 @@
 
           # setting to values lower than these
           # decrease perf while not reducing wattage
-          p1.limit = 5;
-          p2.limit = 7;
+          p1 = {
+            limit = 5;
+            window = 56;
+          };
+          p2 = {
+            limit = 7;
+            window = 28;
+          };
         };
       };
     };
