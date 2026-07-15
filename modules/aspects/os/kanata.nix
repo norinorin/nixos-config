@@ -268,7 +268,7 @@
               (defsrc
                 ;; "virtual" keys. these are the keys that register when fn key is held
                 ;; used for the fn+ralt shortcuts (multimedia layer)
-                left right prnt f10 f11 f12 pgup pgdn
+                left down up right prnt f10 f11 f12 pgup pgdn
 
                 ;; actual 60% keyboard
                 grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
@@ -295,7 +295,7 @@
               )
 
               (deflayer base
-                _    _    _    _    _    _    _    _
+                _    _    _    _    _    _    _    _    _    _
 
                 ;; actual kb
                 grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
@@ -306,7 +306,7 @@
               )
 
               (deflayer numarrow
-                _    _    _    _     _    _    _    _
+                _    (mwheel-down 20 60)  (mwheel-up 20 60)  _    _    _    _    _    _    _
 
                 ;; actual kb
                 prnt _    _    _     _    _    _    kp7  kp8  kp9  _    _    _    _
@@ -317,7 +317,7 @@
               )
 
               (deflayer multimedia
-                M-S-left M-S-right pp mute vold volu  prev next
+                M-S-left _ _ M-S-right pp mute vold volu  prev next
 
                 ;; actual kb
                 _        _         _  _    _    _     _    _    _  _  _    _    _    _
