@@ -1,3 +1,5 @@
+config_version = 12
+
 [audio]
 enable_sounds = true
 sound_volume = 1.0
@@ -54,28 +56,50 @@ widget_order = [
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 515.0
-    cy = 901.0
+    box_height = 196.0
+    box_width = 810.0
+    cx = 501.0
+    cy = 890.0
     output = "HDMI-A-1"
     rotation = 0.0
     type = "login_box"
 
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        center_password_text = false
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 0.0
-    box_width = 0.0
+    box_height = 196.0
+    box_width = 810.0
     cx = 960.0
     cy = 957.0
     output = "eDP-1"
     rotation = 0.0
     type = "login_box"
 
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        center_password_text = false
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 209.0
     box_width = 706.0
-    cx = 427.0
-    cy = 781.5
+    cx = 432.0
+    cy = 652.0
     output = "HDMI-A-1"
     rotation = 0.0
     type = "clock"
@@ -90,8 +114,8 @@ widget_order = [
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
     box_height = 112.0
     box_width = 196.0
-    cx = 183.0
-    cy = 899.0
+    cx = 894.0
+    cy = 676.0
     output = "HDMI-A-1"
     rotation = 0.0
     type = "weather"
@@ -172,7 +196,7 @@ drawer = true
 pinned = [ "Fcitx", "qBittorrent" ]
 
 [widget.workspaces]
-display = "none"
 focused_color = "hover"
 hide_when_empty = true
 occupied_color = "on_surface"
+show_labels = false
