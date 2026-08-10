@@ -179,6 +179,7 @@ format = "{:%H:%M}:—:{:%m:%d}"
 
 [widget.cpu]
 show_label = false
+show_value = false
 
 [widget.media]
 hide_when_no_media = true
@@ -189,6 +190,7 @@ show_label = false
 [widget.ram]
 display = "gauge"
 show_label = false
+show_value = false
 
 [widget.tray]
 capsule = true
