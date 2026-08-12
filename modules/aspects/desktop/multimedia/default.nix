@@ -12,6 +12,20 @@
       inputs,
       ...
     }: {
+      home.activation.limitSpotifyCache = ''
+        PREFS_HOME="$HOME/.config/spotify/prefs"
+        TARGET_SIZE="storage.size=1024"
+
+        mkdir -p "$(dirname "$PREFS_HOME")"
+        touch "$PREFS_HOME"
+
+        if grep -q '^storage.size=' "$PREFS_HOME"; then
+          sed -i "s/^storage.size=.*/$TARGET_SIZE/" "$PREFS_HOME"
+        else
+          echo "$TARGET_SIZE" >> "$PREFS_HOME"
+        fi
+      '';
+
       home.packages = with pkgs; [
         qbittorrent
         audacity
