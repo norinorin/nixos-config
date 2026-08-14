@@ -35,6 +35,7 @@
         calibre
         libreoffice
         pinta
+        kdePackages.kdenlive
 
         (obsidian.overrideAttrs (old: {
           nativeBuildInputs = (old.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
