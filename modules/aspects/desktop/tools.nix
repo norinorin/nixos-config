@@ -29,6 +29,7 @@
         crosspipe
         zotero
         pdf2svg
+        qdirstat
 
         (writeShellApplication {
           name = "sleep-timer";
