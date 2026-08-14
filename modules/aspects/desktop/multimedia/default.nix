@@ -36,6 +36,7 @@
         libreoffice
         pinta
         kdePackages.kdenlive
+        gimp
 
         (obsidian.overrideAttrs (old: {
           nativeBuildInputs = (old.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
