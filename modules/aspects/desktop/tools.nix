@@ -28,6 +28,7 @@
         gnome-clocks
         crosspipe
         zotero
+        pdf2svg
 
         (writeShellApplication {
           name = "sleep-timer";
