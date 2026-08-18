@@ -328,6 +328,24 @@
               )
             '';
           };
+
+          internalKeyboard = {
+            devices = [
+              "/dev/input/by-path/pci-0000:00:14.0-usb-0:8:1.0-event-kbd"
+            ];
+            extraDefCfg = ''
+              process-unmapped-keys yes
+            '';
+            config = ''
+              (defsrc
+                f23
+              )
+
+              (deflayer base
+                menu
+              )
+            '';
+          };
         };
       };
 
@@ -342,11 +360,6 @@
           RestartSec = "5";
         };
       };
-    };
-
-    nixosOtg = {lib, ...}: {
-      services.kanata.enable = lib.mkForce false;
-      systemd.user.services.kanata-osd.enable = lib.mkForce false;
     };
   };
 }
