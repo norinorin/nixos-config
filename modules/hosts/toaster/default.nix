@@ -63,7 +63,6 @@
       sensors._.legion
       tablet
       undervolt._.nvidia
-      undervolt._.intel
       tlp
       upower
 
