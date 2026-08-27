@@ -41,7 +41,7 @@
       services = {
         pipewire.lowLatency = {
           enable = true;
-          quantum = 128;
+          quantum = 512;
         };
       };
 
