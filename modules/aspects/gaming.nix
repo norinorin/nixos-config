@@ -38,13 +38,6 @@
         };
       };
 
-      services = {
-        pipewire.lowLatency = {
-          enable = true;
-          quantum = 512;
-        };
-      };
-
       environment.systemPackages = with pkgs; [
         (prismlauncher.override {
           additionalLibs = [libvlc];
