@@ -188,7 +188,7 @@
           ExtensionSettings = {
             "*".installation_mode = "blocked";
             "uBlock0@raymondhill.net" = {
-              install_url = "https://github.com/gorhill/uBlock/releases/download/1.70.1rc0/uBlock0_1.70.1rc0.firefox.signed.xpi";
+              install_url = "https://github.com/gorhill/uBlock/releases/download/1.74.0/uBlock0_1.74.0.firefox.signed.xpi";
               installation_mode = "force_installed";
             };
 
@@ -198,7 +198,7 @@
             };
 
             "{c84d89d9-a826-4015-957b-affebd9eb603}" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4710960/mal_sync-0.12.3.xpi";
+              install_url = "https://github.com/MALSync/MALSync/releases/download/0.12.4/d1b1d1e132f647ee8603-0.12.4.xpi";
               installation_mode = "force_installed";
             };
           };
