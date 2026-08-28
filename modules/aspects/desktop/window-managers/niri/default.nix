@@ -197,7 +197,7 @@
               matches = [
                 {
                   app-id = "firefox$";
-                  title = "^Picture-inPicture$";
+                  title = "^Picture-in-Picture$";
                 }
               ];
               open-floating = true;
