@@ -1,4 +1,4 @@
-config_version = 12
+config_version = 13
 
 [audio]
 enable_sounds = true
@@ -61,6 +61,8 @@ widget_order = [
     cx = 501.0
     cy = 890.0
     output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
@@ -81,6 +83,8 @@ widget_order = [
     cx = 960.0
     cy = 957.0
     output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
@@ -101,6 +105,8 @@ widget_order = [
     cx = 432.0
     cy = 652.0
     output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "clock"
 
@@ -117,6 +123,8 @@ widget_order = [
     cx = 894.0
     cy = 676.0
     output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "weather"
 
@@ -131,6 +139,8 @@ widget_order = [
     cx = 1752.0
     cy = 133.5
     output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "sysmon"
 
@@ -140,6 +150,8 @@ widget_order = [
     cx = 1752.0
     cy = 369.75
     output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "sysmon"
 
