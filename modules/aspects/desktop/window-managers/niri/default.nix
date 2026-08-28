@@ -407,6 +407,7 @@
             };
 
             "Mod+O" = {action = toggle-overview;};
+            "Mod+Shift+P".action = power-off-monitors;
           };
 
           debug = {
