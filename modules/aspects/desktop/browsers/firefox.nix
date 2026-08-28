@@ -201,6 +201,11 @@
               install_url = "https://github.com/MALSync/MALSync/releases/download/0.12.4/d1b1d1e132f647ee8603-0.12.4.xpi";
               installation_mode = "force_installed";
             };
+
+            "{76ef94a4-e3d0-4c6f-961a-d38a429a332b}" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4797584/ttv_lol_pro-2.6.2.xpi";
+              installation_mode = "force_installed";
+            };
           };
 
           Preferences = {
