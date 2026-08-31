@@ -29,6 +29,8 @@
         enable = true;
         package = getScrollPkg pkgs;
         extraSessionCommands = ''
+          export WLR_RENDERER=vulkan
+
           # tell QT, GDK and others to use the Wayland backend by default, X11 if not available
           export QT_QPA_PLATFORM="wayland;xcb"
           export GDK_BACKEND="wayland,x11"
