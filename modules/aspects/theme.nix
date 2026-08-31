@@ -27,7 +27,7 @@
 
       stylix = {
         enable = true;
-        base16Scheme = "${inputs.tinted-schemes}/base16/brushtrees.yaml";
+        base16Scheme = "${inputs.tinted-schemes}/base16/atelier-cave.yaml";
         autoEnable = true;
         opacity = {
           applications = 1.;
@@ -39,7 +39,7 @@
           name = "Azeret Mono";
           package = pkgs.azeret-mono;
         };
-        polarity = "light";
+        polarity = "dark";
 
         # Desirable for single user
         homeManagerIntegration = {
