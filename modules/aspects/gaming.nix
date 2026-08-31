@@ -6,8 +6,6 @@
 
   den.aspects.gaming = {
     nixos = {pkgs, ...}: {
-      imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
-
       nix.settings = {
         substituters = ["https://nix-gaming.cachix.org"];
         trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
@@ -45,12 +43,6 @@
           jdks = [graalvmPackages.graalvm-ce graalvmPackages.graalvm-oracle_17 javaPackages.compiler.temurin-bin.jre-21];
         })
       ];
-    };
-
-    nixosOtg = {lib, ...}: {
-      services.pipewire = {
-        lowLatency.enable = lib.mkForce false;
-      };
     };
 
     homeManager = {pkgs, ...}: let
