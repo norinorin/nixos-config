@@ -67,6 +67,7 @@
         wlr = {
           enable = true;
           settings.screencast = {
+            max_fps = 60;
             chooser_type = "dmenu";
             chooser_cmd = "${lib.getExe pkgs.bemenu} -i";
           };
