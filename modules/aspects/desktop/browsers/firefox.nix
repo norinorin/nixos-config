@@ -16,14 +16,6 @@
       config,
       ...
     }: let
-      lock-false = {
-        Value = false;
-        Status = "locked";
-      };
-      lock-true = {
-        Value = true;
-        Status = "locked";
-      };
       sharedSearchEngines = {
         nix-packages = {
           name = "Nix Packages";
@@ -100,44 +92,31 @@
         "widget.dmabuf.force-enabled" = true;
       };
       generalSettings = {
-        "browser.contentblocking.category" = {
-          Value = "strict";
-          Status = "locked";
-        };
-        "extensions.pocket.enabled" = lock-false;
-        "extensions.screenshots.disabled" = lock-true;
-        "browser.topsites.contile.enabled" = lock-false;
-        "browser.formfill.enable" = lock-false;
-        "browser.search.suggest.enabled" = lock-false;
-        "browser.search.suggest.enabled.private" = lock-false;
-        "browser.urlbar.suggest.searches" = lock-false;
-        "browser.urlbar.showSearchSuggestionsFirst" = lock-false;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
-        "browser.newtabpage.activity-stream.feeds.snippets" = lock-false;
-        "browser.newtabpage.activity-stream.section.highlights.includePocket" = lock-false;
-        "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = lock-false;
-        "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = lock-false;
-        "browser.newtabpage.activity-stream.section.highlights.includeVisited" = lock-false;
-        "browser.newtabpage.activity-stream.showSponsored" = lock-false;
-        "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
-        "browser.tabs.insertAfterCurrent" = lock-true;
-        "browser.tabs.unloadOnLowMemory".Value = true;
-        "network.trr.mode" = {
-          Value = 3;
-          Status = "default";
-          Type = "Number";
-        };
-        "network.trr.url" = {
-          Value = "https://mozilla.cloudflare-dns.com/dns-query";
-          Status = "default";
-        };
-        "layout.css.devPixelsPerPx" = {
-          Value = "0.75";
-          Status = "locked";
-        };
-        "sidebar.revamp" = lock-true;
-        "sidebar.verticalTabs" = lock-true;
+        "browser.contentblocking.category" = "strict";
+        "extensions.pocket.enabled" = false;
+        "extensions.screenshots.disabled" = true;
+        "browser.topsites.contile.enabled" = false;
+        "browser.formfill.enable" = false;
+        "browser.search.suggest.enabled" = false;
+        "browser.search.suggest.enabled.private" = false;
+        "browser.urlbar.suggest.searches" = false;
+        "browser.urlbar.showSearchSuggestionsFirst" = false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.feeds.snippets" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includeVisited" = false;
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.system.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.tabs.insertAfterCurrent" = true;
+        "browser.tabs.unloadOnLowMemory" = true;
+        "network.trr.mode" = 3;
+        "network.trr.url" = "https://mozilla.cloudflare-dns.com/dns-query";
+        "layout.css.devPixelsPerPx" = 0.75;
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
       };
     in {
       home.sessionVariables = {
