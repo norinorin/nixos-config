@@ -70,6 +70,7 @@
 
           :root {
             --pf-browser-bgcolor: ${bgColour} !important;
+            --pf-urlbar-bgcolor: ${bgColour} !important;
             --pf-browser-opacity: ${toString (builtins.floor (config.stylix.opacity.desktop * 100))}% !important;
             --pf-text-color: ${textColour} !important;
             --pf-icon-color: ${textColour} !important;
@@ -77,6 +78,7 @@
 
           :root[privatebrowsingmode="temporary"] {
             --pf-browser-bgcolor: ${textColour} !important;
+            --pf-urlbar-bgcolor: ${textColour} !important;
             --pf-text-color: ${bgColour} !important;
             --pf-icon-color: ${bgColour} !important;
           }
