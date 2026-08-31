@@ -357,58 +357,96 @@
             };
           };
 
-          # yanked from https://codeberg.org/OliMoli/nix-dots/src/commit/a5faa73e8d4c4a9a107a9111f4d7f2ab66abe76d/modules/aspects/user/wms/scroll.nix#L187-L242
           animations = rec {
             enable = true;
             style = "scale";
 
             default = {
               enable = true;
-              duration = 320;
+              duration = 220;
               var = {
                 order = "simple";
-                controlPoints = [
-                  0.215
-                  0.61
-                  0.355
-                  1
-                ];
+                controlPoints = [0.8 0 0.25 1];
               };
             };
-            workspaceSwitch = default;
-            windowMove = default;
-            windowMoveFloat = default;
-            jump = default;
-            overview = default;
 
-            windowOpen = {
+            workspaceSwitch = {
+              enable = true;
+              duration = 280;
+              var = {
+                order = "simple";
+                controlPoints = [0.78 0 0.2 1];
+              };
+            };
+
+            windowMove = {
+              enable = true;
+              duration = 200;
+              var = {
+                order = "simple";
+                controlPoints = [0.22 1 0.36 1];
+              };
+            };
+
+            windowMoveFloat = windowMove;
+
+            jump = {
+              enable = true;
+              duration = 250;
+              var = {
+                order = "simple";
+                controlPoints = [0.34 1.56 0.64 1];
+              };
+            };
+
+            overview = {
               enable = true;
               duration = 350;
               var = {
-                order = 3;
+                order = "simple";
+                controlPoints = [0.78 0 0.2 1];
+              };
+            };
+
+            windowOpen = {
+              enable = true;
+              duration = 220;
+              inherit (default) var;
+            };
+
+            windowSize = {
+              enable = true;
+              duration = 250;
+              var = {
+                order = 4;
                 controlPoints = [
-                  (-1.5)
-                  1
-                  0.1
-                  1
+                  0.75
+                  0
+                  0.9
+                  1.02
+                  0.5
+                  0.8
                 ];
               };
             };
-            fadeIn = windowOpen;
-            windowSize = windowOpen;
-            windowFullscreen = windowOpen;
+
+            windowFullscreen = windowSize;
+
+            fadeIn = {
+              enable = true;
+              duration = 380;
+              var = {
+                order = "simple";
+                controlPoints = [0.4 0 0.2 1];
+              };
+            };
 
             layerShell = {
               enable = true;
-              duration = 300;
+              duration = 280;
               var = {
                 order = "simple";
-                controlPoints = [
-                  0.23
-                  0.95
-                  0.2
-                  0.97
-                ];
+                controlPoints = [0.16 1 0.3 1];
               };
             };
           };
