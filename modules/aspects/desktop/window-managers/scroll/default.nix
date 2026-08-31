@@ -18,7 +18,11 @@
       den.aspects.wayland-tools
     ];
 
-    nixos = {pkgs, ...}: {
+    nixos = {
+      pkgs,
+      lib,
+      ...
+    }: {
       imports = [inputs.scroll.nixosModules.default];
 
       programs.scroll = {
@@ -61,8 +65,8 @@
         wlr = {
           enable = true;
           settings.screencast = {
-            chooser_type = "simple";
-            chooser_cmd = "${pkgs.slurp}/bin/slurp -f 'Monitor: %o' -or";
+            chooser_type = "dmenu";
+            chooser_cmd = "${lib.getExe pkgs.bemenu} -i";
           };
         };
       };
