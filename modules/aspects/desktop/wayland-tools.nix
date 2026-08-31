@@ -19,6 +19,7 @@
         cage
         grim
         gamescope
+        slurp
       ];
     };
   };

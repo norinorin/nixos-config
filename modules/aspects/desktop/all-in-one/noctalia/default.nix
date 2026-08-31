@@ -150,5 +150,49 @@
         };
       };
     };
+
+    provides.scroll = {
+      includes = [
+        den.aspects.wlogout
+      ];
+
+      homeManager = {
+        config,
+        lib,
+        ...
+      }: let
+        mod = config.wayland.windowManager.scroll.config.modifier;
+        nm = cmd: "exec noctalia msg ${cmd}";
+        prefix = opts: keybindings:
+          lib.mapAttrs' (name: value: {
+            name = "${opts} ${name}";
+            inherit value;
+          })
+          keybindings;
+      in {
+        wayland.windowManager.scroll.config.keybindings =
+          {
+            "${mod}+d" = nm "panel-toggle launcher";
+            "${mod}+n" = nm "panel-toggle control-center";
+            "${mod}+s" = nm "settings-toggle";
+            "${mod}+Escape" = nm "session lock";
+            "Alt+F4" = "exec wlogout";
+            "${mod}+Alt+n" = nm "nightlight-toggle";
+
+            Print = nm "screenshot-region";
+            "Shift+Print" = nm "screenshot-fullscreen";
+            "Ctrl+Print" = nm "screenshot-fullscreen pick";
+            "Ctrl+Shift+Print" = nm "screenshot-fullscreen all";
+          }
+          // prefix "--locked" {
+            XF86AudioRaiseVolume = nm "volume-up 3";
+            XF86AudioLowerVolume = nm "volume-down 3";
+            XF86AudioMute = nm "volume-mute";
+            XF86AudioMicMute = nm "mic-mute";
+            XF86MonBrightnessUp = nm "brightness-up eDP-1 5";
+            XF86MonBrightnessDown = nm "brightness-down eDP-1 5";
+          };
+      };
+    };
   };
 }

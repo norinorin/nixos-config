@@ -56,6 +56,7 @@
       url = "github:reizumii/parfait";
       flake = false;
     };
+    scroll.url = "github:Diax170/scroll-flake";
     smooth-scroll = {
       url = "github:thomasschafer/smooth-scroll.hx";
       flake = false;

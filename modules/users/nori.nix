@@ -8,8 +8,10 @@
       den.aspects.sops._.nori
 
       den.aspects.niri
+      den.aspects.scroll
       den.aspects.noctalia
       den.aspects.noctalia._.niri
+      den.aspects.noctalia._.scroll
       den.aspects.multimedia
       den.aspects.gaming
       den.aspects.helix

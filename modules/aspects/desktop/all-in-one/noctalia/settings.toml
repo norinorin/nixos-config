@@ -5,6 +5,7 @@ enable_sounds = true
 sound_volume = 1.0
 
 [bar.default]
+auto_hide = true
 end = [ "tray", "notifications", "network", "cpu", "ram", "volume", "brightness", "battery", "session" ]
 margin_edge = 0.0
 margin_ends = 50.0
@@ -12,6 +13,8 @@ position = "left"
 radius = 0
 radius_bottom_right = 20
 radius_top_right = 20
+reserve_space = false
+show_on_workspace_switch = false
 
 [brightness]
 enable_ddcutil = true
@@ -165,6 +168,11 @@ position = "top_right"
 niri_overview_type_to_launch_enabled = true
 polkit_agent = true
 settings_show_advanced = true
+
+    [shell.screenshot]
+    confirm_region = true
+    remember_last_region = true
+    save_to_file = false
 
 [theme]
 custom_palette = "stylix"
