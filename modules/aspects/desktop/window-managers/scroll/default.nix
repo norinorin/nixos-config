@@ -258,6 +258,57 @@
           modifier = "Mod4";
           terminal = "alacritty";
 
+          bars = [
+            {
+              mode = "dock";
+              hiddenState = "hide";
+              position = "bottom";
+              workspaceButtons = true;
+              workspaceNumbers = true;
+              statusCommand = "${pkgs.i3status}/bin/i3status";
+              fonts = {
+                names = ["monospace"];
+                size = 8.0;
+              };
+              trayOutput = "primary";
+              colors = with config.lib.stylix.colors.withHashtag; {
+                background = base00;
+                statusline = base04;
+                separator = base02;
+
+                focusedWorkspace = {
+                  border = base0D;
+                  background = base0D;
+                  text = base00;
+                };
+
+                activeWorkspace = {
+                  border = base03;
+                  background = base02;
+                  text = base06;
+                };
+
+                inactiveWorkspace = {
+                  border = base02;
+                  background = base00;
+                  text = base04;
+                };
+
+                urgentWorkspace = {
+                  border = base00;
+                  background = base08;
+                  text = base00;
+                };
+
+                bindingMode = {
+                  border = base00;
+                  background = base0E;
+                  text = base00;
+                };
+              };
+            }
+          ];
+
           window = {
             commands = [
               {
