@@ -469,6 +469,8 @@
             };
           };
 
+          seat."*".xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
+
           keybindings = let
             workspaceBindings = numBindings {
               prefix = "${mod}+";
