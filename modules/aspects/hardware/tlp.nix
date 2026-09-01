@@ -5,10 +5,11 @@
         enable = true;
         pd.enable = true;
         settings = {
-          CPU_SCALING_GOVERNOR_ON_AC = "performance";
+          # don't set to performance since we're running an aggressive undervolt
+          CPU_SCALING_GOVERNOR_ON_AC = "powersave";
           CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-          CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+          CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
           CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
           CPU_MIN_PERF_ON_AC = 0;
