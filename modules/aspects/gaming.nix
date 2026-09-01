@@ -27,6 +27,7 @@
             general = {
               softrealtime = "auto";
               renice = 10;
+              desiredgov = "powersave";
             };
             custom = {
               start = "${pkgs.libnotify}/bin/notify-send -a 'Gamemode' 'Optimisations activated'";
