@@ -274,7 +274,7 @@
               workspaceNumbers = true;
               statusCommand = "${pkgs.i3status}/bin/i3status";
               fonts = {
-                names = ["monospace"];
+                names = ["JetBrainsMono Nerd Font Mono"];
                 size = 8.0;
               };
               trayOutput = "primary";
