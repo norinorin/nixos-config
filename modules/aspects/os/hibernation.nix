@@ -1,4 +1,4 @@
-{den, ...}: {
+{
   den.aspects.hibernation = {
     nixos = {pkgs, ...}: {
       swapDevices = [
@@ -19,10 +19,6 @@
           HandlePowerKeyLongPress = "poweroff";
         };
       };
-
-      environment.systemPackages = with pkgs; [
-        power-profiles-daemon
-      ];
     };
   };
 }
