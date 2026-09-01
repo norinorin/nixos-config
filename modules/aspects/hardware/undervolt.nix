@@ -17,7 +17,7 @@
           nvmlInit()
 
           device = nvmlDeviceGetHandleByIndex(0)
-          nvmlDeviceSetGpuLockedClocks(device, 405, 2100)
+          nvmlDeviceSetGpuLockedClocks(device, 405, 1950)
 
           # not supported in my setup
           # nvmlDeviceSetPowerManagementLimit(device, 95000)
@@ -26,7 +26,7 @@
           info.version = nvmlClockOffset_v1
           info.type = NVML_CLOCK_GRAPHICS
           info.pstate = NVML_PSTATE_0
-          info.clockOffsetMHz = 75 # conservative, cba stress testing it
+          info.clockOffsetMHz = 135 # ~1950 @ 975mv
 
           nvmlDeviceSetClockOffsets(device, byref(info))
 
