@@ -472,6 +472,13 @@
           seat."*".xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
 
           keybindings = let
+            prefix = opts: keybindings:
+              lib.mapAttrs' (name: value: {
+                name = "${opts} ${name}";
+                inherit value;
+              })
+              keybindings;
+
             workspaceBindings = numBindings {
               prefix = "${mod}+";
               action = n: "lua ${scriptsDir}/goto-workspace.lua ${toString n}";
@@ -618,7 +625,14 @@
               "${mod}+semicolon" = "mode trailmark";
               "${mod}+Shift+semicolon" = "mode trail";
               "${mod}+g" = "mode spaces";
+            }
+            // prefix "--locked" {
+              "XF86AudioPlay" = "exec ${lib.getExe pkgs.playerctl} -p playerctld play-pause";
+              "XF86AudioPause" = "exec ${lib.getExe pkgs.playerctl} -p playerctld play-pause";
+              "XF86AudioNext" = "exec ${lib.getExe pkgs.playerctl} -p playerctld next";
+              "XF86AudioPrev" = "exec ${lib.getExe pkgs.playerctl} -p playerctld previous";
             };
+
           modes = let
             sizes = {
               "1" = 0.125;
