@@ -521,13 +521,13 @@
               right = "focus output right";
             };
 
-            moveWorkspaceOutputs = builtins.listToAttrs (
+            moveContainerOutputs = builtins.listToAttrs (
               map (key: {
                 name = "${mod}+Ctrl+Shift+${key}";
                 value =
                   if builtins.elem key dirs.left
-                  then "move workspace to output left"
-                  else "move workspace to output right";
+                  then "move container to output left"
+                  else "move container to output right";
               }) (dirs.left ++ dirs.right)
             );
           in
@@ -538,7 +538,7 @@
             // moveDirectional
             // moveDirectionalNomode
             // focusOutputs
-            // moveWorkspaceOutputs
+            // moveContainerOutputs
             // {
               "${mod}+Return" = "exec ${terminal}";
               "${mod}+e" = "exec ${filemanager}";
