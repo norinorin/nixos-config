@@ -78,6 +78,10 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    windscribe = {
+      url = "github:Varmisanth/windscribe-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     xdg-desktop-portal = {
       url = "github:flatpak/xdg-desktop-portal/1.21.1";
       flake = false;

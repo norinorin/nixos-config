@@ -975,6 +975,7 @@
         "tinted-schemes": "tinted-schemes_2",
         "wayland-pipewire-idle-inhibit": "wayland-pipewire-idle-inhibit",
         "winapps": "winapps",
+        "windscribe": "windscribe",
         "xdg-desktop-portal": "xdg-desktop-portal"
       }
     },
@@ -1305,6 +1306,27 @@
         "type": "github"
       }
     },
+    "treefmt-nix_3": {
+      "inputs": {
+        "nixpkgs": [
+          "windscribe",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780220602,
+        "narHash": "sha256-eynAfOmbmxJnkp7YewvCEbShNnnYJ9gLLqkzsYtBPeM=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "db947814a175b7ca6ded66e21383d938df01c227",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
     "wayland-pipewire-idle-inhibit": {
       "inputs": {
         "flake-parts": "flake-parts_5",
@@ -1346,6 +1368,44 @@
       "original": {
         "owner": "winapps-org",
         "repo": "winapps",
+        "type": "github"
+      }
+    },
+    "windscribe": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix_3",
+        "windscribe-qt": "windscribe-qt"
+      },
+      "locked": {
+        "lastModified": 1781287326,
+        "narHash": "sha256-4eJGRAVPmjElfsmbmhakeLil+2ActcHIxHE1Z7CMhu4=",
+        "owner": "Varmisanth",
+        "repo": "windscribe-nixos",
+        "rev": "a16f85fea16a54d0aced40bf265bf5a9556f9577",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Varmisanth",
+        "repo": "windscribe-nixos",
+        "type": "github"
+      }
+    },
+    "windscribe-qt": {
+      "locked": {
+        "lastModified": 1751274312,
+        "narHash": "sha256-/bVBlRpECLVzjV19t5KMdMFWSwKLtb5RyXdjz3LJT+g=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "50ab793786d9de88ee30ec4e4c24fb4236fc2674",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.11",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
