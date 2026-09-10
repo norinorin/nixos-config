@@ -55,8 +55,8 @@
           # from https://github.com/oskardotglobal/.dotfiles/blob/722192203254d842f5a55b4d28267876ab7cdeae/overlays/spotx.nix
           pkgs.spotify.overrideAttrs (old: let
             spotx = pkgs.fetchurl {
-              url = "https://raw.githubusercontent.com/SpotX-Official/SpotX-Bash/496309d7ca789c7e24c87f12f081d80ced115d48/spotx.sh";
-              hash = "sha256-B+1VuC5GsaYaKK/tLl/iu+z9y3E/vc9JFgO3Q5BAtwY=";
+              url = "https://raw.githubusercontent.com/SpotX-Official/SpotX-Bash/a68b29fd9dafcff4dfc2fb95362de86330e658bb/spotx.sh";
+              hash = "sha256-V8ayXlqL8vLaM3+5pz2l/5RPoTmu3UJidA6z91Lo/Yk=";
             };
           in {
             nativeBuildInputs =
