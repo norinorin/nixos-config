@@ -18,14 +18,12 @@
         enable = true;
         users = ["nori"];
         settings = {
+          # for hotspot
+          allowLanTraffic = true;
+
           # for some reason we have to set it to NetworkManager otherwise it won't connect
-          dnsPolicy = "os-default";
+          dnsPolicy = "cloudflare";
           dnsManager = "networkmanager";
-          connectedDns = {
-            # managed by dns-crypt
-            type = "custom";
-            upStream1 = "127.0.0.1";
-          };
         };
       };
     };
