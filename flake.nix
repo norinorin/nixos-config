@@ -48,7 +48,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixcord.url = "github:FlameFlag/nixcord/dev";
+    nixcord.url = "github:FlameFlag/nixcord/87476262341abbc835f80c84d43da22cbec94e71";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-rolling.url = "nixpkgs/nixos-unstable-small";
     noctalia.url = "github:noctalia-dev/noctalia";
