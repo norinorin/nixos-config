@@ -563,6 +563,7 @@
               "${mod}+Shift+button5" = "scale_workspace incr 0.05";
               "${mod}+Shift+Ctrl+period" = "scale_workspace reset";
 
+              "Alt+tab" = "jump tiling all";
               "${mod}+tab" = "scale_workspace overview";
               "${mod}+button8" = "scale_workspace overview";
               "${mod}+Shift+tab" = "scale_workspaces toggle";
