@@ -30,6 +30,7 @@
         zotero
         pdf2svg
         qdirstat
+        qalculate-qt
 
         (writeShellApplication {
           name = "sleep-timer";
