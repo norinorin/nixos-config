@@ -526,8 +526,8 @@
                 name = "${mod}+Ctrl+Shift+${key}";
                 value =
                   if builtins.elem key dirs.left
-                  then "move container to output left"
-                  else "move container to output right";
+                  then "move container to output left; focus output left"
+                  else "move container to output right; focus output right";
               }) (dirs.left ++ dirs.right)
             );
           in
