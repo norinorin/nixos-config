@@ -15,6 +15,7 @@
     homeManager = {pkgs, ...}: {
       home.packages = with pkgs; [
         wl-clipboard
+        wl-mirror
         wayland-utils
         cage
         grim
