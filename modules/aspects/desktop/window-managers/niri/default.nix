@@ -408,6 +408,10 @@
 
             "Mod+O" = {action = toggle-overview;};
             "Mod+Shift+P".action = power-off-monitors;
+            "Mod+P" = {
+              repeat = false;
+              action = spawn-sh "${lib.getExe pkgs.wl-mirror} $(${lib.getExe pkgs.niri} msg --json focused-output | ${lib.getExe pkgs.jq} -r .name)";
+            };
           };
 
           debug = {
