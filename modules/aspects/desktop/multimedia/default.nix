@@ -37,19 +37,7 @@
         pinta
         kdePackages.kdenlive
         gimp
-
-        (obsidian.overrideAttrs (old: {
-          nativeBuildInputs = (old.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
-
-          postFixup =
-            (old.postFixup or "")
-            + ''
-              wrapProgram $out/bin/obsidian \
-                --set SSH_ASKPASS "${pkgs.seahorse}/libexec/seahorse/ssh-askpass" \
-                --set SSH_ASKPASS_REQUIRE "force" \
-                --set GIT_ASKPASS "${pkgs.seahorse}/libexec/seahorse/ssh-askpass"
-            '';
-        }))
+        obsidian
 
         (
           # from https://github.com/oskardotglobal/.dotfiles/blob/722192203254d842f5a55b4d28267876ab7cdeae/overlays/spotx.nix
