@@ -63,8 +63,8 @@ widget_order = [
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
     box_height = 196.0
-    box_width = 810.0
-    cx = 501.0
+    box_width = 768.0
+    cx = 501.00006103515625
     cy = 890.0
     output = "HDMI-A-1"
     placement_height = 1080.0
@@ -108,7 +108,7 @@ widget_order = [
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 209.0
     box_width = 706.0
-    cx = 432.0
+    cx = 432.00003051757812
     cy = 652.0
     output = "HDMI-A-1"
     placement_height = 1080.0
@@ -119,14 +119,14 @@ widget_order = [
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
         background = false
         clock_style = "digital"
-        color = "on_tertiary"
+        color = "on_surface"
         format = "{:%H:%M:%S}"
         shadow = false
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
     box_height = 112.0
     box_width = 196.0
-    cx = 894.0
+    cx = 894.00006103515625
     cy = 676.0
     output = "HDMI-A-1"
     placement_height = 1080.0
@@ -136,14 +136,14 @@ widget_order = [
 
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
         background = false
-        color = "surface"
+        color = "on_surface"
         shadow = false
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
     box_height = 205.0
     box_width = 276.0
-    cx = 1752.0
-    cy = 133.5
+    cx = 1752.0001220703125
+    cy = 133.49998474121094
     output = "HDMI-A-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -153,8 +153,8 @@ widget_order = [
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
     box_height = 206.5
     box_width = 274.0
-    cx = 1752.0
-    cy = 369.75
+    cx = 1752.0001220703125
+    cy = 369.75003051757812
     output = "HDMI-A-1"
     placement_height = 1080.0
     placement_width = 1920.0
