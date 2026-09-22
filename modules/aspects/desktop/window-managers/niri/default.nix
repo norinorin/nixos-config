@@ -188,6 +188,10 @@
               color = config.lib.stylix.colors.withHashtag.base04;
               inactive-color = inactiveShadowColour;
             };
+            struts = {
+              left = 6;
+              right = 6;
+            };
           };
 
           prefer-no-csd = true;
