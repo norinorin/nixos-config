@@ -5,15 +5,13 @@ enable_sounds = true
 sound_volume = 1.0
 
 [bar.default]
-auto_hide = true
-end = [ "tray", "notifications", "network", "cpu", "ram", "volume", "brightness", "battery", "session" ]
+end = [ "tray", "notifications", "network", "cpu", "ram", "volume", "brightness", "caffeine", "battery", "session" ]
 margin_edge = 0.0
 margin_ends = 50.0
 position = "left"
 radius = 0
 radius_bottom_right = 20
 radius_top_right = 20
-reserve_space = false
 show_on_workspace_switch = false
 
 [brightness]
@@ -64,8 +62,8 @@ widget_order = [
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
     box_height = 196.0
     box_width = 768.0
-    cx = 501.00006103515625
-    cy = 890.0
+    cx = 501.00009155273438
+    cy = 890.00006103515625
     output = "HDMI-A-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -108,8 +106,8 @@ widget_order = [
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 209.0
     box_width = 706.0
-    cx = 432.00003051757812
-    cy = 652.0
+    cx = 432.00006103515625
+    cy = 652.00006103515625
     output = "HDMI-A-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -126,7 +124,7 @@ widget_order = [
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
     box_height = 112.0
     box_width = 196.0
-    cx = 894.00006103515625
+    cx = 894.0001220703125
     cy = 676.0
     output = "HDMI-A-1"
     placement_height = 1080.0
