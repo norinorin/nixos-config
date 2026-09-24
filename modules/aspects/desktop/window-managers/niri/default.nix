@@ -5,6 +5,7 @@
 }: {
   flake-file.inputs = {
     niri.url = "github:sodiboo/niri-flake";
+    niri-tearing.url = "github:urayde/niri";
   };
 
   den.aspects.niri = {
@@ -24,7 +25,7 @@
       imports = [inputs.niri.nixosModules.niri];
       programs.niri = {
         enable = true;
-        package = pkgs.rolling.niri;
+        package = inputs.niri-tearing.packages.${pkgs.stdenv.hostPlatform.system}.niri;
       };
       xdg.portal = {
         extraPortals = [pkgs.xdg-desktop-portal-gtk];

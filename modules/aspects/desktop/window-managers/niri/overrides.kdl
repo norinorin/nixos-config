@@ -12,6 +12,12 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+    match app-id="^osu!$" is-focused=true
+
+    allow-tearing true
+}
+
 debug {
     honor-xdg-activation-with-invalid-serial
     emulate-zero-presentation-time
