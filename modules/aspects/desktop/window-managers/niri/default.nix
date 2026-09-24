@@ -5,10 +5,6 @@
 }: {
   flake-file.inputs = {
     niri.url = "github:sodiboo/niri-flake";
-    xdg-desktop-portal = {
-      url = "github:flatpak/xdg-desktop-portal/1.21.1";
-      flake = false;
-    };
   };
 
   den.aspects.niri = {
@@ -26,26 +22,6 @@
       ...
     }: {
       imports = [inputs.niri.nixosModules.niri];
-      nixpkgs.overlays = [
-        # inputs.niri.overlays.niri
-        (final: prev: {
-          xdg-desktop-portal = prev.xdg-desktop-portal.overrideAttrs (old: {
-            src = inputs.xdg-desktop-portal;
-            version = "1.21.1";
-            doCheck = false;
-
-            # https://github.com/maxcabrajac/nix/blob/2868a192f0ad322517a4860e4e310340243835bb/pkgs/xdg-desktop-portal.nix#L9-L20
-            patches = let
-              refusedPatches = [
-                "pkgdatadir"
-                "trash-test"
-              ];
-              isRefused = x: lib.any (p: lib.hasInfix p (toString x)) refusedPatches;
-            in
-              lib.filter (p: !isRefused p) old.patches;
-          });
-        })
-      ];
       programs.niri = {
         enable = true;
         package = pkgs.rolling.niri;

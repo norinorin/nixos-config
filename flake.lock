@@ -1420,23 +1420,6 @@
         "type": "github"
       }
     },
-    "xdg-desktop-portal": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775692651,
-        "narHash": "sha256-svr8uWJ32YdeoNK35vpHxLme+KIoLHqaXun0atiZEv0=",
-        "owner": "flatpak",
-        "repo": "xdg-desktop-portal",
-        "rev": "ced43a7c1c61083fac012a7c7991482ed9798fa3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "flatpak",
-        "ref": "1.21.1",
-        "repo": "xdg-desktop-portal",
-        "type": "github"
-      }
-    },
     "xwayland-satellite-stable": {
       "flake": false,
       "locked": {
