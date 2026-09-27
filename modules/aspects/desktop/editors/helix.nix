@@ -130,6 +130,7 @@
             };
             typescript-language-server = {
               command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
+              args = ["--stdio"];
             };
             eslint = {
               command = "${pkgs.eslint}/bin/eslint";
