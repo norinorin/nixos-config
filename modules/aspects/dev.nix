@@ -13,6 +13,14 @@
         (lib.lowPrio python311)
         heroku
       ];
+
+      programs = {
+        direnv = {
+          enable = true;
+          enableZshIntegration = true;
+          nix-direnv.enable = true;
+        };
+      };
     };
   };
 }
