@@ -133,7 +133,8 @@
               args = ["--stdio"];
             };
             eslint = {
-              command = "${pkgs.eslint}/bin/eslint";
+              command = "${pkgs.vscode-langservers-extracted}/bin/vscode-eslint-language-server";
+              args = ["--stdio"];
             };
             deno = {
               command = "${pkgs.deno}/bin/deno";
