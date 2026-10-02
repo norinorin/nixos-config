@@ -12,6 +12,7 @@
           ]))
         (lib.lowPrio python311)
         heroku
+        cloudflared
       ];
 
       programs = {
