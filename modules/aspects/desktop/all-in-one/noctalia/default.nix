@@ -18,8 +18,10 @@
     homeManager = {
       config,
       lib,
+      modulesPath,
       ...
     }: {
+      disabledModules = ["${modulesPath}/programs/noctalia"];
       imports = [inputs.noctalia.homeModules.default];
 
       # noctalia writes the overrides file atomically, hence breaking
