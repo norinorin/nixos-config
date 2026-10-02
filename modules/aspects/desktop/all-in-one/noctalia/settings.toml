@@ -41,6 +41,8 @@ auto_locate = true
 
 [lockscreen]
 fingerprint = false
+transition = [ "zoom" ]
+transition_duration = 200
 
 [lockscreen_widgets]
 enabled = true
