@@ -1,4 +1,9 @@
-{
+{inputs, ...}: {
+  # FIXME: remove this when zotero 11 is live?
+  flake-file.inputs = {
+    nixpkgs-zotero.url = "github:NixOS/nixpkgs/7a0f122f5090cf4c2ade2a13a0e229d4e19ba71f";
+  };
+
   den.aspects.tools = {
     nixos = {pkgs, ...}: {
       services.playerctld.enable = true;
@@ -27,7 +32,6 @@
         mission-center
         gnome-clocks
         crosspipe
-        zotero
         pdf2svg
         qdirstat
         qalculate-qt
@@ -76,6 +80,12 @@
             echo -e "\nPaused!"
           '';
         })
+
+        # FIXME: remove this when zotero 11 is live?
+        (import inputs.nixpkgs-zotero {
+          inherit (pkgs.stdenv.hostPlatform) system;
+          config.allowUnfree = true;
+        }).zotero
       ];
     };
 
