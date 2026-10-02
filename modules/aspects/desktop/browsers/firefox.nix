@@ -60,8 +60,9 @@
         "layout.css.prefers-color-scheme.content-override" = 2; # 0 dark, 1 light, 2 system
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "svg.context-properties.content.enabled" = true;
-        "parfait.urlbar.url.center" = true;
-        "parfait.urlbar.search-mode.glow" = true;
+        "parfait.urlbar.center-url" = true;
+        # FIXME: re-enable once it's added back
+        # "parfait.urlbar.search-mode.glow" = true;
         "parfait.bg.accent-color" = true;
       };
       getCss = bgColour: textColour: {
