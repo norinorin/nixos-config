@@ -44,7 +44,7 @@
             customIdle = {
               enable = true;
               remainInIdle = true;
-              idleTimeout = 0.1;
+              idleTimeout = 5.0;
             };
             webScreenShareFixes.enable = true;
           };
