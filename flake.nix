@@ -53,7 +53,10 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-rolling.url = "nixpkgs/nixos-unstable-small";
     nixpkgs-zotero.url = "github:NixOS/nixpkgs/7a0f122f5090cf4c2ade2a13a0e229d4e19ba71f";
-    noctalia.url = "github:noctalia-dev/noctalia";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     parfait = {
       url = "github:reizumii/parfait";
       flake = false;
