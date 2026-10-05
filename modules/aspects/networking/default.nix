@@ -23,9 +23,18 @@
             }
           ];
 
-          # Palworld
-          allowedTCPPorts = [25575];
-          allowedUDPPorts = [8211];
+          allowedTCPPorts = [
+            # palworld
+            25575
+            # anime_rpc
+            56727
+            # vite
+            5173
+          ];
+          allowedUDPPorts = [
+            # palworld
+            8211
+          ];
         };
       };
 
