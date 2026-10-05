@@ -3,19 +3,20 @@
     "anime_rpc": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-rolling"
+          "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1787903731,
-        "narHash": "sha256-wQIUE76vFM2Nfmg4dJBQ58f6v2oGjsWlfshVClgdDbU=",
+        "lastModified": 1791234337,
+        "narHash": "sha256-mMSrSUhwhzxTsWu7+/1xcH072l8pkfC/n/SY6IPylxw=",
         "owner": "norinorin",
         "repo": "anime_rpc",
-        "rev": "5803f7a85d383b48c9de9e4a10a8f9ca9d8cadee",
+        "rev": "d95b7a65618bf6a077a7e1294f52f39ce442ccc7",
         "type": "github"
       },
       "original": {
         "owner": "norinorin",
+        "ref": "refactor/web-based-ui",
         "repo": "anime_rpc",
         "type": "github"
       }
