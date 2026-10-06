@@ -1,6 +1,6 @@
 {inputs, ...}: {
   flake-file.inputs.anime_rpc = {
-    url = "github:norinorin/anime_rpc/refactor/web-based-ui";
+    url = "github:norinorin/anime_rpc";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
