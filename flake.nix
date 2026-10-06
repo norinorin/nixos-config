@@ -5,7 +5,7 @@
 
   inputs = {
     anime_rpc = {
-      url = "github:norinorin/anime_rpc/refactor/web-based-ui";
+      url = "github:norinorin/anime_rpc";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     den.url = "github:denful/den";
