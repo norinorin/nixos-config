@@ -477,11 +477,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787881669,
-        "narHash": "sha256-fgBiEzKBcvxSDjuLLxuV0b0NQPNWtSq3Q/qnKqdvkmM=",
+        "lastModified": 1791869246,
+        "narHash": "sha256-xE8aGVvQOTbtsOMZCh0tWyLfxEFxcX53YLk2+aUx7D0=",
         "owner": "norinorin",
         "repo": "helix-discord-rpc",
-        "rev": "6cf1153b13e91c62bdd9949ebbf47e4afc1ac8bb",
+        "rev": "b72c093484c67130a95feb12a89de863aa716a5e",
         "type": "github"
       },
       "original": {

@@ -285,7 +285,7 @@
       xdg.configFile."helix/plugins/helix-discord-rpc".source = "${helix-discord-rpc}/share/helix-discord-rpc";
       xdg.configFile."helix/init.scm".text = ''
         (require "plugins/smooth-scroll.hx/smooth-scroll.scm")
-        (require "plugins/helix-discord-rpc/helix-discord-rpc.scm")
+        (require "plugins/helix-discord-rpc/init.scm")
         (require "plugins/helix-discord-rpc/utils.scm")
 
         (discord-rpc-register-details-fn
@@ -305,18 +305,7 @@
               "an"
               "a")))
 
-        (discord-rpc-register-state-fn
-          (lambda ()
-            (let ([lang (discord-rpc-current-language)])
-              (if (string=? lang "")
-                "Editing a file"
-                (string-append
-                  "Editing "
-                  (a-or-an lang)
-                  " "
-                  lang
-                  " file")))))
-
+        (discord-rpc-set-reset-mode "never")
         (discord-rpc-connect)
       '';
       home.file = {
