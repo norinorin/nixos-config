@@ -9,16 +9,16 @@
 
         wireplumber.extraConfig = {
           # fix no sound below a volume cutoff
-          # https://wiki.archlinux.org/title/PulseAudio/Troubleshooting#No_sound_below_a_volume_cutoff_or_Clipping_on_a_particular_output_device
-          "99-ignore-db" = {
+          # https://wiki.archlinux.org/title/PipeWire/Troubleshooting#No_sound_from_USB_DAC_until_30%_volume
+          "99-ja-soft-mixer" = {
             "monitor.alsa.rules" = [
               {
                 matches = [
-                  {"device.name" = "~alsa_card.*";}
+                  {"device.name" = "alsa_card.usb-FIIO_JadeAudio_JA11-00";}
                 ];
                 actions = {
                   update-props = {
-                    "api.alsa.ignore-dB" = true;
+                    "api.alsa.soft-mixer" = true;
                   };
                 };
               }
