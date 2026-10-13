@@ -72,6 +72,7 @@
               insert = "bar";
               select = "underline";
             };
+            file-picker.hidden = false;
           };
           keys.normal = {
             C-j = ":half-page-down-smooth";
