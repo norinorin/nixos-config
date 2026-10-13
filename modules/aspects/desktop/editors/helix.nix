@@ -72,7 +72,10 @@
               insert = "bar";
               select = "underline";
             };
-            file-picker.hidden = false;
+            file-picker = {
+              hidden = true;
+              git-ignore = true;
+            };
           };
           keys.normal = {
             C-j = ":half-page-down-smooth";
@@ -85,6 +88,10 @@
               ":insert-output lazygit >/dev/tty"
               ":redraw"
               ":reload-all"
+            ];
+            C-h = [
+              ":toggle file-picker.hidden"
+              ":toggle file-picker.git-ignore"
             ];
             space.e = [
               ":sh rm -f /tmp/unique-file-h21a434"
