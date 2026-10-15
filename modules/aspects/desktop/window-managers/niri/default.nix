@@ -25,7 +25,31 @@
       imports = [inputs.niri.nixosModules.niri];
       programs.niri = {
         enable = true;
-        package = inputs.niri-tearing.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+        package = inputs.niri-tearing.packages.${pkgs.stdenv.hostPlatform.system}.niri.overrideAttrs (old: let
+          # temporary fix for missing hashes in upstream Cargo.lock
+          lockStr = builtins.readFile "${old.src}/Cargo.lock";
+          parts = builtins.split ''(git\+[^"#]+\?rev=([0-9a-fA-F]+))"'' lockStr;
+          patchedLockStr = builtins.concatStringsSep "" (
+            map (
+              part:
+                if builtins.isList part
+                then "${builtins.elemAt part 0}#${builtins.elemAt part 1}\""
+                else part
+            )
+            parts
+          );
+        in {
+          cargoDeps = pkgs.rustPlatform.importCargoLock {
+            lockFile = builtins.toFile "Cargo.lock" patchedLockStr;
+            outputHashes = old.cargoDeps.outputHashes or {};
+            allowBuiltinFetchGit = true;
+          };
+          postPatch =
+            (old.postPatch or "")
+            + ''
+              sed -E -i 's/(git\+[^"#]+\?rev=([0-9a-fA-F]+))"/\1#\2"/g' Cargo.lock
+            '';
+        });
       };
       xdg.portal = {
         extraPortals = [pkgs.xdg-desktop-portal-gtk];
