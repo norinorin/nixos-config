@@ -227,11 +227,9 @@
             {
               name = "python";
               auto-format = true;
-              language-servers = ["basedpyright" "ruff"];
-              formatter = {
-                command = lib.getExe pkgs.ruff;
-                args = ["format" "-"];
-              };
+              # list ruff first, see: https://github.com/helix-editor/helix/pull/14481#issuecomment-4866124296
+              language-servers = ["ruff" "basedpyright"];
+              code-actions-on-save = ["source.organizeImports" "source.fixAll"];
             }
             {
               name = "rust";
