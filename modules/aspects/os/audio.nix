@@ -1,6 +1,8 @@
 {
   den.aspects.audio = {
     nixos = {pkgs, ...}: {
+      hardware.alsa.enablePersistence = true;
+
       services.pipewire = {
         enable = true;
         alsa.enable = true;
