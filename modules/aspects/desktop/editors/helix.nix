@@ -122,10 +122,64 @@
             basedpyright = {
               command = "${pkgs.basedpyright}/bin/basedpyright-langserver";
               args = ["--stdio"];
+              config = {
+                basedpyright.analysis = {
+                  typeCheckingMode = "standard";
+                  diagnosticMode = "workspace";
+                  diagnosticSeverityOverrides = {
+                    reportMissingImports = "error";
+                    reportUnknownMemberType = "warning";
+                    reportUnknownArgumentType = "warning";
+                    reportUnknownVariableType = "warning";
+                    reportUnknownParameterType = "warning";
+                    reportAny = "none";
+                    reportExplicitAny = "none";
+                    reportUnnecessaryTypeIgnoreComment = "warning";
+                    reportIgnoreCommentWithoutRule = "warning";
+                  };
+                };
+              };
             };
             ruff = {
               command = lib.getExe pkgs.ruff;
               args = ["server"];
+              config.settings = {
+                configurationPreference = "filesystemFirst";
+                lineLength = 100;
+                lint = {
+                  select = [
+                    "E" # pycodestyle errors
+                    "F" # pyflakes
+                    "W" # pycodestyle warnings
+                    "I" # import sorting
+                    "UP" # python version upgrades
+                    "B" # bugbear checks
+                    "SIM" # code simplification
+                    "RUF" # ruff-specific rules
+                    "ASYNC" # async-related checks
+                    "S" # security checks
+                    "PIE" # flake8-pie improvements
+                    "PERF" # performance checks
+                    "FURB" # refurb modernization checks
+                  ];
+                  ignore = [
+                    "E501" # line too long
+                    "S101" # assert statements
+                    "RUF001" # ambiguous unicode in strings
+                    "RUF002" # ambiguous unicode in docstrings
+                    "RUF003" # ambiguous unicode in comments
+                  ];
+                  perFileIgnores = {
+                    "**/__init__.py" = ["F401"]; # allow unused imports for package exports
+                  };
+                };
+                format = {
+                  quoteStyle = "double";
+                  indentStyle = "space";
+                  lineEnding = "lf";
+                  skipMagicTrailingComma = false;
+                };
+              };
             };
             mpls = {
               command = "${pkgs.mpls}/bin/mpls";
