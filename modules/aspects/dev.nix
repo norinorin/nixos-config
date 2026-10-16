@@ -2,7 +2,6 @@
   den.aspects.dev = {
     homeManager = {pkgs, ...}: {
       home.packages = with pkgs; [
-        lazygit
         gitingest
         uv
         (python3.withPackages (python-pkgs:
@@ -20,6 +19,14 @@
           enable = true;
           enableZshIntegration = true;
           nix-direnv.enable = true;
+        };
+        lazygit = {
+          enable = true;
+          settings = {
+            git = {
+              overrideGpg = true;
+            };
+          };
         };
       };
     };
