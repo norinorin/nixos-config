@@ -616,11 +616,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1791990120,
-        "narHash": "sha256-ebgZinxQF3y9uUfkhwP0KEOs289kfe1QGnlUrpzBdrc=",
+        "lastModified": 1792571330,
+        "narHash": "sha256-cFWPiGWgFDkJLbr+/Vq+DiAqvLBIoVsAMOfPTbJ3GoI=",
         "owner": "urayde",
         "repo": "niri",
-        "rev": "0ae945d900a210b051ea6fcc5d11d2d555695e53",
+        "rev": "e9804c1cc9cd29faa7c58804240d72db7712cd94",
         "type": "github"
       },
       "original": {
