@@ -129,6 +129,7 @@
 
             mouse.accel-profile = "flat";
             warp-mouse-to-focus.enable = true;
+            power-key-handling.enable = false;
           };
 
           layout = let
