@@ -14,7 +14,6 @@
         lshw
         inxi
         brightnessctl
-        pavucontrol
         bat
         jq
         yazi
@@ -22,7 +21,6 @@
         btop
         fastfetch
         vulkan-tools
-        playerctl
         kdePackages.ark
         ouch
         zip
@@ -31,7 +29,6 @@
         unrar
         mission-center
         gnome-clocks
-        crosspipe
         pdf2svg
         qdirstat
         qalculate-qt

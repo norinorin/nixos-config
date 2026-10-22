@@ -1,6 +1,13 @@
 {
   den.aspects.audio = {
     nixos = {pkgs, ...}: {
+      environment.systemPackages = with pkgs; [
+        alsa-utils
+        pavucontrol
+        crosspipe
+        playerctl
+      ];
+
       hardware.alsa.enablePersistence = true;
 
       services.pipewire = {
