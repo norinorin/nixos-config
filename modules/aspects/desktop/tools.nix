@@ -13,6 +13,8 @@
         tree
         lshw
         inxi
+        evtest
+        wev
         brightnessctl
         bat
         jq
