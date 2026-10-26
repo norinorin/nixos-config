@@ -20,7 +20,7 @@
           SOUND_POWER_SAVE_ON_AC = 0;
           SOUND_POWER_SAVE_ON_BAT = 1;
 
-          PLATFORM_PROFILE_ON_AC = "balance";
+          PLATFORM_PROFILE_ON_AC = "balanced";
           PLATFORM_PROFILE_ON_BAT = "low-power";
 
           RUNTIME_PM_ON_AC = "on";
