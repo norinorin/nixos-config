@@ -25,6 +25,17 @@
         echo 2048 > /sys/class/rtc/rtc0/max_user_freq
         echo 2048 > /proc/sys/dev/hpet/max-user-freq
       '';
+
+      services.scx = {
+        enable = true;
+        package = pkgs.scx.rustscheds;
+        scheduler = "scx_lavd";
+        extraArgs = ["--performance"];
+      };
+    };
+
+    nixosOtg = {lib, ...}: {
+      services.scx.extraArgs = lib.mkForce ["--powersave"];
     };
   };
 }
