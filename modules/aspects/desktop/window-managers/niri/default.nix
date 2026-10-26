@@ -438,6 +438,17 @@
       };
     };
 
+    nixosOtg = {
+      pkgs,
+      lib,
+      ...
+    }: {
+      # the otg spec is meant to be used with the igpu/hybrid for battery life
+      # and it doesn't seem to support tearing so we're using upstream niri
+      # for the otg specialisation
+      programs.niri.package = lib.mkForce pkgs.rolling.niri;
+    };
+
     homeManagerOtg = {lib, ...}: {
       programs.niri.settings = {
         debug = {
