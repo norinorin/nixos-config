@@ -351,20 +351,6 @@
         (discord-rpc-register-details-fn
           (lambda ()
             "In a workspace"))
-
-        (require-builtin steel/strings)
-
-        ; naive impl
-        (define (a-or-an word)
-          (let ([w (string-downcase word)])
-            (if (or (starts-with? w "a")
-                 (starts-with? w "e")
-                 (starts-with? w "i")
-                 (starts-with? w "o")
-                 (starts-with? w "u"))
-              "an"
-              "a")))
-
         (discord-rpc-set-reset-mode "never")
         (discord-rpc-connect)
       '';
