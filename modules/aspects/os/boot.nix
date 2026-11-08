@@ -1,10 +1,10 @@
 {den, ...}: {
   den.aspects.boot = {
-    includes = [den.aspects.rolling];
+    includes = [den.aspects.chaotic];
     nixos = {pkgs, ...}: {
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
-      boot.kernelPackages = pkgs.rolling.linuxPackages_xanmod_latest;
+      boot.kernelPackages = pkgs.linuxPackages_cachyos;
       boot.zswap = {
         enable = true;
         compressor = "zstd";

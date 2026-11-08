@@ -8,6 +8,7 @@
       url = "github:norinorin/anime_rpc";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     den.url = "github:denful/den";
     dgop = {
       url = "github:AvengeMedia/dgop";
