@@ -25,16 +25,29 @@
         echo 2048 > /proc/sys/dev/hpet/max-user-freq
       '';
 
-      services.scx = {
+      services.scx-loader = {
         enable = true;
-        package = pkgs.scx.rustscheds;
-        scheduler = "scx_lavd";
-        extraArgs = ["--performance"];
+        config = {
+          default_sched = "scx_lavd";
+          default_mode = "Gaming";
+          scheds.scx_lavd = {
+            gaming_mode = [
+              "--performance"
+              "--pinned-slice-us"
+              "500"
+            ];
+            powersave_mode = [
+              "--powersave"
+              "--pinned-slice-us"
+              "500"
+            ];
+          };
+        };
       };
     };
 
     nixosOtg = {lib, ...}: {
-      services.scx.extraArgs = lib.mkForce ["--powersave"];
+      services.scx-loader.config.default_mode = lib.mkForce "PowerSave";
     };
   };
 }
