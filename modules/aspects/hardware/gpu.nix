@@ -1,5 +1,7 @@
-{
+{den, ...}: {
   den.aspects.gpu = {
+    includes = [den.aspects.chaotic];
+
     provides.nvidiaHybrid = {
       nixos = {
         config,
@@ -38,7 +40,7 @@
               nvidiaBusId = "PCI:1@0:0:0";
             };
             dynamicBoost.enable = true;
-            package = config.boot.kernelPackages.nvidiaPackages.latest;
+            package = pkgs.nvidia_cachyos;
           };
           graphics = {
             enable = true;
