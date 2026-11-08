@@ -10,6 +10,8 @@
       environment.systemPackages = with pkgs; [
         android-tools
         wget
+        ripgrep
+        nix-tree
         tree
         lshw
         inxi
