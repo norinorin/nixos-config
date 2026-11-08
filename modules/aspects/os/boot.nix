@@ -12,7 +12,6 @@
         maxPoolPercent = 30;
         shrinkerEnabled = true;
       };
-      boot.initrd.systemd.enable = true;
       boot.kernel.sysctl = {
         "vm.swappiness" = 100;
         "vm.max_map_count" = 2147483642;
