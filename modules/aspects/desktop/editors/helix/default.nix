@@ -62,7 +62,15 @@
 
       programs.helix = {
         enable = true;
-        package = pkgs.steelix;
+        package = pkgs.steelix.override {
+          helix-unwrapped = pkgs.helix-unwrapped.overrideAttrs (old: {
+            postPatch =
+              (old.postPatch or "")
+              + ''
+                patch -p1 < ${./multi-set-option.patch}
+              '';
+          });
+        };
 
         settings = {
           theme = lib.mkForce "stylix-min";
