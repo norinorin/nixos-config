@@ -13,7 +13,7 @@
       home.packages = [pkgs.lutgen];
 
       systemd.user.services.wallpaper-fuse = let
-        pythonEnv = pkgs.python3.withPackages (ps: [ps.fusepy]);
+        pythonEnv = pkgs.python3.withPackages (ps: [ps.pyfuse3]);
       in {
         Unit = {
           Description = "Base16 FUSE Wallpaper Filter";
