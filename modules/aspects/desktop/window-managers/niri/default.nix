@@ -15,6 +15,7 @@
       den.aspects.thunar
       den.aspects.tools
       den.aspects.wayland-tools
+      den.aspects.rolling
     ];
 
     nixos = {
