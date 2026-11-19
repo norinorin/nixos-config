@@ -1,6 +1,10 @@
 {
   den.aspects.networking = {
-    nixos = {host}: {
+    nixos = {
+      host,
+      pkgs,
+      ...
+    }: {
       networking = {
         hostName = host.name;
 
@@ -55,6 +59,9 @@
           enable = true;
           settings = {
             ipv6_servers = true;
+            forwarding_rules = toString (pkgs.writeText "dnscrypt-forwarding-rules.txt" ''
+              warp-svc 127.0.2.2:53,127.0.2.3:53
+            '');
             sources.public-resolvers = {
               urls = [
                 "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
