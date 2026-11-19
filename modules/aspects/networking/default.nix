@@ -6,14 +6,11 @@
 
         networkmanager = {
           enable = true;
-          dns = "none";
+          dns = "systemd-resolved";
         };
+
         useDHCP = false;
         dhcpcd.enable = false;
-        nameservers = [
-          "127.0.0.1"
-          "::1"
-        ];
         firewall = {
           enable = true;
           allowedTCPPortRanges = [
@@ -43,6 +40,17 @@
       };
 
       services = {
+        resolved = {
+          enable = true;
+          settings.Resolve = {
+            DNS = ["127.0.0.1" "::1"];
+            FallbackDNS = [];
+            Domains = ["~."];
+            # let dnscrypt handle dnssec
+            DNSSEC = "false";
+          };
+        };
+
         dnscrypt-proxy = {
           enable = true;
           settings = {
