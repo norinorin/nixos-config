@@ -8,6 +8,7 @@
     nixos = {pkgs, ...}: {
       services.playerctld.enable = true;
       environment.systemPackages = with pkgs; [
+        dig
         android-tools
         wget
         ripgrep
