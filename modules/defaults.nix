@@ -41,5 +41,5 @@
   };
 
   den.schema.user.classes = lib.mkDefault ["homeManager"];
-  den.schema.user.includes = [den.provides.mutual-provider];
+  den.schema.host.includes = [den.batteries.mutual-provider];
 }
