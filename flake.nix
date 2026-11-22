@@ -84,9 +84,5 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    windscribe = {
-      url = "github:Varmisanth/windscribe-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 }
