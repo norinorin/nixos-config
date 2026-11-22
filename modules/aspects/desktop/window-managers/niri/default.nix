@@ -49,7 +49,7 @@
       systemd.user.services.niri-flake-polkit.enable = false;
     };
 
-    homeManager = {
+    provides.to-users.homeManager = {
       pkgs,
       lib,
       config,
@@ -399,10 +399,6 @@
             };
           };
 
-          debug = {
-            render-drm-device = "/dev/dri/by-path/pci-0000:01:00.0-render";
-          };
-
           environment = {
             DISPLAY = ":0";
             QT_QPA_PLATFORM = "wayland";
@@ -439,7 +435,7 @@
       };
     };
 
-    nixosOtg = {
+    provides.toaster.nixosOtg = {
       pkgs,
       lib,
       ...
@@ -450,10 +446,17 @@
       programs.niri.package = lib.mkForce pkgs.rolling.niri;
     };
 
-    homeManagerOtg = {lib, ...}: {
-      programs.niri.settings = {
+    provides.toaster.provides.to-users = {
+      homeManager.programs.niri.settings = {
         debug = {
-          render-drm-device = lib.mkForce "/dev/dri/by-path/pci-0000:00:02.0-render";
+          render-drm-device = "/dev/dri/by-path/pci-0000:01:00.0-render";
+        };
+      };
+      homeManagerOtg = {lib, ...}: {
+        programs.niri.settings = {
+          debug = {
+            render-drm-device = lib.mkForce "/dev/dri/by-path/pci-0000:00:02.0-render";
+          };
         };
       };
     };

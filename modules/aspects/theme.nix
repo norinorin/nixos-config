@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  den,
+  ...
+}: {
   flake-file.inputs = {
     stylix = {
       url = "github:nix-community/stylix";
@@ -50,48 +54,52 @@
       };
     };
 
-    homeManager = {
-      config,
-      pkgs,
-      ...
-    }: {
-      # FIXME: remove this when it's no longer an issue
-      disabledModules = [
-        "${inputs.stylix}/modules/wayprompt/hm.nix"
-      ];
+    provides.to-users = {
+      includes = [den.aspects.wallpapers];
 
-      config = {
-        lib.my.getBgColour = polarity: let
-          c = config.lib.stylix.colors.withHashtag;
-          dark =
-            if config.stylix.polarity == "dark"
-            then c.base00
-            else c.base07;
-          light =
-            if config.stylix.polarity == "dark"
-            then c.base07
-            else c.base00;
-        in
-          if polarity == "dark"
-          then dark
-          else light;
+      homeManager = {
+        config,
+        pkgs,
+        ...
+      }: {
+        # FIXME: remove this when it's no longer an issue
+        disabledModules = [
+          "${inputs.stylix}/modules/wayprompt/hm.nix"
+        ];
 
-        lib.my.getTextColour = polarity: let
-          c = config.lib.stylix.colors.withHashtag;
-          isDarkTheme = config.stylix.polarity == "dark";
+        config = {
+          lib.my.getBgColour = polarity: let
+            c = config.lib.stylix.colors.withHashtag;
+            dark =
+              if config.stylix.polarity == "dark"
+              then c.base00
+              else c.base07;
+            light =
+              if config.stylix.polarity == "dark"
+              then c.base07
+              else c.base00;
+          in
+            if polarity == "dark"
+            then dark
+            else light;
 
-          textOnDark =
-            if isDarkTheme
-            then c.base05
-            else c.base00;
-          textOnLight =
-            if isDarkTheme
-            then c.base00
-            else c.base05;
-        in
-          if polarity == "dark"
-          then textOnDark
-          else textOnLight;
+          lib.my.getTextColour = polarity: let
+            c = config.lib.stylix.colors.withHashtag;
+            isDarkTheme = config.stylix.polarity == "dark";
+
+            textOnDark =
+              if isDarkTheme
+              then c.base05
+              else c.base00;
+            textOnLight =
+              if isDarkTheme
+              then c.base00
+              else c.base05;
+          in
+            if polarity == "dark"
+            then textOnDark
+            else textOnLight;
+        };
       };
     };
   };

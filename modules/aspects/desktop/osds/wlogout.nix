@@ -1,6 +1,6 @@
 {
   den.aspects.wlogout = {
-    homeManager = {
+    provides.to-users.homeManager = {
       # get rid of suspend as we can't even suspend with nvidia anyway
       # also get rid of lock cos it's more practical to use Sup+Alt L to lock via compositor
       # layout:

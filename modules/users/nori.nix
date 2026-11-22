@@ -7,28 +7,16 @@
 
       den.aspects.sops._.nori
 
-      den.aspects.niri
-      den.aspects.scroll
-      den.aspects.noctalia
-      den.aspects.noctalia._.niri
-      den.aspects.noctalia._.scroll
-      den.aspects.multimedia
-      den.aspects.gaming
       den.aspects.helix
       den.aspects.alacritty
       den.aspects.firefox
       den.aspects.nixcord
-      den.aspects.ime
-      den.aspects.warp
       den.aspects.nix-index-database
-      den.aspects.kanata
       den.aspects.dev
 
       den.aspects.anime_rpc
       den.aspects.postgresql._.nori
       den.aspects.serve_media
-
-      den.aspects.specialisations
     ];
 
     homeManager = {

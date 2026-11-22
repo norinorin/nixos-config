@@ -3,7 +3,7 @@
   den,
   ...
 }: {
-  den.aspects.postgresql.provides.nori = {
+  den.aspects.postgresql.provides.nori.provides.to-hosts = {
     nixos = {pkgs, ...}: {
       services = {
         postgresql = {

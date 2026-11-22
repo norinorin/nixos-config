@@ -1,6 +1,6 @@
 {
   den.aspects.wayland-tools = {
-    nixos = {
+    nixos = {pkgs, ...}: {
       # This is an overlay so I don't have to override it in multiple places
       nixpkgs.overlays = [
         (final: prev: {
@@ -10,10 +10,8 @@
           });
         })
       ];
-    };
 
-    homeManager = {pkgs, ...}: {
-      home.packages = with pkgs; [
+      environment.systemPackages = with pkgs; [
         wl-clipboard
         wl-mirror
         wayland-utils

@@ -18,7 +18,7 @@
       services.tumbler.enable = true;
     };
 
-    homeManager = {
+    provides.nori.homeManager = {
       xdg.configFile."Thunar/uca.xml".text = ''
         <?xml version="1.0" encoding="UTF-8"?>
         <actions>

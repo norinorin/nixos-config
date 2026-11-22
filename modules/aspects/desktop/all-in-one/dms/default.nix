@@ -21,10 +21,9 @@
   den.aspects.dms = {
     includes = [
       den.aspects.theme
-      den.aspects.wallpapers
     ];
 
-    homeManager = {
+    provides.to-users.homeManager = {
       config,
       pkgs,
       ...
@@ -114,7 +113,7 @@
       };
     };
 
-    provides.niri = {
+    provides.niri.provides.to-users = {
       homeManager = {
         config,
         pkgs,

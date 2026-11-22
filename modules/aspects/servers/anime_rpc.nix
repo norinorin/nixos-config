@@ -5,7 +5,7 @@
   };
 
   den.aspects.anime_rpc = {
-    nixos = {
+    provides.to-hosts.nixos = {
       nixpkgs.overlays = [inputs.anime_rpc.overlays.default];
     };
 

@@ -75,7 +75,7 @@
       };
     };
 
-    homeManager = {
+    provides.to-users.homeManager = {
       pkgs,
       config,
       lib,

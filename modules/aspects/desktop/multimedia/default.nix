@@ -7,7 +7,23 @@
       den.aspects.tricat
     ];
 
-    homeManager = {
+    nixos = {pkgs, ...}: {
+      environment.systemPackages = with pkgs; [
+        qbittorrent
+        audacity
+        yt-dlp
+        ffmpeg-full
+        scrcpy
+        calibre
+        libreoffice
+        pinta
+        kdePackages.kdenlive
+        gimp
+        obsidian
+      ];
+    };
+
+    provides.to-users.homeManager = {
       pkgs,
       inputs,
       ...
@@ -27,18 +43,6 @@
       '';
 
       home.packages = with pkgs; [
-        qbittorrent
-        audacity
-        yt-dlp
-        ffmpeg-full
-        scrcpy
-        calibre
-        libreoffice
-        pinta
-        kdePackages.kdenlive
-        gimp
-        obsidian
-
         (
           # from https://github.com/oskardotglobal/.dotfiles/blob/722192203254d842f5a55b4d28267876ab7cdeae/overlays/spotx.nix
           pkgs.spotify.overrideAttrs (old: let

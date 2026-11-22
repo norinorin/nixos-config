@@ -1,12 +1,12 @@
 {
-  den.aspects.kanata = {
+  den.aspects.kanata = let
+    port = 55461;
+  in {
     nixos = {
       lib,
       pkgs,
       ...
     }: let
-      port = 55461;
-
       kanataOSDaPyScript = pkgs.writeText "kanata-osd.py" ''
         import asyncio
         import json
@@ -243,6 +243,22 @@
       };
       services.kanata = {
         enable = true;
+      };
+      systemd.user.services.kanata-osd = {
+        enable = true;
+        description = "Kanata OSD";
+        wantedBy = ["graphical-session.target"];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${kanataOSD}/bin/kanata-osd";
+          Restart = "always";
+          RestartSec = "5";
+        };
+      };
+    };
+
+    provides.toaster.nixos = {
+      services.kanata = {
         keyboards = {
           externalKeyboard = {
             inherit port;
@@ -346,18 +362,6 @@
               )
             '';
           };
-        };
-      };
-
-      systemd.user.services.kanata-osd = {
-        enable = true;
-        description = "Kanata OSD";
-        wantedBy = ["graphical-session.target"];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${kanataOSD}/bin/kanata-osd";
-          Restart = "always";
-          RestartSec = "5";
         };
       };
     };

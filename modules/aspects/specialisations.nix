@@ -22,7 +22,7 @@ in {
     nixos.specialisation =
       lib.genAttrs specialisations mkNixosSpecialisation;
 
-    homeManager.specialisation =
+    provides.to-users.homeManager.specialisation =
       lib.genAttrs specialisations mkHmSpecialisation;
   };
 }

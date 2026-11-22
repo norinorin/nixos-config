@@ -37,19 +37,14 @@
         };
       };
 
-      environment.systemPackages = with pkgs; [
+      environment.systemPackages = with pkgs; let
+        gamePkgs = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system};
+      in [
         (prismlauncher.override {
           additionalLibs = [libvlc];
           additionalPrograms = [ffmpeg];
           jdks = [graalvmPackages.graalvm-ce javaPackages.compiler.temurin-bin.jre-21];
         })
-      ];
-    };
-
-    homeManager = {pkgs, ...}: let
-      gamePkgs = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system};
-    in {
-      home.packages = with pkgs; [
         (osu-lazer-bin.override
           {
             nativeWayland = true;

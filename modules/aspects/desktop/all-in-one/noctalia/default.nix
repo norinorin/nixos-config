@@ -10,7 +10,6 @@
 
   den.aspects.noctalia = {
     includes = [
-      den.aspects.wallpapers
       den.aspects.theme
     ];
 
@@ -18,7 +17,7 @@
       nixpkgs.overlays = [inputs.noctalia.overlays.default];
     };
 
-    homeManager = {
+    provides.to-users.homeManager = {
       config,
       lib,
       modulesPath,
@@ -99,7 +98,7 @@
         den.aspects.wlogout
       ];
 
-      homeManager = {config, ...}: {
+      provides.to-users.homeManager = {config, ...}: {
         programs.niri.settings.binds = with config.lib.niri.actions; let
           nm = spawn "noctalia" "msg";
         in {
@@ -161,7 +160,7 @@
         den.aspects.wlogout
       ];
 
-      homeManager = {
+      provides.to-users.homeManager = {
         config,
         lib,
         ...

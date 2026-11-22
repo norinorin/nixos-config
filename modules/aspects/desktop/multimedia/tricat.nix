@@ -1,8 +1,8 @@
 # https://gist.github.com/norinorin/4b458d232a5634de8daa2ed65e472caa
 {
   den.aspects.tricat = {
-    homeManager = {pkgs, ...}: {
-      home.packages = [
+    nixos = {pkgs, ...}: {
+      environment.systemPackages = [
         (
           pkgs.runCommand "tricat-0.1.0" {
             nativeBuildInputs = [pkgs.python3];

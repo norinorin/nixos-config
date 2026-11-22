@@ -35,9 +35,13 @@
     };
 
     includes = with den.aspects; [
+      (den.batteries.user-aspects {users = ["nori"];})
+
       fonts
       theme
+      multimedia
       gaming
+      specialisations
 
       # os
       audio
@@ -48,10 +52,15 @@
       swap
       virt
       x11
+      ime
 
       # desktop
       ly
       niri
+      scroll
+      noctalia
+      noctalia._.niri
+      noctalia._.scroll
 
       # hardware
       gpu._.nvidiaHybrid
@@ -65,11 +74,13 @@
       undervolt._.nvidia
       tlp
       upower
+      kanata
 
       # networking
       networking
       ssh
       zerotierone
+      warp
 
       # security
       gnupg

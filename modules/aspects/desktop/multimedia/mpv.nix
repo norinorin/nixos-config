@@ -1,5 +1,5 @@
 {
-  den.aspects.mpv = {
+  den.aspects.mpv.provides.nori = {
     homeManager = {pkgs, ...}: {
       programs.mpv = {
         enable = true;
