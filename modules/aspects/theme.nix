@@ -17,6 +17,7 @@
       imports = [
         inputs.stylix.nixosModules.stylix
       ];
+
       # users are supposed to set their own icons
       # these are just fallback for apps like dms
       environment.systemPackages = with pkgs; [
@@ -54,6 +55,11 @@
       pkgs,
       ...
     }: {
+      # FIXME: remove this when it's no longer an issue
+      disabledModules = [
+        "${inputs.stylix}/modules/wayprompt/hm.nix"
+      ];
+
       config = {
         lib.my.getBgColour = polarity: let
           c = config.lib.stylix.colors.withHashtag;
