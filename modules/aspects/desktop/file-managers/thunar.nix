@@ -17,6 +17,10 @@
       services.gvfs.enable = true;
       services.tumbler.enable = true;
       services.udisks2.enable = true;
+
+      services.udev.packages = with pkgs; [
+        libmtp
+      ];
     };
 
     provides.nori.homeManager = {
