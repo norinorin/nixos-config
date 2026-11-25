@@ -429,7 +429,7 @@
           };
 
           spawn-at-startup = [
-            {sh = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY && systemctl --user restart xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome";}
+            {sh = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_RUNTIME_DIR && systemctl --user restart xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome";}
           ];
         };
       };
