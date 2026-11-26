@@ -1,4 +1,9 @@
-{...}: {
+{inputs, ...}: {
+  flake-file.inputs.sunbird = {
+    url = "github:sunbird-tools/sunbird";
+    flake = false;
+  };
+
   den.aspects.sunbird = {
     homeManager = {pkgs, ...}: let
       pname = "sunbird";
@@ -11,36 +16,14 @@
 
       libphoenix = pkgs.rustPlatform.buildRustPackage {
         pname = "libphoenix";
-        version = "0-unstable-pr37-pr39";
-
-        # hacky af
-        # FIXME: remove once fixes are merged
-        src =
-          pkgs.runCommand "sunbird-src" {
-            nativeBuildInputs = [
-              pkgs.git
-              pkgs.cacert
-            ];
-            outputHashMode = "recursive";
-            outputHashAlgo = "sha256";
-            outputHash = "sha256-paU0WyzpSTjYPSJOBew81i49yB3YrNs3ptgUbpZf+dw=";
-          } ''
-            base=10f30b3390d52d12e23e28ead49dcca8e2df32ef
-            git init "$out"
-            cd "$out"
-            git remote add origin https://github.com/sunbird-tools/sunbird.git
-            git fetch origin \
-              "$base" \
-              refs/pull/37/head \
-              refs/pull/39/head
-            git checkout "$base"
-            git -c user.name=nix -c user.email=nix@localhost merge --no-edit d658090c083152e71aec555c5ad195289da6e85d
-            git -c user.name=nix -c user.email=nix@localhost merge --no-edit 3061bb2662a6895eed2835c145caaa97c4cfca22
-            rm -rf .git
-          '';
-
-        cargoHash = "sha256-zvsr8LAnZhCTQlgNPgoENyDXtcV8hKPu9s8Ry888xbE=";
-
+        version = "0-unstable";
+        src = inputs.sunbird;
+        cargoLock = {
+          lockFile = "${inputs.sunbird}/Cargo.lock";
+          outputHashes = {
+            "sunhook-sys-0.1.0" = "sha256-V1vYZAFTqADDx/goOTxypVBaY82btnPiC862OY9uat0=";
+          };
+        };
         buildAndTestSubdir = "crates/loader";
         cargoBuildFlags = ["--lib"];
         doCheck = false;

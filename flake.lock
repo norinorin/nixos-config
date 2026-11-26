@@ -1152,6 +1152,7 @@
         "smooth-scroll": "smooth-scroll",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
+        "sunbird": "sunbird",
         "tinted-schemes": "tinted-schemes_2",
         "wayland-pipewire-idle-inhibit": "wayland-pipewire-idle-inhibit",
         "winapps": "winapps"
@@ -1298,6 +1299,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "stylix",
+        "type": "github"
+      }
+    },
+    "sunbird": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795713454,
+        "narHash": "sha256-qbhuihUV0sN9Ej38/A4N0SoGRR1EyIAjKKU1twt3ZGM=",
+        "owner": "sunbird-tools",
+        "repo": "sunbird",
+        "rev": "8559cbeeea56a430605217b065a7f020ff72fe4b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sunbird-tools",
+        "repo": "sunbird",
         "type": "github"
       }
     },

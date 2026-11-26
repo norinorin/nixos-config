@@ -75,6 +75,10 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sunbird = {
+      url = "github:sunbird-tools/sunbird";
+      flake = false;
+    };
     tinted-schemes = {
       url = "github:tinted-theming/schemes";
       flake = false;
