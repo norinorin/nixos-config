@@ -11,6 +11,7 @@
       den.aspects.alacritty
       den.aspects.firefox
       den.aspects.nixcord
+      den.aspects.sunbird
       den.aspects.nix-index-database
       den.aspects.dev
 
